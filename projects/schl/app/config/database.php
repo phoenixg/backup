@@ -49,7 +49,7 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = '10.254.241.31';
 $db['default']['username'] = 'root';
-$db['default']['password'] = 'netmysql';
+$db['default']['password'] = '';
 $db['default']['database'] = 'test_huang';
 //$db['default']['database'] = 'test_zhao';
 $db['default']['dbdriver'] = 'mysql';
