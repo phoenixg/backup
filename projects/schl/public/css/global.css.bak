@@ -1,0 +1,260 @@
+@CHARSET "UTF-8";
+body {
+font: normal 11px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+color: #4f6b72;
+background: #E6EAE9;
+}
+
+a {
+color: #c75f3e;
+}
+
+#scheduleTable {
+ width: 100%;
+ padding: 0;
+ margin: 0;
+}
+
+caption {
+ padding: 0 0 5px 0;
+ width: 700px; 
+ font: italic 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+ text-align: right;
+}
+
+th {
+ font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+ color: #4f6b72;
+ /*border-right: 1px solid #C1DAD7;
+ border-bottom: 1px solid #C1DAD7;
+ border-top: 1px solid #C1DAD7;*/
+ letter-spacing: 2px;
+ text-transform: uppercase;
+ text-align: left;
+ /*padding: 6px 6px 6px 12px;*/
+ background: #CAE8EA  no-repeat;
+}
+
+th.nobg {
+ border-top: 0;
+ border-left: 0;
+ border-right: 1px solid #C1DAD7;
+ background: none;
+}
+
+td {
+ /*border-right: 1px solid #C1DAD7;
+ border-bottom: 1px solid #C1DAD7;*/
+ background: #fff;
+ font-size:11px;
+ /*adding: 6px 6px 6px 12px;*/
+ color: #4f6b72;
+}
+
+
+
+td.alt {
+ background: #F5FAFA;
+ color: #797268;
+}
+
+th.spec {
+ border-left: 1px solid #C1DAD7;
+ border-top: 0;
+ background: #fff no-repeat;
+ font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+}
+
+th.specalt {
+ border-left: 1px solid #C1DAD7;
+ border-top: 0;
+ background: #f5fafa no-repeat;
+ font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+ color: #797268;
+}
+/*---------for IE 5.x bug*/
+html>body td{ font-size:11px;}
+body,td,th {
+  font-family: Arial;
+  font-size: 12px;
+}
+
+
+/* myself add*/
+.td_selected_column {
+  background-color:green;
+  color:white;
+  
+}
+.td_selected_row {
+  background-color:green;
+  color:white;
+
+}
+
+.td_selected_cell {
+  background-color:#eee;
+  color:#ddd;
+}
+
+#container{
+    width:100%;
+}
+
+#scheduleDiv{
+  float:left;
+  width:900px;
+}
+
+#modify_info{
+	margin-left:50px;
+
+}
+
+#footer {
+  clear:both;
+}
+	
+label {
+    float:left;
+    padding:0 1em;
+    text-align:right;
+    width:100px;
+}
+
+div#header > h3{
+	font-size:25px;
+    float:left;
+    margin:auto;
+}
+
+div#languageSwitch {
+	border:1px dotted gray;
+    margin:auto;
+    text-align:center;
+}
+
+div#siteInfo{
+    margin:auto;
+    padding-top:20px;
+    text-align:center;
+}
+
+#wrapper{
+    width:1300px;
+    margin:auto;
+    padding:0;
+}
+	
+#header{
+    /*width:1600px;*/
+}
+
+
+thead tr td{
+    width:300px;
+}
+
+tbody tr td {
+	width:50px;
+	height:52px;
+   /* height:50px;*/
+
+}
+
+
+table.subTable,table.subTable tr,table.subTable td{
+    border:0 0;
+    padding:0 0;
+    opacity:0.9;
+    background-color:#ddd;
+    color:#C75F3E;
+    font-weight:bold;
+}
+
+table.subTable{
+    margin:auto;
+}
+
+#prevNext,#nextLink{
+ padding: 0 .2em;
+ margin: 0;
+}
+
+
+tr.moreEvents td,tr.nomoreEvents td{
+    width:100%;
+    
+}
+
+
+#modify_info,#modify_info_1,#modify_info_2{
+    display:none;
+}
+
+#eventInfo_all{
+	padding-left:60px;/*20px*/
+    float:left;
+}
+
+#eventInfo_all h2 {
+    font-size:2.2em;
+}
+
+#eventInfo,#eventInfo_1,#eventInfo_2{
+    font-size:1.1em;
+    padding-bottom:1.5em;
+}
+
+#eventInfo span,#eventInfo_1 span,#eventInfo_2 span{
+    font-style:italic;
+}
+
+#eventInfo div,#eventInfo_1 div,#eventInfo_2 div {
+    font-size:1.5em;
+}
+
+span.hideId{
+    display:none;
+}
+
+.week{
+    text-align:center;
+}
+
+#scheduleTable tbody tr > td {
+/*writing-mode:tb-rl;*/
+    text-align:center;
+
+}
+
+
+.subTable tbody tr >  td{
+height:30%;
+}
+
+.moreEvents td,.nomoreEvents td{
+height:30%;
+}
+
+#scheduleTable tbody tr td {
+height:100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

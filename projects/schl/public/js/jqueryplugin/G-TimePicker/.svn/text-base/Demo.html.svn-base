@@ -1,0 +1,28 @@
+<html>
+<body>
+
+<script type="text/javascript" src="jquery-1.4.4.min.js"> </script>
+<script type="text/javascript" src="jquery-ui-1.8.13.custom.min.js"> </script>
+<link type="text/css" href="jquery-ui-1.8.11.custom.css" rel="stylesheet" />	
+
+<script type="text/javascript" src="jquery-Gtimepicker.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+
+	$('#time1').timePkr();
+	$('#time2').timePkr();
+	
+});
+
+</script>
+
+
+
+<input type="text" id="time1" />
+<br>
+<br>
+<input type="text" id="time2" />
+</body>
+</html>
