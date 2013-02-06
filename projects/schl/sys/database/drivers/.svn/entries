@@ -1,83 +1,0 @@
-10
-
-dir
-59
-svn://10.254.241.31/repos/schl/sys/database/drivers
-svn://10.254.241.31/repos/schl
-
-
-
-2011-11-24T02:24:36.593991Z
-1
-zhao
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-1d95615d-6a94-479e-a345-90b9f43f3c59
-
-mssql
-dir
-
-sqlite
-dir
-
-oci8
-dir
-
-postgre
-dir
-
-mysql
-dir
-
-odbc
-dir
-
-index.html
-file
-
-
-
-
-2011-11-24T02:43:16.000000Z
-0227cfd904e99656279202032b98d4a7
-2011-11-24T02:24:36.593991Z
-1
-zhao
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-114
-
-mysqli
-dir
-
