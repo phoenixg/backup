@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<title>BackendPro User Guide : Asset Optimisation</title>
+
+<style type='text/css' media='all'>@import url('../../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../../userguide.css' />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name='robots' content='all' /> 
+
+</head>
+
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2"><a name="top">&nbsp;</a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>BackendPro User Guide Version 0.6.1</h1></td>
+<td id="breadcrumb_right"><a href="../../contents.html">Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+<!-- START BREADCRUMB -->
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro Home</a> &nbsp;&#8250;&nbsp;
+<a href="../../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp;    
+<a href="../assets.html">Asset Library</a> &nbsp;&#8250;&nbsp;  
+Asset Optimisation
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="http://www.kaydoo.co.uk/backendpro/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+
+</table>
+<!-- END BREADCRUMB -->
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>Asset 优化</h1>
+<p><a href="../assets.html">Asset Library</a> 有能力为你的用户优化assets. 
+如果允许这个process ,就会将所有assets整合成一个文件. 然后它会使用优化插件（如果有的话）来优化这个文件,然后存储一份这个新文件的副本至asset缓存. 这表示用户将接收到最小体积、最高效率的asset文件,同时保证asset文件的可读性，以有利于开发.</p>
+<p>通过吧assets整合成单个文件，减少了你的用户针对HTTP请求的数量，这样就加速了页面的加载时间.</p>
+
+<p class="important"><strong>Note:</strong> 在尝试Asset优化之前，请确保 <dfn>assets/cache/</dfn> 是可写的.</p>
+
+<h2>Process</h2>
+<img src="../../images/asset_flow.jpg" alt="Asset Flow Process"/>
+
+<h2>步骤</h2>
+
+<ol>
+	<li><strong>优化:</strong><br/>
+	<p>在 Asset Library 配置文件里有一个设置是 <dfn>optimise_assets</dfn>. 如果你想要优化的话，这里必须设置成 <var>TRUE</var>. 如果设置成 <var>FALSE</var> 那么请求的assets仅仅就是程序所输出的.</p></li>
+	
+	<li><strong>检测缓存是否存在:</strong><br/>
+	<p>针对每个asset的类型 (CSS 或 JS) 以及每个位置 (header 或 footer)，它会检查在给定的asset缓存目录下是否存在一个asset文件.</p></li>
+	
+	<li><strong>检测缓存是否过期:</strong><br/>
+	<p>如果缓存存在, 检查是否太老. 这个值是在Asset Library 的配置文件里的叫做 <dfn>asset_caching/expire_time</dfn> 的配置项目设置的. 这是缓存asset文件的保持时间（小时为单位）. 过了这个时间，缓存目录下的老asset缓存就会被清除，然后创建新的缓存.</p></li>
+	
+	<li><strong>获取Assets内容:</strong><br/>
+	<p>这个process 会迭代所有指定的assets，并且将其全部整合成一个单个的asset文件. <strong>请阅读 <a href="../assets.html#asset_array">Asset Array</a> 配置设置获取更多关于动态assets和这种情况下如何处理它们的信息.</strong></p></li>
+	
+	<li><strong>运行 CSS 优化:</strong><br/>
+	<p>如果一个CSSTidy 被指定来执行优化器, 请见<a href="css_compression.html">CSS Compression</a>.</p></li>
+	
+	<li><strong>运行 JS 优化:</strong><br/>
+	<p>如果一个JS Packer 被指定来执行优化器, 请见 <a href="js_compression.html">JS Compression</a>.</p></li>
+	
+	<li><strong>输出 Assets:</strong><br/>
+	<p>依赖于是否存在缓存. 所有页面所需要的asset文件都被要么输出至header要么输出至footer，正如所required的.</p></li>
+</ol>
+
+
+</div>
+<!-- END CONTENT -->
+
+<div id="footer">
+<p>
+<a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="../../index.html">User Guide Home</a>
+</p>
+<p><a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro</a> &nbsp;&middot;&nbsp; Copyright &#169; 2009 &nbsp;&middot;&nbsp; <a href="http://www.kaydoo.co.uk">Adam Price</a></p>
+
+</div>
+
+</body>
+</html>

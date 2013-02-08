@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<title>BackendPro User Guide : Asset Library</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name='robots' content='all' /> 
+
+</head>
+
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2"><a name="top">&nbsp;</a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>BackendPro User Guide Version 0.6.1</h1></td>
+<td id="breadcrumb_right"><a href="../contents.html">Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+<!-- START BREADCRUMB -->
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro Home</a> &nbsp;&#8250;&nbsp;
+<a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp;    
+Asset Library
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="http://www.kaydoo.co.uk/backendpro/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+
+</table>
+<!-- END BREADCRUMB -->
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>Asset Library</h1>
+<p> 在0.6版本之前，Asset 类库接管了老的Page类库的一些角色.它允许asset文件在控制器中被加载和优化以减轻开发，同时提供了快速加载实时服务器上的文件.</p>
+<p class="important"><strong>Important:</strong>&nbsp; 该类自动由系统初始化，因此无需手动这么做.</p>
+    
+<p>特性:</p>
+<ul>
+	<li><a href="#asset_dependencies">Asset Dependencies</a> Asset依赖</li>
+    <li><a href="#asset_group_array">Asset Groups</a> Asset 组</li>
+    <li><a href="assets/conditional_assets.html">Browser Specific Assets (a.k.a Conditional Assets)</a> 特定浏览器的Assets（比如条件Assets）</li>
+	<li><a href="assets/asset_optimisation.html">Asset Caching and Optimisation</a> Asset缓存和优化</li>
+	<li><a href="assets/css_compression.html">CSS Compression</a> CSS压缩</li>
+	<li><a href="assets/js_compression.html">JS Compression</a> JS压缩</li>
+</ul>
+
+<h2>如何使用 Asset Library?</h2>
+<p>asset library 由BackendPro类默认加载. 该类可以在这里找到<var>modules/site/libraries/bep_assets.php</var></p>
+
+<p>要获取一个 Asset library里面的方法，请使用下面的语法:</p>
+<code>
+	$this-&gt;bep_assets-&gt;{method_name};
+</code>
+
+<a name="basics"></a>
+<h2>The Basics 基础知识</h2>
+<h3>什么是 Asset? 我们为什么需要一个 Loader?</h3>
+<p>An asset是一个包含要么CSS要么JS的文件,用来样式化一个HTML页面或者提供功能性.</p>
+<p>在小型站点中，你可能有一个单个的CSS文件来样式化你的页面和一些JS文件来做一些诸如拖动菜单的效果. 但随着你的站点扩大，你将开始编写越来越多的CSS和JS，所以要让它变得可维护性好，你就应该将其分离成小的文件,把有关联的放一起.在你知道之前，你需要在一个页面上面加载 10个 CSS 文件和 5 个JS 文件, 以及为另一个页面加载 3 个或更多的 CSS 文件.</p>
+<p>一个asset加载系统会帮助你管理你需要加载什么文件，以及何时加载这些文件. 这表示你只会加载页面所需要的CSS和JS,这还意味着你可以优化和缓存这些文件来加速加载.要额外加载一个CSS文件，无需更新header里面的views (现在会在每个页面都加载，即便只有一个页面会使用到),只需几行代码，loader就在你想要的时候照顾了如何最佳地加载你想要的文件.</p>
+
+<h2>Configuration & Setup配置和安装</h2>
+<p> Asset library的全部配置项目可以在这里被找到 <var>modules/site/config/bep_assets.php</var>.</p>
+<ul>
+	<li><a href="#asset_array">Asset Array</a></li>
+	<li><a href="#asset_group_array">Asset Group Array</a></li>
+</ul>
+
+<a name="asset_array"></a>
+<h3>Asset Array</h3>
+<p>要在你的代码里开启加载一个asset, 你需要先告诉系统这个文件. 文件在什么地方，你想要如何调用这个文件，你想要如何输出这个文件，以及它是否需要其他的assets才能工作.</p>
+<p>让我们看看一些示例asset的定义:</p>
+
+<ul>
+	<li>
+		<p><strong>一个简单的 Asset:</strong></p>
+		<code>$config['asset'][] = array('file'=&gt;'reset.css');</code>
+		<p>如你所见，我们定义了一个叫做 <dfn>reset.css</dfn>的asset，这是一个CSS文件，因此应该位于 <dfn>assets/css/</dfn> 目录. 它会在页面的 <dfn>&lt;header&gt;</dfn>里输出.</p>
+		<p>在你通篇的代码里，你可以使用 <kbd>reset</kbd>引用这个asset</p>
+	</li>
+	<li>
+	  <p><strong>改变 Asset 名称:</strong></p>
+		<code>$config['asset'][] = array('file'=&gt;'my.style.file.css', '<var>name</var>'=>'style');</code>
+		<p>总会有你不想使用asset文件名称作为引用的asset名称的时候. 这种情况下，你可以指定一个 <var>name</var> 属性. 它会重写默认的名称，这表示你可以使用 <kbd>style</kbd> 而不是<i>my.style.file</i>来引用这个asset。</p>
+	</li>
+	<li>
+	  <p><strong>动态 Assets:</strong></p>
+		<code>$config['asset'][] = array('file'=&gt;'generate_js.php', 'name'=>'dynamic', '<var>type</var>'=>'js');</code>
+		<p>asset loader 还可以处理动态生成的 CSS/JS 文件. 唯一的区别就是你必须指定输出的 <var>type</var> , 要么是 'css' 或者 'js' 都是有效的值.</p>
+		<p>当使用动态assets的时候，你必须在实际的PHP文件里包含几行代码. 下面的代码设置了浏览器会当做来对待的类型. 使用了if 语句来判断是否文件未缓存，如果设置了缓存，就没必要了.</p>
+		<code>
+			&lt;?php<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;if(&nbsp;!&nbsp;isset($cache_output))<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header('content-type:text/css');&nbsp;//&nbsp;Include&nbsp;if&nbsp;a&nbsp;css&nbsp;file<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header('content-type:text/js');&nbsp;&nbsp;//&nbsp;Include&nbsp;if&nbsp;a&nbsp;js&nbsp;file<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+			?&gt;
+		</code>
+	</li>
+	<a name="asset_dependencies"></a>
+	<li>
+	  <p><strong>Asset 依赖性:</strong></p>
+		<code>$config['asset'][] = array('file'=&gt;'jquery.plugin.js', '<var>needs</var>'=>'plugin_css|jquery');</code>
+		<p>总有需要依赖于其他assets文件的时候 (大多数是 JS 文件的依赖性) . 上面的例子中我们的<strong>jquery.plugin,js</strong> asset 要求两个assets，一个css文件和另一个jquery js文件.</p>
+		<p>一个asset可以依赖无数的assets，只要你想要, 每个asset 的引用名称使用 <kbd>|</kbd> 符号来分隔 .</p>
+		<p class="important"><strong>Important:</strong>&nbsp;不要创建 <a href="http://en.wikipedia.org/wiki/Circular_dependency">循环依赖</a>, 
+		这会导致站点挂起，且不会被loader捕捉到.</p>
+	</li>	
+	<li>
+	  <p><strong>在 Header里输出 JS Assets </strong>:</strong></p>
+		<code>$config['asset'][] = array('file'=&gt;'jquery.plugin.js', '<var>position</var>'=>'header');</code>
+		<p>默认地，加载的asset会在文档末尾加载所有JS文件. 这是因为当浏览器下载一个JS文件的时候，它其他什么事都不能做. 所以我们把它放在文档末尾，你的用户就应该首先看见并使用站点的部分功能而不必等待. 如果你需要使用一个 <dfn>document.write</dfn> 语句你就需要输出 JS 文件到文档的header里面才行. 如上面的例子所做的那样.</p>
+		<p>如果你设置了一个asset在header里,那么<strong>所有</strong>这个 assets 
+		所依赖的assets都会被搬移到header里面. <strong>注意: CSS assets 总是在header里面输出</strong>.</p>
+	</li>
+</ul>
+
+<a name="asset_group_array"></a>
+<h3>Asset Group Array</h3>
+<p>也许有时候你需要一次性加载所有的assets. 比如，一个assets的主题文件列表. 这时候可以创建一个asset group数组来实现.</p>
+
+<code>
+	$config['asset_group']['SITE'] = 'reset|typography';
+</code>
+
+<p>在上面的代码里我们定义了一个叫做 <kbd>SITE</kbd> 的group，在这个 group 里是一个 <strong>reset</strong> & <strong>typography</strong> asset.
+Group 名称应该总是 <strong>大写</strong>.</p>
+<p>
+	有三个主要的默认groups是BackendPro 系统所加载的:
+	<ul>
+		<li><strong>SITE</strong>: 这个 group是被 Site_Controller 类加载的, 这表示它在前端和后端控制器都有被加载.</li>
+		<li><strong>PUBLIC</strong>: 这个 group是被 Public_Controller 类加载的,这表示它只在前端控制器里被加载.</li>
+		<li><strong>ADMIN</strong>: 这个 group 是被 Admin_Controller 类加载的, 这表示它只在后端控制器里才被加载.</li>
+	</ul>
+</p>
+
+<h2>Methods方法</h2>
+
+<h3>$this-&gt;bep_assets-&gt;load_asset()</h3>
+<p>加载一个 Asset 文件:</p>
+<code>
+	$this-&gt;bep_assets-&gt;load_asset('<var>asset</var>')
+</code>
+<p>当页面被输出时，指定一个要加载的asset文件. <var>asset</var> 应该是一个 asset <strong>reference引用</strong>. 
+这取决于你是在config文件里是如何设置asset的. 请阅读关于 <a href="#asset_array">Asset array</a> 
+以获取更多信息.</p>
+
+<h3>$this-&gt;bep_assets-&gt;load_asset_group()</h3>
+<p>加载一个 Asset Group:</p>
+<code>
+	$this-&gt;bep_assets-&gt;load_asset_group('<var>group</var>')
+</code>
+<p>当页面被输出时，指定一个要加载的asset group.</p>
+
+<h3>$this-&gt;bep_assets-&gt;get_header_assets()</h3>
+<p>获取当前页面的所有header assets. 这会在的你view里面用到，把它写在 <dfn>&lt;header&gt;</dfn> 标签的里面.</p>
+
+<h3>$this-&gt;bep_assets-&gt;get_footer_assets()</h3>
+<p>获取当前页面的所有footer assets. 这会在你的view里面用到，它应该是 <dfn>&lt;body&gt;</dfn> 闭合标签之前的最后一个语句.</p>
+
+<h3>$this-&gt;bep_assets-&gt;icon()</h3>
+<p>输出一个Icon 文件:</p>
+<code>$this-&gt;bep_assets-&gt;icon('<var>name</var>','<var>title</var>');</code>
+<ul>
+	<li>第一个参数是你想要输出的icon文件的 <var>name</var>. 它必须是位于 <dfn>assets/icons/</dfn> 的icon文件的文件名,不带扩展名. <strong>目前只支持PNG格式的图标输出.</strong></li>
+	
+	<li>第二个<strong>可选</strong> 参数设置一个图片的 <var>title</var> ,它会在图标的 mouseover时显示.</li>
+</ul>
+</div>
+<!-- END CONTENT -->
+
+<div id="footer">
+<p>
+<a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="../index.html">User Guide Home</a>
+</p>
+<p><a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro</a> &nbsp;&middot;&nbsp; Copyright &#169; 2009 &nbsp;&middot;&nbsp; <a href="http://www.kaydoo.co.uk">Adam Price</a></p>
+
+</div>
+
+</body>
+</html>

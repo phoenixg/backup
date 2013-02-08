@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<title>BackendPro User Guide : Status Class</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name='robots' content='all' /> 
+
+</head>
+
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2"><a name="top">&nbsp;</a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>BackendPro User Guide Version 0.6.1</h1></td>
+<td id="breadcrumb_right"><a href="../contents.html">Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+<!-- START BREADCRUMB -->
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro Home</a> &nbsp;&#8250;&nbsp;
+<a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp;  
+Status Class
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="http://www.kaydoo.co.uk/backendpro/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+
+</table>
+<!-- END BREADCRUMB -->
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>Status Class</h1>
+
+<p> Status 类落实了一个简单干净的方法，用于在页面加载完毕后显示消息给用户.</p>
+
+<p class="important"><strong>Note:</strong>&nbsp; 该类由系统自动初始化，所以无需手动这么做.</p>
+
+<h2>Status Class 函数参考</h2>
+
+<a name="flashmsg"></a>
+<h3>flashMsg()</h3>
+<p>创建新的消息:</p>
+<code>flashMsg('<var>type</var>','<var>message</var>')</code>
+<p>第一个参数 <var>type</var> 指定了消息的类型. 
+可以是如下的任意一项, <kbd>info</kbd>, <kbd>success</kbd>, <kbd>warning</kbd> &amp; <kbd>error</kbd>.</p>
+<p>第二个参数 <var>message</var> 是你想要显示给用户的消息.</p>   
+
+<a name="displaystatus"></a>
+<h3>displayStatus()</h3>   
+<p>显示存储的消息:</p>
+<code>displayStatus('<var>type</var>')</code>
+<p>第一个<strong>可选</strong> 参数指定了你想要输出的错误消息类型. 可以是这几个值 <kbd>info</kbd>, <kbd>success</kbd>, <kbd>warning</kbd> &amp; <kbd>error</kbd>.
+正如所说的,它是可选的,如果没有类型指定，那么全部错误消息类型会被输出.</p>   
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p>
+<a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="../index.html">User Guide Home</a>
+</p>
+<p><a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro</a> &nbsp;&middot;&nbsp; Copyright &#169; 2009 &nbsp;&middot;&nbsp; <a href="http://www.kaydoo.co.uk">Adam Price</a></p>
+
+</div>
+
+</body>
+</html>

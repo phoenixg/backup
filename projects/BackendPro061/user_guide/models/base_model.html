@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<title>BackendPro User Guide : Base Model</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name='robots' content='all' /> 
+
+</head>
+
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2"><a name="top">&nbsp;</a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>BackendPro User Guide Version 0.6.1</h1></td>
+<td id="breadcrumb_right"><a href="../contents.html">Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+<!-- START BREADCRUMB -->
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro Home</a> &nbsp;&#8250;&nbsp;
+<a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp;   
+Base Model
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="http://www.kaydoo.co.uk/backendpro/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+
+</table>
+<!-- END BREADCRUMB -->
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>Base Model 基础模型</h1>
+
+<p> Base Model 类提供了简单执行数据表CRUD的方法. 告别编写大量model文件里更新数据表的众多不同函数，你现在可以仅仅用一行代码来完成. 要是‘默认的’方法不是你想要操纵的表怎么办？你可以重写它.</p>
+
+<p class="important"><strong>Important:</strong>&nbsp; 该类由系统自动初始化，所以无需手动这么做.</p>
+
+<h2>使用 Base Model 类</h2>
+
+<p> Base Model 类是一个抽象类, 这表示你只能通过继承来使用它. 你只需这么做:</p>
+
+<code>
+class&nbsp;Custom_model&nbsp;extends&nbsp;<kbd>Base_model</kbd>
+<br />{
+<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;Custom_model()
+<br />&nbsp;&nbsp;&nbsp;&nbsp;{
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Call&nbsp;parent&nbsp;constructor
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent::<kbd>Base_model</kbd>();
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Setup&nbsp;tables
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<var>$this-&gt;_TABLES</var>&nbsp;=&nbsp;array(<kbd>'Table</kbd>'&nbsp;=&gt;&nbsp;<kbd>'complex_table_name</kbd>');
+<br />&nbsp;&nbsp;&nbsp;&nbsp;}
+<br />}
+</code>
+<p>从代码里我们看到变量 <dfn>$this-&gt;_TABLES</dfn> 被赋值为一个数组. 它定义了你的模型能够访问什么表. 它也表示你可以赋一个漂亮的字符串值，来表示一个复杂的数据表名 。让我们看看示例:</p>
+<code>$this-&gt;custom_model-&gt;fetch(<var>'Table'</var>);</code>
+<p>这类我们针对 <var>Table</var>做了一个默认的fetch操作。 使用字符串来代表，而非使用实际的数据表名的好处在于，你无需记忆很可能很长的数据表名称.</p>
+
+<p>正如之前所说，你也许想要注入更多的特性. 你可以在model文件里为指定的表重写一个方法. 在下面的例子里， <kbd>table</kbd> 就是你在 <dfn>$this-&gt;_TABLES</dfn> 类变量里赋值的识别名.</p>
+<ul>
+<li><dfn>function _fetch_<kbd>table</kbd>(<var>fields</var>,<var>limit</var>,<var>where</var>){...}</dfn></li>
+<li><dfn>function _insert_<kbd>table</kbd>(<var>data</var>){...}</dfn></li>
+<li><dfn>function _update_<kbd>table</kbd>(<var>data</var>,<var>where</var>){...}</dfn></li>
+<li><dfn>function _delete_<kbd>table</kbd>(<var>where</var>){...}</dfn></li>
+</ul>
+<p>为了调用你新创建的方法，只要像下面解释的那样正常调用即可.</p>
+
+<h2>Function References 函数参考</h2>
+
+<a name="fetch"></a>
+<h3>$this-&gt;fetch()</h3>
+<p>获取表行记录:</p>
+<code>$this-&gt;fetch('<var>Table</var>',<var>fields</var>,<var>limit</var>,<var>where</var>)</code>
+<p>第一个参数是Table的字符串名称，就是你在<dfn>$this-&gt;_TABLES</dfn> 
+里赋的值,或是你要查询的表</p> 
+<p>第二个<strong>可选</strong> 参数是你想要返回的字段.</p> 
+<p>第三个<strong>可选</strong> 参数是一个数组，定义了查询的limit. 示例数组如<kbd>array('rows'=&gt;10,'offset'=&gt;0)</kbd>.</p> 
+<p>第四个<strong>可选</strong> 参数是一个where条件，以限制要返回的记录.</p>
+
+<a name="insert"></a>
+<h3>$this-&gt;insert()</h3>
+<p>插入表记录:</p>
+<code>$this-&gt;insert('<var>Table</var>',<var>data</var>)</code>
+<p>第一个参数是Table的字符串名称,就是在 <dfn>$this-&gt;_TABLES</dfn>里指定的你要查询的表.</p> 
+<p>第二个参数是你要插入进该表的数据数组.</p> 
+
+<a name="update"></a>
+<h3>$this-&gt;update()</h3>
+<p>更新表记录:</p>
+<code>$this-&gt;update('<var>Table</var>',<var>data</var>,<var>where</var>)</code>
+<p>第一个参数是Table的字符串名称，就是在 <dfn>$this-&gt;_TABLES</dfn>里指定的你要查询的表.</p> 
+<p>第二个参数是你要更新的数据数组.</p> 
+<p>第三个参数是你要更新的记录的where条件</p>
+
+<a name="delete"></a>
+<h3>$this-&gt;delete()</h3>
+<p>删除表记录:</p>
+<code>$this-&gt;Delete('<var>Table</var>',<var>where</var>)</code>
+<p>The first parameter is the Table string name you assigned in <dfn>$this-&gt;_TABLES</dfn> 
+for the table you wish to query.</p> 
+<p>The second parameter is a where clause for which rows to delete.</p>
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p>
+<a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="../index.html">User Guide Home</a>
+</p>
+<p><a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro</a> &nbsp;&middot;&nbsp; Copyright &#169; 2009 &nbsp;&middot;&nbsp; <a href="http://www.kaydoo.co.uk">Adam Price</a></p>
+
+</div>
+
+</body>
+</html>

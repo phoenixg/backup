@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<title>BackendPro User Guide : Site Library</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name='robots' content='all' /> 
+
+</head>
+
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2"><a name="top">&nbsp;</a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>BackendPro User Guide Version 0.6.1</h1></td>
+<td id="breadcrumb_right"><a href="../contents.html">Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+<!-- START BREADCRUMB -->
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro Home</a> &nbsp;&#8250;&nbsp;
+<a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp;    
+Site Library
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="http://www.kaydoo.co.uk/backendpro/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+
+</table>
+<!-- END BREADCRUMB -->
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>Site Library站点类库</h1>
+<p>site类库替换了老旧废弃的Page类库.它有同老的Paqe类一样的特性，且不包含跟asset有关的代码. 这可以在新的 <a href="assets.html">Asset Library</a>里找到。</p>
+<p class="important"><strong>Important:</strong>&nbsp; 该类最初由系统自动初始化，所以无需手动initialize</p
+    
+>
+<p>特性:</p>
+<ul>
+    <li><a href="#set_crumb">Breadcrumb trail creation</a> 面包屑轨迹的创建</li>
+    <li><a href="#set_variable">PHP to JS variable conversion</a> PHP 到 JS 变量的转换</li>
+    <li><a href="#set_metatag">Meta tag creation</a> Meta标签的创建</li>
+	<li><a href="#set_js_block">Javascript code blocks</a> Javascript代码的区块</li>
+</ul>
+
+<h2>如何使用 Site Library?</h2>
+<p> site library默认被BackendPro类加载. 这个类文件可以在这里看到 <var>modules/site/libraries/bep_site.php</var></p>
+
+<p>要访问Site library里的一个方法，请阅读下面的语法:</p>
+<code>
+	$this-&gt;bep_site-&gt;{method_name};
+</code>
+
+<h2>Configuration Settings配置设置</h2>
+<p>Site library的全部配置设置可以在这里看到<var>modules/site/config/bep_site.php</var>.</p>
+
+<table cellpadding="0" cellspacing="1" border="0" style="width:100%" class="tableborder">
+<tr>
+    <th>配置</th>
+    <th>默认值</th>
+    <th>选项</th>
+    <th>描述</th>    
+</tr>
+<tr>
+    <td class="td"><strong>default_site_variables</strong></td>
+    <td class="td">Array</td>
+    <td class="td">None</td>
+    <td class="td">转成JS变量的默认的 PHP 值</td>
+</tr>
+</table>
+
+<h2>Methods方法</h2>
+
+<a name="set_metatag"></a>
+<h3>$this-&gt;bep_site-&gt;set_metatag()</h3>
+<p>设置一个metatag来创建和存储，直到页面被输出.</p>
+<code>
+	$this-&gt;bep_site-&gt;set_metatag('<var>tag name</var>','<var>tag content</var>');<br/>
+	<br/>
+	// Produces : &lt;meta name='tag name' content='tag content'/&gt;
+</code>
+<ul>
+	<li>第一个参数是要创建的meta tag的名称</li>
+	<li>第二个参数是你想要存储的metatag的内容.</li>
+	<li>第三个<strong>可选</strong> 的参数是设置是否要创建一个 http-equiv metatag.</li>
+</ul>
+<code>
+	$this-&gt;bep_site-&gt;set_metatag('tag name','tag content',<kbd>true</kbd>);<br/>
+	<br/>
+	// Produces : &lt;meta http-equiv='tag name' content='tag content'/&gt;
+</code>
+
+<a name="get_metatags"></a>
+<h3>$this-&gt;bep_site-&gt;get_metatags();</h3>
+<p>获取一个HTML字符串，包含当前已添加的所有metatags</p>
+
+<a name="set_crumb"></a>
+<h3>$this-&gt;bep_site-&gt;set_crumb()</h3>
+<p>设置一个新面包屑轨迹中的面包屑.</p>
+<code>
+	$this-&gt;bep_site-&gt;set_crumb('<var>name</var>','<var>uri string</var>');
+</code>
+<ul>
+	<li>第一个参数是你想要显示的面包屑链接的名称.</li>
+	<li>第二个<strong>可选</strong> 参数是一个针对该链接的 CodeIgniter URI 字符串. 这个URI字符串应该是CI可以使用的, i.e. <dfn>controller/method</dfn>.</li>
+</ul>
+
+<a name="get_breadcrumb"></a>
+<h3>$this-&gt;bep_site-&gt;get_breadcrumb()</h3>
+<p>获取至今已创建的完整的面包屑轨迹.</p>
+<code>
+	$this-&gt;bep_site-&gt;get_breadcrumb();
+</code>
+<p>使用面包屑轨迹的完整例子如下:</p>
+<code>
+	$this-&gt;bep_site-&gt;set_crumb('BackendPro','');<br/>
+	$this-&gt;bep_site-&gt;set_crumb('Control Panel','admin');<br/>
+	$this-&gt;bep_site-&gt;set_crumb('Members','admin/members');<br/>
+	<br/>
+	print $this-&gt;bep_site-&gt;get_breadcrumb();<br/>
+	<br/>
+	// Produces:<br/>
+	// &lt;a href="http://localhost/index.php"&gt;BackendPro&lt;/a&gt; &gt; &lt;a href="http://localhost/index.php/admin"&gt;Control Panel&lt;/a&gt; &gt; Members<br/>
+</code>
+
+<a name="set_variable"></a>
+<h3>$this-&gt;bep_site-&gt;set_variable()</h3>
+<p>允许一个PHP变量被转成JS变量.</p>
+<code>
+	$this-&gt;bep_site-&gt;set_variable('<var>name</var>',<var>value</var>);	
+</code>
+<ul>
+	<li>第一个参数是你想要转的JS变量的名称.</li>
+	<li>第二个参数是你想要给该变量赋的值, 任何下列PHP变量类型都可以被转换:
+		<ul>
+			<li>Bool 布尔型</li>
+			<li>Int/Double 整型/浮点型</li>
+			<li>String 字符串型</li>
+			<li>Array (Only arrays with numeric keys) 数组型（只有数字键的数组型才能被转换）</li>
+		</ul>
+	</li>
+</ul>
+<p>它还能处理嵌套数组或数组里面的布尔型. 大多数组合都可被转成等价的JS版本. 如果无法侦测一个值的类型，那么会被转成一个JS的null值.</p>
+
+<a name="get_variables"></a>
+<h3>$this-&gt;bep_site-&gt;get_variables()</h3>
+<p>获取一个HTML字符串，包含了被转成的变量的JS代码.</p>
+<code>
+	$this-&gt;bep_site-&gt;get_variables();
+</code>
+
+<a name="set_js_block"></a>
+<h3>$this-&gt;bep_site-&gt;set_js_block()</h3>
+<p>设置一个JS代码区块，以便它能包含在页面header上面.</p>
+<code>
+	$this-&gt;bep_site-&gt;set_js_block('<var>JS code</var>');
+</code>
+<p>如果你需要创建一些动态的JS，并且无法把它放进asset文件里的话，那么这个就会很有用. 请注意代码块不会缓存，你仍然需要加载它所使用到的assets.</p>
+
+<a name="get_js_blocks"></a>
+<h3>$this-&gt;bep_site-&gt;get_js_blocks()</h3>
+<p>获取一个HTML字符串，把所有JS代码区块包含进一个 &ltscript&gt;标签中.</p>
+<code>
+	$this-&gt;bep_site-&gt;get_js_blocks();
+</code>
+</div>
+<!-- END CONTENT -->
+
+<div id="footer">
+<p>
+<a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="../index.html">User Guide Home</a>
+</p>
+<p><a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro</a> &nbsp;&middot;&nbsp; Copyright &#169; 2009 &nbsp;&middot;&nbsp; <a href="http://www.kaydoo.co.uk">Adam Price</a></p>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<title>BackendPro User Guide : Install Process</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name='robots' content='all' /> 
+
+</head>
+
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2"><a name="top">&nbsp;</a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>BackendPro User Guide Version 0.6.1</h1></td>
+<td id="breadcrumb_right"><a href="../contents.html">Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+<!-- START BREADCRUMB -->
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro Home</a> &nbsp;&#8250;&nbsp;
+<a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp;    
+Install Process
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="http://www.kaydoo.co.uk/backendpro/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+
+</table>
+<!-- END BREADCRUMB -->
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>Install Process安装步骤</h1>
+
+<p><strong>BackendPro</strong> 自带一个安装过程来安装系统.</p>
+
+<p class="important"><strong>Important:</strong> 安装之前请确保你的 CodeIgniter版本是最新的. <strong>BackendPro</strong> 只有在CodeIgniter已安装的情况下才能运行</p>
+ 
+<h2>开始安装</h2>
+<p>要开始安装，直接访问 <kbd>/install</kbd> 目录 ,你会看见表单和其他指示.</p>
+
+<h2>安装步骤</h2>
+<p>&nbsp;</p>
+<ul>
+	<li><strong>CodeIgniter 文件系统</strong><br />
+	首先你被问及CI的文件系统的结构.如果你改变了application文件夹的路径，或是其他主要的system文件夹的路径，那么这个项目就很有用. 
+	<i>请注意这些文件夹不会在CI文件里被改变，你只能手动去改，这只是为了安装过程.</i></li>
+	
+    <li><strong>Database 数据库</strong><br />
+    你被问及应用程序设置的数据库详情. 用户指定的必须把被创建为 <strong>InnoDB</strong> 类型并且指定的数据库必须已经被创建.</li>
+    
+    <li><strong>User Account 用户账号</strong><br />
+    这是系统的第一个用户账号. 它被初始授予管理员权限，但你可以在接下来的安装过程中改变这个权限.</li>
+    
+    <li><strong>ReCAPTCHA</strong><br />
+    请注意这个部分并非必填项目，除非你想在注册和登录页面使用captcha检查. 如果你决定不在这个阶段提供 public/private 钥你也可以手动在系统的文件里设置<kbd>modules/recaptcha/config/recaptcha.php</kbd>.</li>
+    
+    <li><strong>Encryption Key</strong>加密钥<br />
+    在安装期间会生成一个加密钥在你的<dfn>system/application/config/config.php</dfn>文件中. <strong>不要在安装完毕后改变这个KEY</strong>. 这么做会毁掉当前系统所有用户的密码.</li>
+</ul>
+
+<p class="important"><strong>Important:</strong>&nbsp;安装后请移除 <dfn>/install</dfn> 
+目录，以免安全隐患</p>
+ 
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p>
+<a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="../index.html">User Guide Home</a>
+</p>
+<p><a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro</a> &nbsp;&middot;&nbsp; Copyright &#169; 2009 &nbsp;&middot;&nbsp; <a href="http://www.kaydoo.co.uk">Adam Price</a></p>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+INFO  - 2012-03-28 23:51:13 --> Base path set to: /home/phoenix/public_html//phpmytest/BackendPro061/
+INFO  - 2012-03-28 23:51:13 --> Base dir set to: /phpmytest/BackendPro061/
+INFO  - 2012-03-28 23:51:13 --> System path set to: /home/phoenix/public_html//phpmytest/BackendPro061/system/
+INFO  - 2012-03-28 23:51:13 --> Application path set to: /home/phoenix/public_html//phpmytest/BackendPro061/system/application/
+INFO  - 2012-03-28 23:51:13 --> Modules path set to: /home/phoenix/public_html//phpmytest/BackendPro061/modules/
+INFO  - 2012-03-28 23:51:13 --> Logs path set to: /home/phoenix/public_html//phpmytest/BackendPro061/system/logs/
+INFO  - 2012-03-28 23:51:13 --> Cache path set to: /home/phoenix/public_html//phpmytest/BackendPro061/system/cache/
+INFO  - 2012-03-28 23:51:13 --> New feature 'FileSystem Check' created
+INFO  - 2012-03-28 23:51:13 --> New feature 'Setup FileSystem' created
+INFO  - 2012-03-28 23:51:13 --> New feature 'Setup Database' created
+INFO  - 2012-03-28 23:51:13 --> Feature 'Setup FileSystem' now has prerequisite 'FileSystem Check'
+INFO  - 2012-03-28 23:51:13 --> Feature 'Setup Database' now has prerequisite 'Setup FileSystem'
+INFO  - 2012-03-28 23:51:13 --> Component 'Log Folder writable' attached to feature 'FileSystem Check'
+INFO  - 2012-03-28 23:51:13 --> Component 'Asset folders writable' attached to feature 'FileSystem Check'
+INFO  - 2012-03-28 23:51:13 --> Component 'Cache Folder writable' attached to feature 'FileSystem Check'
+INFO  - 2012-03-28 23:51:13 --> Component 'Config files writable' attached to feature 'FileSystem Check'
+INFO  - 2012-03-28 23:51:13 --> Component 'Create new system config file' attached to feature 'Setup FileSystem'
+INFO  - 2012-03-28 23:51:13 --> Component 'Create new database config file' attached to feature 'Setup FileSystem'
+INFO  - 2012-03-28 23:51:13 --> Component 'Create new ReCAPTCHA config file' attached to feature 'Setup FileSystem'
+INFO  - 2012-03-28 23:51:13 --> Component 'Connect to database' attached to feature 'Setup Database'
+INFO  - 2012-03-28 23:51:13 --> Component 'Update table schema' attached to feature 'Setup Database'
+INFO  - 2012-03-28 23:51:13 --> Component 'Create administrator user account' attached to feature 'Setup Database'
+INFO  - 2012-03-28 23:51:13 --> Log Folder writable Component installed
+INFO  - 2012-03-28 23:51:13 --> Asset folders writable Component installed
+INFO  - 2012-03-28 23:51:13 --> Cache Folder writable Component installed
+INFO  - 2012-03-28 23:51:13 --> Config files writable Component installed
+INFO  - 2012-03-28 23:51:13 --> FileSystem Check Feature installed
+INFO  - 2012-03-28 23:51:13 --> Create new system config file Component installed
+INFO  - 2012-03-28 23:51:13 --> Create new database config file Component installed
+INFO  - 2012-03-28 23:51:13 --> Create new ReCAPTCHA config file Component installed
+INFO  - 2012-03-28 23:51:13 --> Setup FileSystem Feature installed
+INFO  - 2012-03-28 23:51:13 --> Connect to database Component installed
+INFO  - 2012-03-28 23:51:13 --> Update table schema Component installed
+INFO  - 2012-03-28 23:51:13 --> Create administrator user account Component installed
+INFO  - 2012-03-28 23:51:13 --> Setup Database Feature installed

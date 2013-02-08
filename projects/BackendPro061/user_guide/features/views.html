@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<title>BackendPro User Guide : Views</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name='robots' content='all' /> 
+
+</head>
+
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2"><a name="top">&nbsp;</a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>BackendPro User Guide Version 0.6.1</h1></td>
+<td id="breadcrumb_right"><a href="../contents.html">Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+<!-- START BREADCRUMB -->
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro Home</a> &nbsp;&#8250;&nbsp;
+<a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp;    
+Views
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="http://www.kaydoo.co.uk/backendpro/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+
+</table>
+<!-- END BREADCRUMB -->
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>Views 视图</h1>
+
+<p>CodeIgniter 提供了非常清晰的从控制器 <a href="http://codeigniter.com/user_guide/general/views.html">加载视图</a> 及传递数据并显示的方法. 由于 <strong>BackendPro</strong> 提供给你这样的开发者一个预先建立好的管理员区域，我不得不决定要如何为应用程序处理视图的问题.</p>
+
+<p>视图应该总是被分离到两个不同的主视图文件夹里, <kbd>admin</kbd> 
+和 <kbd>public</kbd>. 这样做的理由不仅是提供了更漂亮的方法来分离不同的文件，而且意味着这样就可以使用我内置的数据输出过程.</p>
+
+<h2>Containers 容器</h2>
+<p>由于 <strong>BackendPro</strong> 尝试尽可能使用模块化的代码,我希望所有页面都采用相同的header/footer ，这样就改变了页面的内容. 为了实现这个，我引入了一个容器系统. 这个与其叫做单个引用视图文件，不如你可以把它称作 <strong>master</strong> 视图文件，它会运行并加载与其有关的headers和footers等等。</p>
+
+<h3>Container</h3>
+<p>当你继承 <a href="../controllers/admin_controller.html">Admin Controller</a> 或 <a href="../controllers/public_controller.html">Public Controller</a> 的任何一个的时候，一个类变量会被继承下来，你只可以通过使用 <dfn>$this-&gt;_container</dfn> 来访问到它. 这个变量是<strong>container</strong> 的视图文件，就是我为有关的控制器类谈到的视图文件.</p>
+
+<p>master 视图文件和它们的子视图文件分别位于 <var>system/application/views/admin</var> 
+和 <var>system/application/views/public</var>.</p>
+
+<a name="popup_container"></a>
+<h3>Popup Container</h3>
+<p class="important"><strong>Note:</strong> 只有继承了一个 <a href="../controllers/admin_controller.html">Admin Controller</a> 时才有这个特性</p>
+<p>也许有时候你不希望把用户重定向至一个全新的页面, 你只是希望弹出一个页面窗口, 但保持所有主窗口的样式和正常的container特性. 这时就可以使用 popup container. 通过使用 <dfn>$this-&gt;_popup_container</dfn> 变量，你可以加载所有你自定义的视图至一个没有默认的管理 navigation/header/footer的窗口里.</p>
+
+<h2>可能的页面内容</h2>
+<p>如上所述，我想要设计一个内容能够被传输至默认的视图文件并且正常工作的系统, 因为这个原因，有三种方式来为页面添加内容. 三种方法都设置了一个<var>header</var> 变量. 这个设置就是显示在浏览器标题栏里的title文本.</p>
+<ol>
+    <li><strong>基本的纯文本</strong><br />
+    如果你只想显示一些文本，又不用加载一个视图，你只需把一个字符串传递给 <strong>master</strong> 容器即可.
+    <code>
+    function&nbsp;index()<br />
+    {<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;$data['header']&nbsp;=&nbsp;&quot;My&nbsp;Page&quot;;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;$data['<kbd>content</kbd>']&nbsp;=&nbsp;&quot;Just&nbsp;displays&nbsp;some&nbsp;basic&nbsp;text,&nbsp;nothing&nbsp;more&quot;;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;$this-&gt;load-&gt;view(<kbd>$this-&gt;_container</kbd>,$data);<br />
+    }
+    </code>
+    <p>如你在上面所见, 不用调用一个视图文件，我只是告诉它加载由 <dfn>$this-&gt;_container</dfn> 定义的文件。使用 <kbd>content</kbd> 变量条目来传递该文本字符串.
+    </li>
+    
+    <li><strong>视图文件</strong><br />
+    <p>有时候你希望加载一个更加复杂的页面，通过字符串传递数据会变得混淆和混乱. 因此，你可以指定一个 <kbd>page</kbd> 在它的位置上加载 (把页面读作视图).</p>
+    <code>
+    function&nbsp;index()<br />
+    {<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;$data['header']&nbsp;=&nbsp;&quot;My&nbsp;Page&quot;;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;$data['<kbd>page</kbd>']&nbsp;=&nbsp;<dfn>$this-&gt;config-&gt;item('backendpro_template_admin')</dfn>&nbsp;.&nbsp;&quot;<kbd>my_view_file</kbd>&quot;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;$this-&gt;load-&gt;view($this-&gt;_container,$data);<br />
+    }
+    </code>
+    <p>上面的代码你会看到我指定了一个要加载的 <kbd>page</kbd>.
+    所以上面的代码会加载这个视图文件 <var>system/application/</var><dfn>view/admin/</dfn><kbd>my_view_file.php</kbd>.</p> 
+    </li>
+    
+    <li><strong>在模块里的视图文件</strong><br />
+    <p>这种情况跟上面的一样，除了matchbox已经安装好了的区别，这时你必须指定你想要加载的视图文件来自哪个模块. 因此我们给 <strong>master</strong> 容器多传递一个值.</p>
+    <code>
+    function&nbsp;index()<br />
+    {<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;$data['header']&nbsp;=&nbsp;&quot;My&nbsp;Page&quot;;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;$data['page']&nbsp;=&nbsp;$this-&gt;config-&gt;item('backendpro_template_admin')&nbsp;.&nbsp;&quot;my_view_file&quot;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;$data['module']&nbsp;='<var>module</var>';<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;$this-&gt;load-&gt;view($this-&gt;_container,$data);<br />
+    }
+    </code>
+    <p>上面的代码你看到了我指定了一个要加载的视图来自哪个 <var>module</var> .
+    所以上面的代码我们加载了这个视图文件 <kbd>modules/<var>module</var>/view/admin/my_view_file.php</kbd>.</p> 
+    </li>
+</ol>
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p>
+<a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="../index.html">User Guide Home</a>
+</p>
+<p><a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro</a> &nbsp;&middot;&nbsp; Copyright &#169; 2009 &nbsp;&middot;&nbsp; <a href="http://www.kaydoo.co.uk">Adam Price</a></p>
+
+</div>
+
+</body>
+</html>

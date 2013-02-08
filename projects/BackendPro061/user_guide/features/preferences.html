@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<title>BackendPro User Guide : Preferences</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name='robots' content='all' /> 
+
+</head>
+
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2"><a name="top">&nbsp;</a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>BackendPro User Guide Version 0.6.1</h1></td>
+<td id="breadcrumb_right"><a href="../contents.html">Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+<!-- START BREADCRUMB -->
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro Home</a> &nbsp;&#8250;&nbsp;
+<a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp;      
+Preferences
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="http://www.kaydoo.co.uk/backendpro/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+
+</table>
+<!-- END BREADCRUMB -->
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>Preferences配置</h1>
+
+<p><strong>BackendPro</strong> 没有使用配置文件来存储设置，而是使用了数据库表来存储设置. 这么做的主要优势在于更新值只需简单的交互即可，无需跟文件系统打交道.</p>
+
+<p>许多不同的数据类型可以使用配置表(preference table) 来存储)配置来存储，但我只会着重介绍几个:</p>
+<ul>
+    <li><kbd>Boolean</kbd> : 你可以在数据库里存储boolean值, 你可以将其存储为 <strong>1</strong> 
+    或 <strong>0</strong> . 这么做的原因在于 <dfn>if 语句</dfn> 可以使用这些值，无需假如被存储成TRUE或FALSE的话，就不得不将其执行字符串evaluation操作. （译注：布尔值直接存储成1或0比TRUE或FALSE更好）</li>
+    
+    <li><kbd>Arrays</kbd> : 有时候也许你希望将一个数组存储在设置里. 这样很好，系统应该检测变量是一个数组，然后 <dfn>serialize</dfn> 它. 当获取setting的时候，再 
+    <dfn>unserialize</dfn> 它以便使用.</li>
+    
+    <li><kbd>Long Text</kbd> : 如果想要把一大篇段落存储为配置, 字段类型是 <strong>Text</strong> 挺好，不会有trimming发生.</li>
+</ul>
+
+<h2>获取 Setting</h2>
+<p>获取一个 setting 值:</p>
+<code>$this-&gt;preference-&gt;item('<var>name</var>')</code>
+
+<h2>默认 Settings</h2>
+<p><strong>BackendPro</strong> 系统自带了许多已经设置好了的settings.下面是每个setting的描述, 配置做什么事，以及它们的默认值. <strong>请注意不要直接在数据库表中改变这些配置值，请使用提供的表单来修改.</strong></p>
+
+<table cellpadding="0" cellspacing="1" border="0" style="width:100%" class="tableborder">
+<tr>
+    <th>配置</th>
+    <th>默认值</th>
+    <th>选项</th>
+    <th>描述</th>
+</tr>
+<!-- GENERAL SETTINGS -->
+<tr>
+    <td class="td"><strong>site_name</strong></td>
+    <td class="td">BackendPro</td>
+    <td class="td">None</td>
+    <td class="td">这是网站的名称。使用这个配置表示你可以快速地改变网站全站的商标</td>
+</tr>
+<!-- MAINTENANCE & DEBUGING SETTINGS -->
+<tr>
+    <td class="td"><strong>page_debug</strong><a name="page_debug"></a></td>
+    <td class="td">0</td>
+    <td class="td">1/0 (boolean)</td>
+    <td class="td">如果设置成 1 会显示由<dfn>$this-&gt;output-&gt;enable_profiler()</dfn>提供的页面调试信息</td>
+</tr>
+<tr>
+    <td class="td"><strong>keep_error_logs_for</strong></td>
+    <td class="td">30</td>
+    <td class="td">None</td>
+    <td class="td">错误日志的保留天数</td>
+</tr>
+<!-- MEMBER SETTINGS -->
+<tr>
+    <td class="td"><strong>default_user_group</strong></td>
+    <td class="td">1</td>
+    <td class="td">User Group ID</td>
+    <td class="td">赋给所有新用户的用户组ID.</td>
+</tr>
+<tr>
+    <td class="td"><strong>allow_user_registration</strong></td>
+    <td class="td">1</td>
+    <td class="td">1/0 (boolean)</td>
+    <td class="td">如果设置成 1 ，就会允许注册网站的账号，不然就只有由管理员来创建所有的新账号.</td>
+</tr>
+<tr>
+    <td class="td"><strong>allow_user_profiles</strong></td>
+    <td class="td">0</td>
+    <td class="td">1/0 (boolean)</td>
+    <td class="td">如果设置成 1 ，就会允许自定义系统的用户配置,反之则不允许.</td>
+</tr>
+<tr>
+    <td class="td"><strong>activation_method</strong></td>
+    <td class="td">email</td>
+    <td class="td">email/admin/none</td>
+    <td class="td">要激活新创建的账号，必须执行什么action</td>
+</tr>
+<tr>
+    <td class="td"><strong>account_activation_time</strong></td>
+    <td class="td">7</td>
+    <td class="td">None</td>
+    <td class="td">激活一个新账号的生效天数</td>
+</tr>
+<tr>
+    <td class="td"><strong>autologin_period</strong></td>
+    <td class="td">30</td>
+    <td class="td">None</td>
+    <td class="td">用户保持登陆状态的天数,假如他们在登陆时选择了 'Remember Me' 的话</td>
+</tr>
+<tr>
+	<td class="td"><strong>login_field</strong></td>
+	<td class="td">email</td>
+	<td class="td">email,username,either</td>
+	<td class="td">为用户登录进BackendPro系统设置了登陆途径. 允许你填写username, email 或 either.</td>
+</tr>
+
+<!-- SECURITY SETTINGS -->
+<tr>
+    <td class="td"><strong>use_registration_captcha</strong></td>
+    <td class="td">0</td>
+    <td class="td">1/0 (boolean)</td>
+    <td class="td">如果设置成 1 ，在注册时就会生成验证码表单</td>
+</tr>
+<tr>
+    <td class="td"><strong>use_login_captcha</strong></td>
+    <td class="td">0</td>
+    <td class="td">1/0 (boolean)</td>
+    <td class="td">如果设置成 1 ，在登陆时就会生成验证码表单</td>
+</tr>
+<tr>
+    <td class="td"><strong>min_password_length</strong></td>
+    <td class="td">8</td>
+    <td class="td">None</td>
+    <td class="td">密码允许的最小字符数</td>
+</tr>
+<!-- COMMUNICATION SETTINGS -->
+<tr>
+    <td class="td"><strong>automated_from_email</strong></td>
+    <td class="td">noreply@backendpro.co.uk</td>
+    <td class="td">None</td>
+    <td class="td">任何系统邮件都会发送给用户所使用的邮件地址 E.g. 激活信</td>
+</tr>
+<tr>
+    <td class="td"><strong>automated_from_name</strong></td>
+    <td class="td">BackendPro</td>
+    <td class="td">None</td>
+    <td class="td">任何系统邮件都会发送给用户的用户名称 E.g. 激活信</td>
+</tr>
+<tr>
+    <td class="td"><strong>email_protocol</strong></td>
+    <td class="td">smtp</td>
+    <td class="td">smtp/mail/sendmail</td>
+    <td class="td">用来发送系统邮件的邮箱协议</td>
+</tr>
+<tr>
+    <td class="td"><strong>email_mailpath</strong></td>
+    <td class="td">/usr/sbin/sendmail</td>
+    <td class="td">None</td>
+    <td class="td"> sendmail 应用程序的所在路径 (只有当sendmail协议被选择时这个项目才被用到)</td>
+</tr>
+<tr>
+    <td class="td"><strong>smtp_host</strong></td>
+    <td class="td"></td>
+    <td class="td">None</td>
+    <td class="td">用来发送邮件的SMTP 主机 (只有当smtp协议被选择时这个项目才被用到)</td>
+</tr>
+<tr>
+    <td class="td"><strong>smtp_user</strong></td>
+    <td class="td"></td>
+    <td class="td">None</td>
+    <td class="td">用来发送邮件的SMTP 用户名 (只有当smtp协议被选择时这个项目才被用到)</td>
+</tr>
+<tr>
+    <td class="td"><strong>smtp_pass</strong></td>
+    <td class="td"></td>
+    <td class="td">None</td>
+    <td class="td">用来发送邮件的SMTP 密码 (只有当smtp协议被选择时这个项目才被用到)</td>
+</tr>
+<tr>
+    <td class="td"><strong>smtp_port</strong></td>
+    <td class="td">25</td>
+    <td class="td">None</td>
+    <td class="td">用来发送邮件的SMTP 端口 (只有当smtp协议被选择时这个项目才被用到)</td>
+</tr>
+<tr>
+    <td class="td"><strong>smtp_timeout</strong></td>
+    <td class="td">5</td>
+    <td class="td">None</td>
+    <td class="td">用来发送邮件的SMTP 超时数(秒)  (只有当smtp协议被选择时这个项目才被用到)</td>
+</tr>
+<tr>
+    <td class="td"><strong>email_wordwrap</strong></td>
+    <td class="td">1</td>
+    <td class="td">1/0 (boolean)</td>
+    <td class="td">如果设置成 1 电邮会被 wordwrapped</td>
+</tr>
+<tr>
+    <td class="td"><strong>email_wrapchars</strong></td>
+    <td class="td">76</td>
+    <td class="td">None</td>
+    <td class="td">要wrap电邮的字符数</td>
+</tr>
+<tr>
+    <td class="td"><strong>email_mailtype</strong></td>
+    <td class="td">text</td>
+    <td class="td">text/html</td>
+    <td class="td">要发送的电邮格式</td>
+</tr>
+<tr>
+    <td class="td"><strong>email_charset</strong></td>
+    <td class="td">utf-8</td>
+    <td class="td">None</td>
+    <td class="td">要发送的电邮Charset </td>
+</tr>
+<tr>
+    <td class="td"><strong>bcc_batch_mode</strong></td>
+    <td class="td">0</td>
+    <td class="td">1/0 (boolean)</td>
+    <td class="td">如果设置成 1 电邮会被批处理发送. 如果要发送上千封电邮而不flood掉服务器，那么这个项目就很有用.</td>
+</tr>
+<tr>
+    <td class="td"><strong>bcc_batch_size</strong></td>
+    <td class="td">200</td>
+    <td class="td">None</td>
+    <td class="td">一次要批处理发送的电邮数量, 200 是一个比较好的值</td>
+</tr>
+</table>
+
+<h2>添加你自己的配置</h2>
+<p>要添加你自己的配置，你只需要添加一行新记录在 <kbd>be_preferences</kbd> 数据表里. 把它赋一个默认值，你就完成了. 如果你想要创建一张新表来管理setting，请看下面.</p>
+
+<h2>配置表单的创建</h2>
+<p>你不仅能通过使用配置表单来管理默认的系统setting.
+还可以为你 <strong>自己</strong> 
+的配置创建setting，这可以通过使用 <a href="preference_form.html">配置表单类</a>来实现</p>
+
+<p>如果你想要看一个控制器引用配置表单的例子，看看这个文件 <var>system/application/controllers/admin/settings.php</var>.</p>
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p>
+<a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="../index.html">User Guide Home</a>
+</p>
+<p><a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro</a> &nbsp;&middot;&nbsp; Copyright &#169; 2009 &nbsp;&middot;&nbsp; <a href="http://www.kaydoo.co.uk">Adam Price</a></p>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<title>BackendPro User Guide : Access Control</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name='robots' content='all' /> 
+
+</head>
+
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2"><a name="top">&nbsp;</a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>BackendPro User Guide Version 0.6.1</h1></td>
+<td id="breadcrumb_right"><a href="../contents.html">Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+<!-- START BREADCRUMB -->
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro Home</a> &nbsp;&#8250;&nbsp;
+<a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp;    
+Access Control
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="http://www.kaydoo.co.uk/backendpro/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+
+</table>
+<!-- END BREADCRUMB -->
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>Access Control访问控制</h1>
+
+<p>不像其他的应用程序那样，<strong>BackendPro</strong> 自带了一个高级的访问控制系统. 它使用用户访问控制列表来控制小组对于资源的访问权限. 如果你不晓得什么是访问权限列表，请阅读 <a href="http://en.wikipedia.org/wiki/Access_control_list">这个维基</a> 页面. 
+ <strong>BackendPro</strong> 使用了两种系统, 前端管理系统, 后端系统由 <a href="http://codeigniter.com/forums/viewthread/70197/">KhACL</a>和<a href="../models/nested_sets_model.html">Nested Sets Model</a> 提供.使用 <strong>BackendPro</strong> 并不需要完全明白这些系统，但你也许会觉得它们有趣.</p>
+
+<p class="important"><strong>Note:</strong>&nbsp; 访问控制由系统自动初始化，所以无需手动这么做.</p>
+  
+<p>特性:</p>
+
+<ul>
+    <li>允许你创建用户组</li>
+    <li>提供了根据小组来创建资源并限制访问资源的权限的机制</li>
+    <li>允许你创建 'actions' 以增强安全系数</li>
+</ul>
+
+<p class="important"><strong>Important:</strong>&nbsp; 不要删除权限，除非你完全明白你的系统.如果删除了权限，你可能被系统锁死.我警告过你了.</p>
+
+<h2>限制对于控制器 控制器/方法 的访问</h2>
+<p>正如上面谈到的，针对资源的访问权限取决于隶属于哪个小组. 要确保用户对于页面有足够的权限，你只需调用一个简单的函数.</p>
+
+<code>check(<var>resource</var>,<var>action</var>,<var>redirect</var>);</code>
+
+<p>第一个参数 <var>resource</var> 象征要保护该控制器/方法的资源名称. 这类名称的示例可以在 <kbd>Default Resources</kbd> 部分看到.</p>
+
+<p>第二个 <strong>可选</strong> 参数象征一个 <var>action</var>, 用户要被允许查看页面，就必须在特定的 <var>resource</var> 上拥有权限.</p>
+
+<p>第三个 <strong>可选</strong> 参数如果被设置成 FALSE时，如果权限不够，就会返回FALSE而已，而不会重定向用户至warning页面. 当你只想当用户有权限时能查看某个链接的时候，这个参数就很有用,如果没有权限，这个链接就不会显示.</p>
+
+<p>让我们看一些例子:</p>
+<code>
+//&nbsp;这行会检测用户是否有对于setting资源的访问权限.&nbsp;如果没有<br />
+//&nbsp;则重定向并显示错误消息.<br />
+check(<var>'Settings'</var>);<br />
+<br />
+//&nbsp;这行会检测用户是否有使用members控制器下的delete方法的权限，如果没有<br />
+//&nbsp;就重定向.<br />
+check(<var>'Members'</var>,<var>'Delete'</var>);<br />
+<br />
+//&nbsp;这几行会检测用户是否有对于members资源的权限.<br />
+//&nbsp;如果他们没有权限，就返回FALSE，而不是重定向<br />
+// 这样，只有他们拥有权限的时候，才会创建链接<br />
+if(&nbsp;check(<var>'Members'</var>,NULL,<var>FALSE</var>))<br />
+{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;anchor('auth/admin/members','Members');<br />
+}
+</code>
+
+<h2>管理访问权限</h2>
+<p>我看过许多系统,我发现很难知道哪个组有什么权限. 出于这个原因，我创建了一个很简单的工具, 使用它你就可以查看系统里面什么用户有什么样的权限.</p>
+<center><img src="../images/acl_advanced_view.jpg" /></center>
+<p>如你所见, 选择某个你想要看的组，你就可以看到他们具有针对哪些资源的权限.</p>
+
+<h2>默认的用户组</h2>
+<p><strong>BackendPro</strong> 默认自带几个预先创建好的用户组. 
+你无法删除这些组因为它们对系统有影响. 下表显示了它们在系统里的嵌套结构.</p>
+
+<table cellpadding="0" cellspacing="1" border="0" style="width:100%" class="tableborder">
+<tr>
+    <th>组</th>
+    <th>描述</th>    
+</tr>
+<tr>
+    <td class="td"><strong>Member</strong></td>
+    <td class="td">这是组树的根节点，所有网站成员都会继承这个组</td>
+</tr>
+<tr>
+    <td class="td"><strong>&nbsp;&nbsp;Administrator</strong></td>
+    <td class="td">这是管理员的基本组.</td>
+</tr>
+</table>
+
+<h2>默认的资源</h2>
+<p><strong>BackendPro</strong> 默认自带了几个预先创建好的资源. 
+你无法删除这些资源因为它们提供了对于控制面板的基本访问. 下表显示了它们在系统里的嵌套结构.</p>
+
+<table cellpadding="0" cellspacing="1" border="0" style="width:100%" class="tableborder">
+<tr>
+    <th>资源</th>
+    <th>描述</th>    
+</tr>
+<tr>
+    <td class="td"><strong>Site</strong></td>
+    <td class="td">资源树的根节点，所有其他的网站资源都会延伸这个资源</td>
+</tr>
+<tr>
+    <td class="td"><strong>&nbsp;&nbsp;Control Panel</strong></td>
+    <td class="td">这个资源防护对于网站控制面板的访问.</td>
+</tr>
+<tr>
+    <td class="td"><strong>&nbsp;&nbsp;&nbsp;&nbsp;System</strong></td>
+    <td class="td">这个资源防护对于所有系统页面（包括Members/Settings/Utilities/Access Control）的访问</td>
+</tr>
+<tr>
+    <td class="td"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Settings</strong></td>
+    <td class="td">这个资源防护对于网站setting页面的访问.</td>
+</tr>
+<tr>
+    <td class="td"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Members</strong></td>
+    <td class="td">这个资源防护对于member管理员页面的访问.</td>
+</tr>
+<tr>
+    <td class="td"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utilities</strong></td>
+    <td class="td">这个资源防护对于网站utilities页面的访问.</td>
+</tr>
+<tr>
+    <td class="td"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access Control</strong></td>
+    <td class="td">这个资源防护对于权限控制管理页面的访问.</td>
+</tr>
+<tr>
+    <td class="td"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions</strong></td>
+    <td class="td">这个资源防护对于允许网站actions的管理页面的访问.</td>
+</tr>
+<tr>
+    <td class="td"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Groups</strong></td>
+    <td class="td">这个资源防护对于允许网站groups的管理页面的访问.</td>
+</tr>
+<tr>
+    <td class="td"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resources</strong></td>
+    <td class="td">这个资源防护对于允许网站资源管理页面的访问.</td>
+</tr>
+<tr>
+    <td class="td"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Permissions</strong></td>
+    <td class="td">这个资源防护对于允许网站permissions管理页面的访问.</td>
+</tr>
+</table>
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p>
+<a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="../index.html">User Guide Home</a>
+</p>
+<p><a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro</a> &nbsp;&middot;&nbsp; Copyright &#169; 2009 &nbsp;&middot;&nbsp; <a href="http://www.kaydoo.co.uk">Adam Price</a></p>
+
+</div>
+
+</body>
+</html>

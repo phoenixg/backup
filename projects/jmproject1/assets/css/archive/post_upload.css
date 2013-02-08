@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+
+#container {
+	text-align:center;
+}
+
+#container textarea {
+	width: 800px;
+	height: 494px;/*golden section*/
+	border: 3px solid #ddd;
+	padding: 5px;
+	resize:none;
+	overflow:auto;
+}
+
+.tag {
+	text-decoration:none;
+	font-size:15px;
+}
+
+#format {
+	position:relative;
+	background-color:red;
+	width:1000px;
+	height:30px;
+}
+
+#format span {
+	background-color:#00964E;
+	float:left;
+	width:100px;
+	height:20px;
+	margin:2px;
+	padding:2px;
+}
+
+#format a{
+	color:#eee;
+}

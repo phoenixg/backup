@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+form#admin_login{
+	height:300px;
+}
+
+#admin_login {  
+    font-family:Georgia, sans-serif;  
+    font-size:12px;  
+    color:#999;  
+	margin:10px 20px;
+}  
+
+#admin_login p{
+	margin:8px 0px;
+}
+
+
+#admin_login label{  
+    font-family:Verdana, sans-serif;  
+    font-weight:bold;
+} 
+
+#email, #password{  
+    width:200px;  
+}  

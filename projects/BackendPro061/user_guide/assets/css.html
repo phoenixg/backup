@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<title>BackendPro User Guide : CSS Styles</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name='robots' content='all' /> 
+
+</head>
+
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2"><a name="top">&nbsp;</a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>BackendPro User Guide Version 0.6.1</h1></td>
+<td id="breadcrumb_right"><a href="../contents.html">Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+<!-- START BREADCRUMB -->
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro Home</a> &nbsp;&#8250;&nbsp;
+<a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp;   
+CSS Styles
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="http://www.kaydoo.co.uk/backendpro/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+
+</table>
+<!-- END BREADCRUMB -->
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>CSS 样式</h1>
+
+<p>表单、表格、链接等的样式模板.</p>
+
+<p class="important"><strong>Note:</strong>&nbsp; 本页讨论的所有样式默认由BackendPro的 <a href="../features/page.html">Page</a> 类自动加载.</p>
+
+<a name="forms"></a>
+<h2>表单</h2>
+<p> <strong>BackendPro</strong>的全部表单样式几乎都是一致的. 我提供了一致的html代码，无论是横向还是纵向的表单。 基本的表单样式如下:</p>
+
+<code>
+&lt;form&nbsp;class=&quot;<var>form_type</var>&quot;&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;fieldset&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ol&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;for=&quot;inpText&quot;&gt;Label&nbsp;Text:&lt;/label&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;text&quot;&nbsp;name=&quot;inpText&quot;&nbsp;<dfn>class=&quot;text&quot;</dfn>&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;<dfn>class=&quot;submit&quot;</dfn>&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;submit&quot;&nbsp;name=&quot;submit&quot;&nbsp;value=&quot;Save&quot;&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ol&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/fieldset&gt;<br />
+&lt;/form&gt;
+</code>
+
+<p>使用 <strong>ol</strong>
+元素创建表单. 每行一个新 <strong>li</strong>. <var>form_type</var> 可以是 <dfn>horizontal</dfn> 或 <dfn>vertical</dfn> 两个值的任意一个。用于指定表单的定向.</p>
+
+<p>再下面是一个 <kbd>class</kbd> 应用给input元素, 用于将text input的大小和select以及text area的大小一致,并非必须要使用它.</p>
+
+<p>最后的<strong>li</strong>有一个class值是 <kbd>submit</kbd>, 告诉表单当在 <dfn>horizontal</dfn> 模式下就 indent提交按钮。要创建可爱的按钮，请见 <a href="#icon_buttons">Icon Buttons</a>.</p>
+
+<p class="important"><strong>Note:</strong>&nbsp;更多关于表单样式的信息见 <kbd>assets/shared/css/forms.css</kbd>.</p>  
+
+<!--<h2>Data Grid</h2>
+
+<p>BackendPro dosn't provide automated CRUD support so instead to try and make your
+life a little bit easiyer I have provided a nice but simple table style used to display
+tabular data.</p>
+
+<p class="important"><strong>Note:</strong>&nbsp; For full details of what the data grid styles please see <kbd>assets/shared/css/forms.css</kbd>.</p>  
+-->
+
+<a name="icon_links"></a>
+<h2>Icon Links 图标链接</h2>
+<p><strong>BackendPro</strong> 通篇你都会看见链接旁边有图标. 这是由PHP生成的样式表控制的，位于 <kbd>assets/shared/css/icons.php</kbd>.</p>
+
+<p>每个图标都存储于 <kbd>assets/shared/icons</kbd> 下面，CSS代码会自动创建，所以可以被作为链接图标使用, 你只要使用以下格式即可:</p>
+
+<code>&lt;a&nbsp;href=&quot;location&quot;&nbsp;class=&quot;icon_<var>name</var>&quot;&gt;Some&nbsp;Link&lt;/a&gt;</code>
+
+<p><var>name</var> 是你想要显示在链接旁边的icon文件的名称,不包含扩展名.</p>
+
+
+<a name="icon_buttons"></a>
+<h2>Icon Buttons 图标按钮</h2>
+<p><strong>BackendPro</strong> 提供了简单单样式丰富的方法来创建HTML的 <dfn>&lt;button&gt;</dfn>
+标签. 你再也不用创建难看的按钮，你可以添加有意思的图标愉悦你的用户.</p>
+
+<p> Button示例代码:</p>
+<code>
+&lt;div&nbsp;class=&quot;buttons&quot;&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;type=&quot;submit&quot;&nbsp;class=&quot;positive&quot;&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&lt;?=&nbsp;$this-&gt;page-&gt;icon('disk');?&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	Submit<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;#&quot;&nbsp;class=&quot;negative&quot;&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&lt;?=&nbsp;$this-&gt;page-&gt;icon('cross');?&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	Cancel<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;#&quot;&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&lt;?=&nbsp;$this-&gt;page-&gt;icon('key');?&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	Change&nbsp;Password<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br />
+&lt;/div&gt;
+</code>
+
+<p>正如你在上面所见, 3个按钮就这么创建了. 你要么可以使用 <dfn>&lt;button&gt;</dfn>
+标签来创建，要么可以使用 <dfn>&lt;a&gt;</dfn> 标签来创建. 通过应用 <var>positive/negative</var> 会相应调整按钮颜色为 green/red .
+如果不指定一个 class ,就会显示一个中立按钮.</p>
+
+<p>正如你在示例中所见, <dfn>$this-&gt;page-&gt;icon('cross');</dfn> 被用来包含一个图标图片. 该函数的更多信息见 <a href="../features/page.html#icon">Page</a>类库.</p>
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p>
+<a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="../index.html">User Guide Home</a>
+</p>
+<p><a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro</a> &nbsp;&middot;&nbsp; Copyright &#169; 2009 &nbsp;&middot;&nbsp; <a href="http://www.kaydoo.co.uk">Adam Price</a></p>
+
+</div>
+
+</body>
+</html>

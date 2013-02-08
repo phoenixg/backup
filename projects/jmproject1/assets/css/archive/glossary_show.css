@@ -1,0 +1,71 @@
+@CHARSET "UTF-8";
+
+dl {
+	padding:10px 10px;
+}
+
+dt {
+	font-weight:bold;
+	color:#555;
+	font-size:1.2em;
+	margin:0.2em 0.2em;
+}
+
+dd {
+	text-align:justify;
+	margin:6px 0 10px 15px;
+	padding-left:15px;
+	color:#777;
+	background:url(../../images/glossary_arrow.png) no-repeat 0 2px;
+	line-height:130%;
+}
+
+.entry_english, .entry_chinese {
+	background:#eee;
+	color:#888;
+	text-align:center;
+	border:1px dotted #ccc;
+	padding:2px 4px;
+	cursor:pointer;
+}
+
+.entry_chinese {
+	display:none;
+}
+
+.translator {
+	font-size:.6em;
+	background:#eee;
+	float:right;
+	color:#aaa;
+	width:100px;
+	text-align:center;
+	border:1px dotted #ccc;
+}
+
+.anchor {
+	color:#555;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+.anchorhighlight {
+	text-decoration: underline;
+}
+
+a:link {
+	color:#555;
+	font-weight:bold;
+}
+a:hover {
+	color: #555;
+	font-weight:bold;
+	text-decoration: underline;
+}
+a:visited {
+	color: #555;
+	font-weight:bold;
+	text-decoration: none;
+}
+
+

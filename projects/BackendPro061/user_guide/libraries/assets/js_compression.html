@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<title>BackendPro User Guide : JS Compression</title>
+
+<style type='text/css' media='all'>@import url('../../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../../userguide.css' />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name='robots' content='all' /> 
+
+</head>
+
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2"><a name="top">&nbsp;</a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>BackendPro User Guide Version 0.6.1</h1></td>
+<td id="breadcrumb_right"><a href="../../contents.html">Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+<!-- START BREADCRUMB -->
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro Home</a> &nbsp;&#8250;&nbsp;
+<a href="../../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp;    
+<a href="../assets.html">Asset Library</a> &nbsp;&#8250;&nbsp;  
+JS Compression
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="http://www.kaydoo.co.uk/backendpro/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+
+</table>
+<!-- END BREADCRUMB -->
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>JS Compression JS压缩</h1>
+<p><a href="../assets.html">Asset Library</a> 自带了压缩和优化你的JS代码的能力. 该插件叫做 <a href="http://dean.edwards.name/packer/">/Packer/</a> ,用于执行实际的优化.</p>
+<p>在你的asset文件上运行经过压缩后的js的巨大优势是，这表示它会更小，也就意味着更快地下载到你的用户的机器上.</p>
+
+<p class="important"><strong>Note</strong>: JS 压缩和优化不会更改你服务器上面的asset文件, 它只影响 <kbd>cached</kbd> 的副本.</p>
+
+<h2>系统要求</h2>
+<ol>
+	<li><strong>开启Asset优化:</strong><br/>
+	<p>你必须为asset类库开启asset优化, 更多信息参见 <a href="asset_optimisation.html">Asset 优化</a> 页面.</p></li>
+
+	<li><strong>设置 Packer:</strong><br/>
+		<ol>
+			<li>下载最新版本的Packer <a href="http://dean.edwards.name/download/#packer">下载页面</a>.</li>
+			<li>解压zip内容至 <dfn>modules/site/plugins/packer/</dfn>.</li>
+			<li>打开 <dfn>modules/site/config/bep_assets.php</dfn> 配置文件, 找到并设置如下的键值 (大致位于文件的底部):
+			<code>
+			$config['packer']['path'] = BASEPATH . "../modules/site/plugins/packer/class.JavaScriptPacker.php4"; // PHP 4<br/>
+			$config['packer']['path'] = BASEPATH . "../modules/site/plugins/packer/class.JavaScriptPacker.php"; // PHP 5
+			</code></li>
+		</ol>
+	</li>
+</ol>
+<p>现在当用户访问网站时，js文件会经过压缩并且存储.</p>
+
+<p class="important"><strong>Note</strong>:  JS packer only works on JS which has not yet been minimised/packed. If you 
+run it on packed JS it tends to fail.</p>
+
+</div>
+<!-- END CONTENT -->
+
+<div id="footer">
+<p>
+<a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="../../index.html">User Guide Home</a>
+</p>
+<p><a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro</a> &nbsp;&middot;&nbsp; Copyright &#169; 2009 &nbsp;&middot;&nbsp; <a href="http://www.kaydoo.co.uk">Adam Price</a></p>
+
+</div>
+
+</body>
+</html>

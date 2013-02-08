@@ -1,0 +1,114 @@
+@CHARSET "UTF-8";
+
+/* 全局样式
+	绿色系 - 按颜色深度降序
+	#055927
+	#1c6339
+	#0c7d3a
+	#209b52
+	#2d9b59
+ ---------------------------------------------------------------------*/
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section
+	{
+	display: block;
+}
+
+#logo {
+	padding: 10px 4px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#logo h1 {
+	font-family: times, Times New Roman, times-roman, georgia, serif;
+	font-size: 28px;
+	line-height: 40px;
+	letter-spacing: -1px;
+	color: #444;
+}
+
+#logo p {
+	font-family: times, Times New Roman, times-roman, georgia, serif;
+	font-size: 14px;
+	line-height: 20px;
+	text-transform: uppercase;
+	color: #444;
+}
+
+body {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 16px;
+	color: #111;
+	background-color: #eee;
+	margin: 0;
+	padding: 0;
+}
+
+#wrapper {
+	background-color: #f7f7f7;
+	width: 1000px;
+	margin: 0 auto;
+	border-left: 1px solid #d8d8d8;
+	border-right: 1px solid #d8d8d8;
+}
+
+#nav { /*background-color:#ccc;*/}
+
+
+#container {
+	
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+.clear {
+	clear: both;
+}
+
+/* default links */
+a:link {
+	background-color: transparent;
+	text-decoration: none;
+}
+a:hover {
+	background: #ddd;
+	text-decoration: underline;
+}
+a:visited {
+	background-color: transparent;
+	text-decoration: none;
+}
+
+a[href^="http:"] { 
+  background: url(../images/external.gif) no-repeat right top;
+  padding-right: 10px; 
+} 
+
+/*
+a[href^="http://www.mydomain.com"], a[href^="http://www.mydomain.com"] { 
+  background-image: none; 
+  padding-right: 0; 
+}
+*/
+
+#footer {
+	background-color: #ddd;
+	text-align: center;
+	font-size: .8em;
+	margin: 0 0 100px 0;
+}
+
+

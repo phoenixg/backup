@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<title>BackendPro User Guide : Page Class</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name='robots' content='all' /> 
+
+</head>
+
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2"><a name="top">&nbsp;</a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>BackendPro User Guide Version 0.6.1</h1></td>
+<td id="breadcrumb_right"><a href="../contents.html">Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+<!-- START BREADCRUMB -->
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro Home</a> &nbsp;&#8250;&nbsp;
+<a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp;    
+Page Class
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="http://www.kaydoo.co.uk/backendpro/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+
+</table>
+<!-- END BREADCRUMB -->
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>Page Class Page类</h1>
+
+<p> Page Class 为你提供了有助于输出来自PHP至控制器视图的信息的特性. 这些特性的例子包括了asset管理，面包屑轨迹创建和PHP至JS变量的转换.</p>
+
+<p class="important"><strong>Important:</strong>&nbsp; 该类由系统自动初始化，所以无需手动这么做.</p>
+
+    
+<p>特性：</p>
+
+<ul>
+    <li>Asset 管理</li>
+    <li>面包屑轨迹</li>
+    <li>PHP 至 JS 变量转换</li>
+    <li>Meta tag 创建</li>
+</ul>
+
+<h2>如何使用Page 类?</h2>
+
+<p>Page 类默认由BackendPro类加载. 这个类文件可以在这里找到 <var>modules/page/libraries/page.php</var></p>
+
+
+<h2>配置设置</h2>
+
+<p>所有Page类的配置设置可以在这里被找到<var>modules/page/config/page.php</var>.</p>
+
+<table cellpadding="0" cellspacing="1" border="0" style="width:100%" class="tableborder">
+<tr>
+    <th>参数</th>
+    <th>默认值</th>
+    <th>选项</th>
+    <th>描述</th>    
+</tr>
+<tr>
+    <td class="td"><strong>assets_dir</strong></td>
+    <td class="td">assets/</td>
+    <td class="td">None</td>
+    <td class="td">assets 目录的位置</td>
+</tr>
+<tr>
+    <td class="td"><strong>admin_assets</strong></td>
+    <td class="td">assets/admin/</td>
+    <td class="td">None</td>
+    <td class="td"> admin assets 目录的位置</td>
+</tr>
+<tr>
+    <td class="td"><strong>public_assets</strong></td>
+    <td class="td">assets/public/</td>
+    <td class="td">None</td>
+    <td class="td"> public assets 目录的位置</td>
+</tr>
+<tr>
+    <td class="td"><strong>shared_assets</strong></td>
+    <td class="td">assets/shared/</td>
+    <td class="td">None</td>
+    <td class="td">shared assets 目录的位置</td>
+</tr>
+<tr>
+    <td class="td"><strong>default_assets</strong></td>
+    <td class="td">Array</td>
+    <td class="td">None</td>
+    <td class="td">要在每个控制器里加载的assets数组. 阅读 <var>modules/page/config/page.php</var> 获取详情</td>
+</tr>
+<tr>
+    <td class="td"><strong>asset_cache_length</strong></td>
+    <td class="td">0</td>
+    <td class="td">None</td>
+    <td class="td">保持asset缓存的时间（小时）, 0 表示不使用缓存</td>
+</tr>
+<tr>
+    <td class="td"><strong>asset_cache_file_pfx</strong></td>
+    <td class="td">cache_</td>
+    <td class="td">None</td>
+    <td class="td">Asset 缓存文件前缀</td>
+</tr>
+<tr>
+    <td class="td"><strong>csstidy_path</strong></td>
+    <td class="td">plugins/csstidy/class.csstidy.php</td>
+    <td class="td">None</td>
+    <td class="td"> 从BASEPATH 到主体 CSS Tidy 类文件两者的相对路径</td>
+</tr>
+<tr>
+    <td class="td"><strong>default_page_variables</strong></td>
+    <td class="td">Array</td>
+    <td class="td">None</td>
+    <td class="td">默认要转换至JS变量的PHP变量数组</td>
+</tr>
+</table>
+
+<a name="asset_caching"></a>
+<h2>Asset 缓存</h2>
+<p>如前所述，page类可以提供缓存asset文件的能力，客户端就可以以更少的连接数连接服务器，因此减少了加载时间.</p>
+<p>同缓存一样, 也可以优化内容. 这会减少文件大小，进一步加快加载速度. 默认 <strong>BackendPro</strong> 
+自带了优化代码的能力，但要求一些步骤的操作来开启这个特性</p>
+<ul>
+	<li><strong>CSS 优化</strong>:
+	  <p>CSS 优化通过使用 <a href="http://csstidy.sourceforge.net/">CSSTidy</a> 类库来引入此功能.
+  为了让CSS 优化正常工作请遵循以下的简单步骤.</p>
+		<ol>
+			<li>下载最新版的 CSSTidy 在 <a href="https://sourceforge.net/project/showfiles.php?group_id=148404&package_id=166584">这里</a> (我写的时候版本是 1.3)</li>
+			<li>在你的 system/plugins 或 system/application/plugins 文件夹，解压文件至你自己的文件夹. E.g. sysyetm/plugins/csstidy</li>
+			<li>打开 <var>modules/page/config/page.php</var> 并确保 <var>csstidy_path</var> 指向 <kbd>class.csstidy.php</kbd>
+			在你的plugins/csstidy 文件夹里.</li>
+			<li>把 asset caching 设置成on，即指定 <var>asset_cache_length</var> 于 <var>modules/page/config/page.php</var>.</li>
+		</ol>
+	</li>
+	
+	<li><strong>JS 优化</strong>:
+	  <p>目前尚未引入此功能</p></li>
+</ul>
+
+<h2>动态 Asset 文件</h2>
+<p>有可能要使用php文件来创建asset文件的时候，这样会跟动态数据打交道. 如果你想要把php文件来当做一个asset文件，你必须确保它的形式正确，要不然加载页面时站点会崩溃.</p>
+<p> PHP CSS asset 文件的例子</p>
+<code>
+&lt;?php<br />
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;如果没有为缓存处理这个文件，就加载header<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<dfn>if(&nbsp;!&nbsp;isset($cache_output))<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header('content-type:text/css');</dfn><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;剩下的php代码用来创建asset文件<br />
+?&gt;&nbsp;                                                   
+</code>
+<p>如你在上面所见，前4行是一个条件语句，决定是否要include关于文件类型的信息. 这段代码所做的就只是当页面没有被缓存时，就include header信息而已. 这么做的原因是，当存在缓存时，including每个文件就已经完成了. 在这个过程中尝试改变header会让缓存和网站崩溃. 这时就需要这个检查.</p>
+
+<h2>Page Class 函数参考</h2>
+
+<a name="set_asset"></a>
+<h3>$this-&gt;page-&gt;set_asset()</h3>
+<p>加载一个asset 文件:</p>
+<code>$this-&gt;page-&gt;set_asset('<var>shared/admin/public</var>','<var>css/js</var>','<var>filename</var>')</code>
+<p>允许你指定一个仅仅为这个控制器要加载的asset文件. 请注意任何通过这个方法加载的assets都不会被缓存.</p>
+<p>第一个参数指定你想要加载的asset类型.</p> 
+<p>第二个参数是是否你的asset是js还是css文件.</p>
+<p>第三个参数是asset的文件名, 包括扩展名. 请注意你可以使用 <var>.php</var> 文件因为它们在引用之前就被执行了.请阅读上面的<a href="#asset_caching">Asset 缓存</a> 获得更多信息</p>
+
+<a name="set_variable"></a>
+<h3>$this-&gt;page-&gt;set_variable()</h3>
+<p>指定一个要转换的变量:</p>
+<code>$this-&gt;page-&gt;set_variable('<var>name</var>',<var>value</var>)</code>
+<p>把一个PHP变量转成JS变量.</p> 
+<p>第一个参数是你想要称呼的JS变量名称.</p> 
+<p>第二个参数是你想要转换的值.你可以指定任何这些中的一个: <kbd>string</kbd>, <kbd>integer</kbd>, <kbd>boolean</kbd>, <kbd>null</kbd>,
+<kbd>non-associative nested array</kbd>.</p>
+
+<a name="set_js"></a>
+<h3>$this-&gt;page-&gt;set_js()</h3>
+<p>添加JS代码至页面</p>
+<code>$this-&gt;page-&gt;set_js('<var>string</var>')</code>
+<p>允许一个JS字符串被追加在页面上. 任何在其中输入的字符串都会被加上 &lt;script...&gt; 的HTML 标签.</p>
+<code>
+$this-&gt;page-&gt;set_js('alert("Hello World");');<br />
+<br />
+Will be outputed as<br />
+<br />
+&lt;script type="text/javascript"&gt;<br />
+&lt;!--<br />
+alert("Hello World");<br />
+// --&gt;<br />
+&lt;/script&gt;
+</code>
+
+<a name="output_js"></a>
+<h3>$this-&gt;page-&gt;output_js()</h3>
+<p>输出JS代码至页面</p>
+<code>$this-&gt;page-&gt;output_js()</code>
+<p>使用 <dfn>$this-&gt;page-&gt;set_js(...)</dfn> 输出任何JS至页面
+<p class="important"><strong>Note:</strong> 默认在BackendPro 视图里面,输出的顺序是: JS 变量/Assets/JS 代码</p>
+
+<a name="set_crumb"></a>
+<h3>$this-&gt;page-&gt;set_crumb()</h3>
+<p>创建面包屑</p>
+<code>$this-&gt;page-&gt;set_crumb('<var>name</var>','<var>link</var>')</code>
+<p>为该控制器创建一个面包屑.  <var>link</var>
+应该以 CodeIgniter形式书写, i.e. <kbd>controller/method</kbd></p>
+
+<a name="set_metatag"></a>
+<h3>$this-&gt;page-&gt;set_metatag()</h3>
+<p>创建 meta tag:</p>
+<code>$this-&gt;page-&gt;set_metatag('<var>name</var>','<var>content</var>',<var>TRUE/FALSE</var>)</code>
+<p>第一个参数是tag的名称 e.g keywords, description</p>
+<p>第二个参数是meta tag的内容 e.g 'text/html; charset=utf-8'</p>
+<p>第三个 <strong>可选</strong> 参数是一个<strong>boolean</strong> 用来设置tag是否是默认的 'name' 还是 'http-equiv' 版本. 它被默认地设置为 <kbd>false</kbd> ('name' tag type)</p>
+<code>
+$this-&gt;page-&gt;set_metatag('author','John Doe');<br />
+// Creates the following&lt;br&gt;
+// &lt;meta name="author" content="John Doe" /&gt;<br />
+<br />
+$this-&gt;page-&gt;set_metatag('content-type','text/html; charset=utf-8',TRUE);<br />
+// Creates the following<br />
+// &lt;meta http-eqiv="content-type" content="text/html; charset=utf-8" /&gt;
+</code>
+<p>我建议你设置基本的 meta tags (i.e. 全站都使用)在 MY_Controller.php 文件里, 在 required 类的时候.</p>
+<p>设置两个识别的 meta tags (i.e一样的名称) 将导致显示第二个, 因为第一个被第二个重写了.</p>
+
+<a name="output_variables"></a>
+<h3>$this-&gt;page-&gt;output_variables()</h3>
+<p>输出JS变量:</p>
+<code>$this-&gt;page-&gt;output_variables(<var>TRUE/FALSE</var>)</code>
+<p>第一个<strong>可选</strong> 参数指定HTML是否要被打印还是返回. 默认的行为是 <kbd>true</kbd> (boolean), 将打印输出,如果设置成 <kbd>false</kbd> (boolean) 就返回输出.</p>
+
+<a name="output_metatags"></a>
+<h3>$this-&gt;page-&gt;output_metatags()</h3>
+<p>输出meta tags:</p>
+<code>$this-&gt;page-&gt;output_metatags(<var>TRUE/FALSE</var>)</code>
+<p>第一个 <strong>可选</strong> 参数指定HTML是否要被打印还是返回. 默认的行为是 <kbd>true</kbd> (boolean), 将打印输出,如果设置成 <kbd>false</kbd> (boolean) 就返回输出.</p>
+
+<a name="output_breadcrumb"></a>
+<h3>$this-&gt;page-&gt;output_breadcrumb()</h3>
+<p>输出面包屑轨迹:</p>
+<code>$this-&gt;page-&gt;output_breadcrumb(<var>TRUE/FALSE</var>)</code>
+<p>创建面包屑轨迹HTML. 以下是创建的例子:</p> 
+<code>
+&lt;a href=&quot;first-link&quot; title=&quot;First Crumb&quot;&gt;First Crumb&lt;/a&gt; &#187;
+&lt;a href=&quot;second-link&quot; title=&quot;Second Crumb&quot;&gt;Second Crumb&lt;/a&gt; &#187;
+Third Crumb
+</code>
+<p>第一个 <strong>可选</strong> 参数指定HTML是否要被打印还是返回. 默认的行为是 <kbd>true</kbd> (boolean), 将打印输出,如果设置成 <kbd>false</kbd> (boolean) 就返回输出.</p>
+
+<a name="output_assets"></a>
+<h3>$this-&gt;page-&gt;output_assets()</h3>
+<p>输出 assets:</p>
+<code>$this-&gt;page-&gt;output_assets('<var>admin/public</var>',<var>TRUE/FALSE</var>)</code>
+<p>创建 HTML 代码来include asset文件进视图里. 以下是创建的例子:</p>
+<code>
+&lt;script&nbsp;type=&quot;text/javascript&quot;&nbsp;src=&quot;http://localhost/backendpro/assets/shared/js/jquery.js&quot;&gt;&lt;/script&gt;<br />
+&lt;link&nbsp;rel=&quot;stylesheet&quot;&nbsp;type=&quot;text/css&quot;&nbsp;href=&quot;http://localhost/backendpro/assets/shared/css/reset.css&quot;&nbsp;/&gt;<br />
+&lt;link&nbsp;rel=&quot;stylesheet&quot;&nbsp;type=&quot;text/css&quot;&nbsp;href=&quot;http://localhost/backendpro/assets/shared/css/typography.css&quot;&nbsp;/&gt;<br />
+&lt;link&nbsp;rel=&quot;stylesheet&quot;&nbsp;type=&quot;text/css&quot;&nbsp;href=&quot;http://localhost/backendpro/assets/admin/css/style.css&quot;&nbsp;/&gt;
+</code>
+<p>第一个参数指定了应该输出哪个asset区域. 这允许了要么 public 要么
+administration assets 两者选其一.</p> 
+<p>第二个<strong>可选</strong>参数指定HTML是否要被打印还是返回. 默认的行为是 <kbd>true</kbd> (boolean), 将打印输出,如果设置成 <kbd>false</kbd> (boolean) 就返回输出.</p>
+
+<p class="important"><strong>Important:</strong> Assets 以特定顺序被输出至页面.<br/>
+&nbsp;&nbsp;共享的 Javascript 文件<br/>
+&nbsp;&nbsp;共享的 CSS 文件<br/>
+&nbsp;&nbsp;共享的 Conditional CSS 文件<br/>
+然后要么输出<br/>
+&nbsp;&nbsp;管理 Javascript 文件<br/>
+&nbsp;&nbsp;管理 CSS 文件<br/>
+&nbsp;&nbsp;管理 Conditional CSS 文件<br/>
+要么输出<br/>
+&nbsp;&nbsp;公共 Javascript 文件<br/>
+&nbsp;&nbsp;公共 CSS 文件<br/>
+&nbsp;&nbsp;公共 Conditional CSS 文件<br/>
+取决于在函数调用时第一个参数你指定的是什么
+</p>
+
+<a name="icon"></a>
+<h3>$this-&gt;page-&gt;icon()</h3>
+<p>显示 Icon</p>
+<code>$this-&gt;page-&gt;icon('<var>name</var>','<var>title</var>')</code>
+<p>返回一个 <dfn>&lt;image&gt;</dfn> 标签来显示所要求的icon.  <var>name</var> 可以是任何icon文件于这个目录下的
+<var>assets/shared/icons</var> 不包含 <kbd>.png</kbd> 文件扩展名.</p>  
+<p>第二个 <strong>可选</strong> 参数指定了为图片设置的title. 
+这正常来说会显示于mouse hover的时候.</p>
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p>
+<a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="../index.html">User Guide Home</a>
+</p>
+<p><a href="http://www.kaydoo.co.uk/projects/backendpro">BackendPro</a> &nbsp;&middot;&nbsp; Copyright &#169; 2009 &nbsp;&middot;&nbsp; <a href="http://www.kaydoo.co.uk">Adam Price</a></p>
+
+</div>
+
+</body>
+</html>
