@@ -10,18 +10,18 @@
  * http://www.shadow-fox.net/site/tutorial/39-Creating-A-Scaffold-like-Class-in-PHP-or-An-Automatic-CMS-For-a-Table
  * By Ben Hirsch
  */
-include('includes/db.php');
-include('includes/upload.php');
+include('./includes/db.php');
+include('./includes/upload.php');
 
 session_start();
 
 //The url will display page which refers to a table in the database
-$table = $_GET['page'];
+$table = isset($_GET['page'])?$_GET['page']:'';
 $table = 'schedule';
 //Action what action should be displayed by the Scaffolding
-$action = $_GET['action'];
+$action = isset($_GET['action'])?$_GET['action']:'';
 
-new Scaffolding($table,"publish","root","nihaoma1234567","localhost",$action);
+new Scaffolding($table,"myschedule","root","","localhost",$action);
 
 
 
