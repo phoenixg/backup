@@ -1,0 +1,936 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta name="generator" content="MediaWiki 1.15.5" />
+		<meta name="keywords" content="Plugin API/Filter Reference,Function Reference/ 2,Function Reference/ e,Function Reference/get body class,Function Reference/get categories,Function Reference/get category,Function Reference/get category feed link,Function Reference/get category link,Function Reference/get pages,Function Reference/get post class,Function Reference/get the category" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/opensearch_desc.php" title="Codex (en)" />
+		<link rel="alternate" type="application/rss+xml" title="Codex RSS feed" href="/index.php?title=Special:RecentChanges&amp;feed=rss" />
+		<link rel="alternate" type="application/atom+xml" title="Codex Atom feed" href="/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<title>Plugin API/Filter Reference &laquo; WordPress Codex</title>
+<style type="text/css">
+@import url("http://s.wordpress.org/style/codex-wp4.css?3");
+@import url("http://s.wordpress.org/style/wp4.css?10");
+</style>
+<link media="only screen and (max-device-width: 480px)" href="http://wordpress.org/style/iphone.css" type="text/css" rel="stylesheet" >
+<!--[if IE]>
+<style type="text/css">
+@import url("http://wordpress.org/style/ie.css?9");
+</style>
+<![endif]-->
+<link rel="shortcut icon" href="http://s.wordpress.org/favicon.ico" type="image/x-icon" />
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+_uacct = "UA-52447-1";
+urchinTracker();
+</script>
+
+<!--[if IE]>
+    <script type="text/javascript" src="/skins/common/IEFixes.js"></script>
+    <meta http-equiv="imagetoolbar" content="no" />
+<![endif]-->
+
+<script type="text/javascript" src="/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=codex"></script>
+<script type="text/javascript">wgBreakFrames=false;wgContentLanguage='en';</script>
+<script type="text/javascript" src="/skins/common/wikibits.js"></script>
+
+<script type="text/javascript" src="http://s.wordpress.org/wp-includes/js/jquery/jquery.js"></script>
+</head>
+<body id="wordpress-org" >
+
+<div id="header">
+	<div class="wrapper">
+		<h1><a href="http://wordpress.org/" title="WordPress">WordPress.org</a></h1>
+
+		<form action="http://wordpress.org/search/do-search.php" method="get" id="head-search">
+			<input class="text" name="search" type="text" value="Search the Codex" maxlength="150" onfocus="this.value=(this.value=='Search the Codex') ? '' : this.value;" onblur="this.value=(this.value=='') ? 'Search the Codex' : this.value;" /> <input type="submit" class="button" value="Go" />
+		</form>
+
+		<ul>
+			<li><a href="http://wordpress.org/" title="Home is where the heart is.">Home</a></li>
+			<li><a href="http://wordpress.org/showcase/" title="See some of the sites built on WordPress.">Showcase</a></li>
+			<li><a href="http://wordpress.org/extend/" title="Taking WordPress beyond your wildest imagination">Extend</a>
+			<ul class="nav-submenu">
+				<li><a href='http://wordpress.org/extend/plugins/' title="Plugins can extend WordPress to do almost anything you can imagine.">Plugins</a></li>
+				<li><a href='http://wordpress.org/extend/themes/' title="Find just the right look for your website.">Themes</a></li>
+			</ul></li>
+			<li><a href="http://wordpress.org/about/" title="About the WordPress Organization, and where we're going.">About</a></li>
+			<li><a class="current" href="http://codex.wordpress.org/Main_Page" title="Documentation, tutorials, best practices.">Docs</a></li>
+			<li><a href="http://wordpress.org/development/" title="Come here for the latest scoop.">Blog</a></li>
+			<li><a href="http://wordpress.org/support/" title="Support and discussion forums.">Forums</a></li>
+			<li><a href="http://wordpress.org/hosting/" title="Find a home for your blog">Hosting</a></li>
+			<li id="download"><a href="http://wordpress.org/download/" title="Get it. Got it? Good.">Download</a></li>
+		</ul>
+	</div>
+</div>
+
+<div id="headline">
+	<div class="wrapper">
+		<h2>Codex</h2>
+		
+		<div class="portlet" id="p-personal">
+		  <p class="login">Codex tools:
+		     <a href="/index.php?title=Special:UserLogin&amp;returnto=Plugin_API/Filter_Reference">Log in</a> 		  </p>
+		</div>
+	</div>
+</div>
+
+<div id="pagebody">
+	<div class="wrapper">	
+		<div class="col-10" id="bodyContent">
+						<h2 class="pagetitle">Plugin API/Filter Reference</h2>
+									<!-- start content -->
+				<p class="LanguageLinks" style="border:1px solid #CCCCCC; line-height:1.5; text-align:left; color:#333333; font-size:90%; padding:10px;"><span style="white-space:nowrap;"><a href="/Multilingual_Codex" title="Multilingual Codex" class="mw-redirect">Languages</a>:</span> 
+<strong class="selflink">English</strong> • 
+<a href="http://wpdocs.sourceforge.jp/%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3_API/%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC%E3%83%95%E3%83%83%E3%82%AF%E4%B8%80%E8%A6%A7" class="external text" title="http://wpdocs.sourceforge.jp/%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3_API/%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC%E3%83%95%E3%83%83%E3%82%AF%E4%B8%80%E8%A6%A7">日本語</a> • 
+ <small>(<a href="/Multilingual_Codex#Language_Cross_Reference" title="Multilingual Codex" class="mw-redirect">Add your language</a>)</small>
+</p>
+<p>本文是插件开发中最完整的filter hooks的列表，适用于版本2.1 及以上的 WordPress. 更多信息见:
+</p>
+<ul><li> 要了解更多关于filter和action hooks是什么的信息，见 <a href="/Plugin_API" title="Plugin API">插件 API</a>.
+</li><li> 要了解关于大体上如何写一个插件的信息，见 <a href="/Writing_a_Plugin" title="Writing a Plugin">编写一个插件</a>.
+</li><li> 要参考action hooks的文档, 见 <a href="/Plugin_API/Action_Reference" title="Plugin API/Action Reference">插件 API/Action 参考文档</a>.
+</li><li> For information about filter and action hooks in previous versions of WordPress, see <a href="/Plugin_API/Hooks_2.0.x" title="Plugin API/Hooks 2.0.x">Plugin API/Hooks 2.0.x</a>. 
+</li></ul>
+<p>Note: If you want to add to or clarify this documentation, please follow the style of the existing entries. Describe what data the filter is applied to, and if the filter function takes additional arguments, describe the argument list.
+</p>
+<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>内容</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#Post.2C_Page.2C_and_Attachment_.28Upload.29_Filters"><span class="tocnumber">1</span> <span class="toctext">Post, Page, and Attachment (Upload) Filters</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Database_Reads"><span class="tocnumber">1.1</span> <span class="toctext">Database Reads</span></a></li>
+<li class="toclevel-2"><a href="#Database_Writes"><span class="tocnumber">1.2</span> <span class="toctext">Database Writes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Comment.2C_Trackback.2C_and_Ping_Filters"><span class="tocnumber">2</span> <span class="toctext">Comment, Trackback, and Ping Filters</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Database_Reads_2"><span class="tocnumber">2.1</span> <span class="toctext">Database Reads</span></a></li>
+<li class="toclevel-2"><a href="#Database_Writes_2"><span class="tocnumber">2.2</span> <span class="toctext">Database Writes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Category_and_Term_Filters"><span class="tocnumber">3</span> <span class="toctext">Category and Term Filters</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Database_Reads_3"><span class="tocnumber">3.1</span> <span class="toctext">Database Reads</span></a></li>
+<li class="toclevel-2"><a href="#Database_Writes_3"><span class="tocnumber">3.2</span> <span class="toctext">Database Writes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Link_Filters"><span class="tocnumber">4</span> <span class="toctext">Link Filters</span></a></li>
+<li class="toclevel-1"><a href="#Date_and_Time_Filters"><span class="tocnumber">5</span> <span class="toctext">Date and Time Filters</span></a></li>
+<li class="toclevel-1"><a href="#Author_and_User_Filters"><span class="tocnumber">6</span> <span class="toctext">Author and User Filters</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Database_Reads_4"><span class="tocnumber">6.1</span> <span class="toctext">Database Reads</span></a></li>
+<li class="toclevel-2"><a href="#Database_Writes_4"><span class="tocnumber">6.2</span> <span class="toctext">Database Writes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Blogroll_Filters"><span class="tocnumber">7</span> <span class="toctext">Blogroll Filters</span></a></li>
+<li class="toclevel-1"><a href="#Blog_Information_and_Option_Filters"><span class="tocnumber">8</span> <span class="toctext">Blog Information and Option Filters</span></a></li>
+<li class="toclevel-1"><a href="#General_Text_Filters"><span class="tocnumber">9</span> <span class="toctext">General Text Filters</span></a></li>
+<li class="toclevel-1"><a href="#Administrative_Filters"><span class="tocnumber">10</span> <span class="toctext">Administrative Filters</span></a></li>
+<li class="toclevel-1"><a href="#Rich_Text_Editor_Filters"><span class="tocnumber">11</span> <span class="toctext">Rich Text Editor Filters</span></a></li>
+<li class="toclevel-1"><a href="#Template_Filters"><span class="tocnumber">12</span> <span class="toctext">Template Filters</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Kubrick_Filters"><span class="tocnumber">12.1</span> <span class="toctext">Kubrick Filters</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Advanced_WordPress_Filters"><span class="tocnumber">13</span> <span class="toctext">Advanced WordPress Filters</span></a></li>
+<li class="toclevel-1"><a href="#Widgets"><span class="tocnumber">14</span> <span class="toctext">Widgets</span></a></li>
+<li class="toclevel-1"><a href="#Admin_Bar"><span class="tocnumber">15</span> <span class="toctext">Admin Bar</span></a></li>
+<li class="toclevel-1"><a href="#Further_Reading"><span class="tocnumber">16</span> <span class="toctext">Further Reading</span></a></li>
+</ul>
+</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<a name="Post.2C_Page.2C_and_Attachment_.28Upload.29_Filters" id="Post.2C_Page.2C_and_Attachment_.28Upload.29_Filters"></a><h2> <span class="mw-headline"> Post文章, Page页面, 和 Attachment附件 (上传) Filters </span></h2>
+<p>See also <a href="#Category_Filters" title="">#Category Filters</a>, <a href="#Author_and_User_Filters" title="">#Author and User Filters</a>, <a href="#Link_Filters" title="">#Link Filters</a>, <a href="#Date_and_Time_Filters" title="">#Date and Time Filters</a>, and <a href="#Administrative_Filters" title="">#Administrative Filters</a> below.
+</p>
+<a name="Database_Reads" id="Database_Reads"></a><h3> <span class="mw-headline"> 数据库读取 </span></h3>
+<p>这个部分的Filters 应用在从数据库中读取的数据中, 优先于显示页面或编辑屏幕.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/attachment_fields_to_edit&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/attachment fields to edit (page does not exist)">attachment_fields_to_edit</a>&nbsp;</dt><dd> 当编辑一个附件时，它会应用于要显示的表单字段上. 在 <tt>get_attachment_fields_to_edit</tt> 函数里调用. Filter 函数的参数是一个表单字段的数组, 文章对象.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/attachment_icon" title="Plugin API/Filter Reference/attachment icon">attachment_icon</a>&nbsp;</dt><dd> 应用给附件的icon上，当调用 <tt>get_attachment_icon</tt> 函数的时候. Filter 函数的参数: icon 文件作为一个HTML IMG标签, 附件 ID.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/attachment_innerHTML&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/attachment innerHTML (page does not exist)">attachment_innerHTML</a>&nbsp;</dt><dd> 当没有icon时，应用给附件的title, 当调用 <tt>get_attachment_innerHTML</tt> 函数时. Filter 函数的参数是: 内部的 HTML (默认是title的), 附件 ID.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/body_class" title="Plugin API/Filter Reference/body class">body_class</a>&nbsp;</dt><dd> 应用给HTML  <code>&lt;body&gt;</code> 元素的classes. 在 <code><a href="/Function_Reference/get_body_class" title="Function Reference/get body class">get_body_class</a></code> 函数里调用. Filter函数的参数是:一个class名称的数组 和 一个额外的添加进第一个数组的class名称的数组.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/content_edit_pre&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/content edit pre (page does not exist)">content_edit_pre</a>&nbsp;</dt><dd> 应用给post内容，优先于为编辑而显示.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/excerpt_edit_pre&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/excerpt edit pre (page does not exist)">excerpt_edit_pre</a>&nbsp;</dt><dd> 应用给post片段，优先于为编辑而显示.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_attached_file&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get attached file (page does not exist)">get_attached_file</a>&nbsp;</dt><dd> 应用给由 <tt>get_attached_file</tt> 函数获取来的附件文件的信息. Filter 函数的参数是：文件信息, 附件 ID.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_enclosed&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get enclosed (page does not exist)">get_enclosed</a>&nbsp;</dt><dd> 应用给由 <tt>get_enclosed</tt> 函数弄过来的post的附加列表.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_pages&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get pages (page does not exist)">get_pages</a>&nbsp;</dt><dd> 应用给由 <a href="/Function_Reference/get_pages" title="Function Reference/get pages"><tt>get_pages</tt> </a>函数返回过来的页面列表. Filter 函数的实参是: 页面列表(每个项目都包含一个页面数据的数组), <tt>get_pages</tt> 函数的实参列表 (告诉哪个页面是需要的).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_pung&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get pung (page does not exist)">get_pung</a>&nbsp;</dt><dd> 应用给由 <tt>get_pung</tt> 函数弄来的文章的pinged URLs列表.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_the_excerpt&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get the excerpt (page does not exist)">get_the_excerpt</a>&nbsp;</dt><dd> 应用给在 <tt>get_the_excerpt</tt> 函数里的文章片段.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_the_guid&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get the guid (page does not exist)">get_the_guid</a>&nbsp;</dt><dd> 应用给在 <tt>get_the_guid</tt> 函数里的文章的GUID.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_to_ping&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get to ping (page does not exist)">get_to_ping</a>&nbsp;</dt><dd> 应用给 <tt>get_to_ping</tt> 函数使用的为ping文章的URL列表.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/icon_dir&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/icon dir (page does not exist)">icon_dir</a>&nbsp;</dt><dd> 应用给几个函数的模板图片路径. 基本上允许一个插件自行指定icons的MIME类型应该来自不同的位置.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/icon_dir_uri&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/icon dir uri (page does not exist)">icon_dir_uri</a>&nbsp;</dt><dd> 应用给几个函数的模板图片路径. 基本上允许一个插件自行指定icons的MIME类型应该来自不同的位置.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/post_class&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/post class (page does not exist)">post_class</a>&nbsp;</dt><dd> 应用给最外层的文章的HTML元素的classes. 在 <code><a href="/Function_Reference/get_post_class" title="Function Reference/get post class">get_post_class</a></code> 函数里被调用. Filter 函数的实参是: 一个class名称的数组,和 一个额外的添加进第一个数组的class名称的数组,以及文章 ID.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/prepend_attachment&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/prepend attachment (page does not exist)">prepend_attachment</a>&nbsp;</dt><dd> 应用给要被预处理HTML的 <tt>prepend_attachment</tt> 函数.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/sanitize_title&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/sanitize title (page does not exist)">sanitize_title</a>&nbsp;</dt><dd> 应用给一个文章title，由 <tt>sanitize_title</tt> 函数, 在strip掉HTML标签以后.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/single_post_title&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/single post title (page does not exist)">single_post_title</a>&nbsp;</dt><dd> 应用给文章title，当被 <tt>wp_title</tt> 使用来作为创建博客页面的title时，以及 <tt>single_post_title</tt> 函数.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/the_content" title="Plugin API/Filter Reference/the content">the_content</a>&nbsp;</dt><dd> 应用给从数据库中获取到的文章内容,优先于在屏幕上显示 (也使用在其他操作场合，比如trackbacks).
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/the_content_rss" title="Plugin API/Filter Reference/the content rss">the_content_rss</a>&nbsp;</dt><dd> 应用给文章内容，优先于包含一个RSS feed. 这个 filter 直到 2.7版本才开始支持.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/the_content_feed" title="Plugin API/Filter Reference/the content feed">the_content_feed</a>&nbsp;</dt><dd> 应用给文章内容，优先于包含一个RSS feed.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/the_editor_content&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/the editor content (page does not exist)">the_editor_content</a>&nbsp;</dt><dd> 应用给文章内容，在它被扔进副编辑器窗口前.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/the_excerpt&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/the excerpt (page does not exist)">the_excerpt</a>&nbsp;</dt><dd> 应用给从数据库中获取的文章片段(或文章内容, 如果不存在片段的话) , 优先于在屏幕上显示 (也使用在其他操作场合，比如trackbacks).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/the_excerpt_rss&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/the excerpt rss (page does not exist)">the_excerpt_rss</a>&nbsp;</dt><dd> 应用给文章片段，优先于包含一个RSS feed.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/the_tags&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/the tags (page does not exist)">the_tags</a>&nbsp;</dt><dd> 应用给从数据库中获取的tags, 优先于在屏幕上显示.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/the_title" title="Plugin API/Filter Reference/the title">the_title</a>&nbsp;</dt><dd> 应用给从数据库中获取的文章title, 优先于在屏幕上显示 (也使用在其他操作场合，比如trackbacks).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/the_title_rss&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/the title rss (page does not exist)">the_title_rss</a>&nbsp;</dt><dd> 应用给文章title，在包含一个RSS feed之前(在首次使用 <tt>the_title</tt>之后.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/title_edit_pre&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/title edit pre (page does not exist)">title_edit_pre</a>&nbsp;</dt><dd> 应用给文章title，优先于为编辑而显示.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_dropdown_pages&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp dropdown pages (page does not exist)">wp_dropdown_pages</a>&nbsp;</dt><dd> 应用给由 <tt>wp_dropdown_pages</tt> 函数生成的wordpress页面的HTML下拉列表.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/wp_list_pages" title="Plugin API/Filter Reference/wp list pages">wp_list_pages</a>&nbsp;</dt><dd> 应用给由 <tt>wp_list_pages</tt> 函数生成的HTML列表. 
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/wp_list_pages_excludes" title="Plugin API/Filter Reference/wp list pages excludes">wp_list_pages_excludes</a>&nbsp;</dt><dd> 应用给在 <tt>wp_list_pages</tt> 函数里的排除页面列表(一个页面id的数组).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_get_attachment_metadata&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp get attachment metadata (page does not exist)">wp_get_attachment_metadata</a>&nbsp;</dt><dd> 应用给从 <tt>wp_get_attachment_metadata</tt> 函数获取到的附件的metadata. Filter 函数的实参是: meta 数据, 附件 ID.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_get_attachment_thumb_file&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp get attachment thumb file (page does not exist)">wp_get_attachment_thumb_file</a>&nbsp;</dt><dd> 应用给从 <tt>wp_get_attachment_thumb_file</tt> 函数获取的附件缩略图文件. Filter 函数的实参是: 缩略图文件, 附件 ID.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_get_attachment_thumb_url&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp get attachment thumb url (page does not exist)">wp_get_attachment_thumb_url</a>&nbsp;</dt><dd> 应用给从 <tt>wp_get_attachment_thumb_URL</tt> 函数获取的附件缩略图URL. Filter 函数的实参是: 缩略图 URL, 附件 ID.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/wp_get_attachment_url" title="Plugin API/Filter Reference/wp get attachment url">wp_get_attachment_url</a>&nbsp;</dt><dd> 应用给从 <tt>wp_get_attachment_url</tt> 函数获取的附件URL. Filter 函数的实参是: URL, 附件 ID.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_mime_type_icon&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp mime type icon (page does not exist)">wp_mime_type_icon</a>&nbsp;</dt><dd> 应用给从<tt>wp_mime_type_icon</tt> 函数计算而来的附件的MIME类型icon. Filter函数的实参是: 计算而来的icon URI , MIME 类型, 文章 ID.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/wp_title" title="Plugin API/Filter Reference/wp title">wp_title</a>&nbsp;</dt><dd> 应用给博客页面的title，在在 <tt>wp_title</tt> 函数里被发送至浏览器之前.
+</dd></dl>
+<a name="Database_Writes" id="Database_Writes"></a><h3> <span class="mw-headline"> 数据库书写(write) </span></h3>
+<p>这个部分的Filters 都应用给保存到数据库之前的信息.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/add_ping&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/add ping (page does not exist)">add_ping</a>&nbsp;</dt><dd> 当添加一个ping时，应用给文章的新的ping的字段值, 优先于保存新信息至数据库.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/attachment_fields_to_save&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/attachment fields to save (page does not exist)">attachment_fields_to_save</a>&nbsp;</dt><dd> 应用给跟福建有关的字段,优先于保存它们至数据库. 在 <tt>media_upload_form_handler</tt> 函数里调用. Filter 函数的实参是: 一个文章属性的数组, 一个附件字段（包含从表单提交而来的改变）的数组.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/attachment_max_dims&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/attachment max dims (page does not exist)">attachment_max_dims</a>&nbsp;</dt><dd> 应用给图片的最大分辨率，在减少图片大小之前. Filter 函数输入 (和返回值) 要么是false (如果没有侦测到最大分辨率的话) 要么是两个项目的列表 (宽, 高).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/category_save_pre&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/category save pre (page does not exist)">category_save_pre</a>&nbsp;</dt><dd> 应用给逗号分隔的文章目录列表，优先于保存它至数据库 (也适用于附件).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_status_pre&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment status pre (page does not exist)">comment_status_pre</a>&nbsp;</dt><dd> 应用给文章评论状态，优先于保存它至数据库 (也适用于附件).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/content_filtered_save_pre&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/content filtered save pre (page does not exist)">content_filtered_save_pre</a>&nbsp;</dt><dd> 应用给被filtered 的文章内容，优先于保存它至数据库(也适用于附件).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/content_save_pre&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/content save pre (page does not exist)">content_save_pre</a>&nbsp;</dt><dd> 应用给文章内容,优先于保存它至数据库 (也适用于附件).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/excerpt_save_pre&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/excerpt save pre (page does not exist)">excerpt_save_pre</a>&nbsp;</dt><dd> 应用给文章片段，优先于保存它至数据库 (也适用于附件).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/name_save_pre&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/name save pre (page does not exist)">name_save_pre</a>&nbsp;</dt><dd> 应用给文章name，优先于保存它至数据库 (也适用于附件).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/phone_content&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/phone content (page does not exist)">phone_content</a>&nbsp;</dt><dd> 应用给通过email提交的文章内容, 在保存之前.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/ping_status_pre&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/ping status pre (page does not exist)">ping_status_pre</a>&nbsp;</dt><dd> 应用给文章的ping状态， 优先于保存它至数据库 (也适用于附件).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/post_mime_type_pre&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/post mime type pre (page does not exist)">post_mime_type_pre</a>&nbsp;</dt><dd> 应用给附件的MIME类型,优先于保存它至数据库.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/status_save_pre&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/status save pre (page does not exist)">status_save_pre</a>&nbsp;</dt><dd> 应用给文章的状态,优先于保存它至数据库.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/thumbnail_filename&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/thumbnail filename (page does not exist)">thumbnail_filename</a>&nbsp;</dt><dd> 当上传一张图片时，应用给缩略图的文件名. 
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_thumbnail_creation_size_limit&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp thumbnail creation size limit (page does not exist)">wp_thumbnail_creation_size_limit</a>&nbsp;</dt><dd> 当上传一张图片时，应用给缩略图的大小. Filter 函数的实参是: 文件的最大大小, 附件 ID, 附件文件名.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_thumbnail_max_side_length&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp thumbnail max side length (page does not exist)">wp_thumbnail_max_side_length</a>&nbsp;</dt><dd> 当上传一张图片时，应用给缩略图的大小. Filter 函数的实参是: 图片的边最大大小, 附件 ID, 附件文件名.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/title_save_pre&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/title save pre (page does not exist)">title_save_pre</a>&nbsp;</dt><dd> 应用给文章title,优先于保存它至数据库 (也适用于附件).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/update_attached_file&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/update attached file (page does not exist)">update_attached_file</a>&nbsp;</dt><dd> 应用给附件信息,优先于在<tt>update_attached_file</tt> 函数里保存文章的metadata. Filter 函数的实参是: 附件信息, 附件 ID.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_delete_file&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp delete file (page does not exist)">wp_delete_file</a>&nbsp;</dt><dd> 应用给附件文件的名称,在删除它之前.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_generate_attachment_metadata&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp generate attachment metadata (page does not exist)">wp_generate_attachment_metadata</a>&nbsp;</dt><dd> 应用给附件的metadata数据，在保存它至数据库之前.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_update_attachment_metadata&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp update attachment metadata (page does not exist)">wp_update_attachment_metadata</a>&nbsp;</dt><dd> 应用给附件的metadata，在 <tt>wp_update_attachment_metadata</tt> 函数里保存它之前. Filter 函数的实参是: meta data, 附件 ID.
+</dd></dl>
+<a name="Comment.2C_Trackback.2C_and_Ping_Filters" id="Comment.2C_Trackback.2C_and_Ping_Filters"></a><h2> <span class="mw-headline"> 评论, Trackback, 和 Ping Filters </span></h2>
+<p>See also <a href="#Author_and_User_Filters" title="">#Author and User Filters</a>, <a href="#Link_Filters" title="">#Link Filters</a>, <a href="#Date_and_Time_Filters" title="">#Date and Time Filters</a>, and <a href="#Administrative_Filters" title="">#Administrative Filters</a> below.
+</p>
+<a name="Database_Reads_2" id="Database_Reads_2"></a><h3> <span class="mw-headline"> 数据库读取 </span></h3>
+<p>这个部分的Filters会应用给从数据库中读取到的信息, 优先于在一个页面上显示或编辑的屏幕.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_excerpt&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment excerpt (page does not exist)">comment_excerpt</a>&nbsp;</dt><dd> 应用给由<tt>comment_excerpt</tt> 函数抽取出来的评论. 另见 <tt>get_comment_excerpt</tt>.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_flood_filter&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment flood filter (page does not exist)">comment_flood_filter</a>&nbsp;</dt><dd> 当某人看起来似乎要发很多没用的灌水评论时应用. Filter 函数的实参是: 已经被屏蔽 (true/false,不管之前的一个过滤插件是不是已经把它屏蔽掉了; 设置成true，则返回true，在插件中屏蔽掉这个评论), 前一条评论的时间, 当前评论的时间.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_post_redirect&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment post redirect (page does not exist)">comment_post_redirect</a>&nbsp;</dt><dd> 当某人添加了一条评论之后，应用给重定向的地址. Filter 函数的实参是: 重定向地址, 评论信息数组.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_text&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment text (page does not exist)">comment_text</a>&nbsp;</dt><dd> 应用给评论的文本,在由 <tt>comment_text</tt> 函数显示在屏幕之前, 以及在管理菜单里.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_text_rss&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment text rss (page does not exist)">comment_text_rss</a>&nbsp;</dt><dd> 应用给评论文本，优先于包含一个RSS feed.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comments_array&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comments array (page does not exist)">comments_array</a>&nbsp;</dt><dd> 应用给在 <tt>comments_template</tt> 函数里文章的评论数组. Filter 函数的实参是: 评论信息结构的数组, 文章 ID.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comments_number&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comments number (page does not exist)">comments_number</a>&nbsp;</dt><dd> 应用给由 <tt>comments_number</tt> 函数生成的格式化后的评论数文本. 另见 <tt>get_comments_number</tt>.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_comment_excerpt&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get comment excerpt (page does not exist)">get_comment_excerpt</a>&nbsp;</dt><dd> 应用给由 <tt>get_comment_excerpt</tt> 函数 (也称作 <tt>comment_excerpt</tt>从数据库中读取到的评论片段. 另见 <tt>comment_excerpt</tt>.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_comment_ID&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get comment ID (page does not exist)">get_comment_ID</a>&nbsp;</dt><dd> 应用给 <tt>get_comment_ID</tt> 函数使用的从全局 <tt>$comments</tt> 变量读取的评论ID.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_comment_text&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get comment text (page does not exist)">get_comment_text</a>&nbsp;</dt><dd> 应用给 <tt>get_comment_text</tt> 函数, 也叫做 <tt>comment_text</tt> 函数里当前评论的评论文本.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_comment_type&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get comment type (page does not exist)">get_comment_type</a>&nbsp;</dt><dd> 应用给 <tt>get_comment_type</tt> 函数 (也叫做 <tt>comment_type</tt>)的评论类型("comment", "trackback", or "pingback").
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_comments_number&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get comments number (page does not exist)">get_comments_number</a>&nbsp;</dt><dd> 应用给 <tt>get_comments_number</tt> 函数 (也叫做 <tt>comments_number</tt> 函数; 另见 <tt>comments_number</tt> filter)读取的全局变量<tt>$post</tt>的评论数.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/post_comments_feed_link&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/post comments feed link (page does not exist)">post_comments_feed_link</a>&nbsp;</dt><dd> 应用给由 <tt>comments_rss</tt> 函数为评论feed生成的feed URL.
+</dd></dl>
+<a name="Database_Writes_2" id="Database_Writes_2"></a><h3> <span class="mw-headline"> 数据库写入 </span></h3>
+<p>这个部分的Filters 会应用给信息，优先于保存至数据库.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_save_pre&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment save pre (page does not exist)">comment_save_pre</a>&nbsp;</dt><dd> 应用给评论数据，优先于更新/编辑评论数据. 函数实参: 评论数据数组, 有"comment_post_ID", "comment_author", "comment_author_email", "comment_author_url", "comment_content", "comment_type", 和 "user_ID".
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/pre_comment_approved" title="Plugin API/Filter Reference/pre comment approved">pre_comment_approved</a>&nbsp;</dt><dd> 应用给当前评论的审核状态(true/false)，允许插件重写这一状态. 返回true/false ，设置第一个参数为true/false 来 approve/disapprove 评论, 并使用诸如<tt>$comment_ID</tt>这样的全局变量来获取关于这个评论的信息.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_comment_content&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre comment content (page does not exist)">pre_comment_content</a>&nbsp;</dt><dd> 应用给评论的内容，优先于保存该评论至数据库.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/preprocess_comment&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/preprocess comment (page does not exist)">preprocess_comment</a>&nbsp;</dt><dd> 应用给评论数据，优先于任何其他的进程，当保存一条新评论至数据库时. 函数实参: 评论数据数组, 有 "comment_post_ID", "comment_author", "comment_author_email", "comment_author_url", "comment_content", "comment_type", 和 "user_ID".
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/wp_insert_post_data" title="Plugin API/Filter Reference/wp insert post data">wp_insert_post_data</a>&nbsp;</dt><dd> 应用给wp_insert_post()里已修改和未修改的文章数据，优先于更新或插入文章至数据库. 函数实参: 已修改和扩展的文章数组和已清除的文章数组.
+</dd></dl>
+<a name="Category_and_Term_Filters" id="Category_and_Term_Filters"></a><h2> <span class="mw-headline"> 目录Category 和 Term Filters </span></h2>
+<p>See also <a href="#Administrative_Filters" title="">#Administrative Filters</a> below.
+</p>
+<a name="Database_Reads_3" id="Database_Reads_3"></a><h3> <span class="mw-headline"> 数据库读取 </span></h3>
+<p>Filters in this section are applied to information read from the database, prior to displaying on a page or editing screen.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/category_description&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/category description (page does not exist)">category_description</a>&nbsp;</dt><dd> 应用给 "description" 字段目录，由 <tt>category_description</tt> 和 <tt>[[Template_Tags/wp_list_categories</tt> 函数用的. Filter 函数实参: description, category ID when called from <tt>category_description</tt>; description, category information array (all fields from the category table for that particular category) when called from <tt><a href="/Template_Tags/wp_list_categories" title="Template Tags/wp list categories">wp_list_categories</a></tt>.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/category_feed_link" title="Plugin API/Filter Reference/category feed link">category_feed_link</a>&nbsp;</dt><dd> applied to the feed URL generated for the category feed by the <tt><a href="/Function_Reference/get_category_feed_link" title="Function Reference/get category feed link">get_category_feed_link</a></tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/category_link&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/category link (page does not exist)">category_link</a>&nbsp;</dt><dd> applied to the URL created for a category by the <tt><a href="/Function_Reference/get_category_link" title="Function Reference/get category link">get_category_link</a></tt> function. Filter function arguments: link URL, category ID.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_categories&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get categories (page does not exist)">get_categories</a>&nbsp;</dt><dd> applied to the category list generated by the <tt><a href="/Function_Reference/get_categories" title="Function Reference/get categories">get_categories</a></tt> function (which is in turn used by many other functions). Filter function arguments: category list, <tt><a href="/Function_Reference/get_categories" title="Function Reference/get categories">get_categories</a></tt> options list.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_category&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get category (page does not exist)">get_category</a>&nbsp;</dt><dd> applied to the category information that the <tt><a href="/Function_Reference/get_category" title="Function Reference/get category">get_category</a></tt> function looks up, which is basically an array of all the fields in WordPress's category table for a particular category ID.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/list_cats&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/list cats (page does not exist)">list_cats</a>&nbsp;</dt><dd> called for two different purposes:
+</dd></dl>
+<ol><li>the <tt><a href="/Function_Reference/wp_dropdown_categories" title="Function Reference/wp dropdown categories">wp_dropdown_categories</a></tt> function uses it to filter the <tt>show_option_all</tt> and <tt>show_option_none</tt> arguments (which are used to put options "All" and "None" in category drop-down lists). No additional filter function arguments.
+</li><li>the <tt><a href="/Function_Reference/wp_list_categories" title="Function Reference/wp list categories" class="mw-redirect">wp_list_categories</a></tt> function applies it to the category names. Filter function arguments: category name, category information list (all fields from the category table for that particular category).
+</li></ol>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/list_cats_exclusions&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/list cats exclusions (page does not exist)">list_cats_exclusions</a>&nbsp;</dt><dd> applied to the SQL WHERE statement giving the categories to be excluded by the <tt><a href="/Function_Reference/get_categories" title="Function Reference/get categories">get_categories</a></tt> function. Typically, a plugin would add to this list, in order to exclude certain categories or groups of categories from category lists. Filter function arguments: excluded category WHERE clause, <tt><a href="/Function_Reference/get_categories" title="Function Reference/get categories">get_categories</a></tt> options list.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/single_cat_title&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/single cat title (page does not exist)">single_cat_title</a>&nbsp;</dt><dd> applied to the category name when used to create a blog page title by the <tt><a href="/Template_Tags/wp_title" title="Template Tags/wp title" class="mw-redirect">wp_title</a></tt> and <tt><a href="/Template_Tags/single_cat_title" title="Template Tags/single cat title" class="mw-redirect">single_cat_title</a></tt> functions.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/the_category&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/the category (page does not exist)">the_category</a>&nbsp;</dt><dd> applied to the list of categories (an HTML list with links) created by the <tt>get_the_category_list</tt> function. Filter function arguments: generated HTML text, list separator being used (empty string means it is a default LI list), <tt>parents</tt> argument to <tt>get_the_category_list</tt>.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/the_category_rss&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/the category rss (page does not exist)">the_category_rss</a>&nbsp;</dt><dd> applied to the category list (a list of category XML elements) for a post by the <tt><a href="/Function_Reference/get_the_category_rss" title="Function Reference/get the category rss">get_the_category_rss</a></tt> function, before including in an RSS feed. Filter function arguments are the list text and the type ("rdf" or "rss" generally).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_dropdown_cats&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp dropdown cats (page does not exist)">wp_dropdown_cats</a>&nbsp;</dt><dd> applied to the drop-down category list (a text string containing HTML option elements) generated by the <tt><a href="/Template_Tags/wp_dropdown_categories" title="Template Tags/wp dropdown categories" class="mw-redirect">wp_dropdown_categories</a></tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_list_categories&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp list categories (page does not exist)">wp_list_categories</a>&nbsp;</dt><dd> applied to the category list (an HTML list) generated by the <tt><a href="/Template_Tags/wp_list_categories" title="Template Tags/wp list categories">wp_list_categories</a></tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Function_Reference/wp_get_object_terms&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Function Reference/wp get object terms (page does not exist)">wp_get_object_terms</a>&nbsp;</dt><dd> applied to the list of terms (an array of objects) generated by the <tt><a href="/Function_Reference/wp_get_object_terms" title="Function Reference/wp get object terms">wp_get_object_terms</a></tt> function, which is called by a number of category/term related functions, such as <tt><a href="/Function_Reference/get_the_terms" title="Function Reference/get the terms">get_the_terms</a></tt> and <tt><a href="/Function_Reference/get_the_category" title="Function Reference/get the category">get_the_category</a></tt>.
+</dd></dl>
+<a name="Database_Writes_3" id="Database_Writes_3"></a><h3> <span class="mw-headline"> Database Writes </span></h3>
+<p>Filters in this section are applied to information prior to saving to the database.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_category_description&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre category description (page does not exist)">pre_category_description</a>&nbsp;</dt><dd> applied to the category desription prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_category_name&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre category name (page does not exist)">pre_category_name</a>&nbsp;</dt><dd> applied to the category name prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_category_nicename&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre category nicename (page does not exist)">pre_category_nicename</a>&nbsp;</dt><dd> applied to the category nice name prior to saving in the database.
+</dd></dl>
+<a name="Link_Filters" id="Link_Filters"></a><h2> <span class="mw-headline"> Link Filters </span></h2>
+<p>Note: This section contains filters related to links to posts, pages, archives, feeds, etc. For blogroll links, see the <a href="#Blogroll_Filters" title="">#Blogroll Filters</a> section below.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/attachment_link&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/attachment link (page does not exist)">attachment_link</a>&nbsp;</dt><dd> applied to the calculated attachment permalink by the <tt>get_attachment_link</tt> function. Filter function arguments: link URL, attachment ID.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/author_feed_link&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/author feed link (page does not exist)">author_feed_link</a>&nbsp;</dt><dd> applied to the feed URL generated for the author feed by the <tt>get_author_rss_link</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/author_link&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/author link (page does not exist)">author_link</a>&nbsp;</dt><dd> applied to the author's archive permalink created by the <tt>get_author_posts_url</tt> function. Filter function arguments: link URL, author ID, author's "nice" name. Note that <tt>get_author_posts_url</tt> is called within functions <tt>wp_list_authors</tt> and <tt>the_author_posts_link</tt>.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_reply_link&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment reply link (page does not exist)">comment_reply_link</a>&nbsp;</dt><dd> applied to the link generated for replying to a specific comment by the <tt>get_comment_reply_link</tt> function which is called within function <tt>comments_template</tt>. Filter function arguments: link (string), custom options (array), current comment (object), current post (object).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/day_link&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/day link (page does not exist)">day_link</a>&nbsp;</dt><dd> applied to the link URL for a daily archive by the <tt>get_day_link</tt> function. Filter function arguments: URL, year, month number, day number.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/feed_link&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/feed link (page does not exist)">feed_link</a>&nbsp;</dt><dd> applied to the link URL for a feed by the <tt>get_feed_link</tt> function. Filter function arguments: URL, type of feed (e.g. "rss2", "atom", etc.).
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/get_comment_author_link" title="Plugin API/Filter Reference/get comment author link">get_comment_author_link</a>&nbsp;</dt><dd> applied to the HTML generated for the author's link on a comment, in the <tt>get_comment_author_link</tt> function (which is also called by <tt>comment_author_link</tt>. Action function arguments: user name
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_comment_author_url_link&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get comment author url link (page does not exist)">get_comment_author_url_link</a>&nbsp;</dt><dd> applied to the HTML generated for the author's lnik on a comment, in the <tt>get_comment_author_url_link</tt> function (which is also called by <tt>comment_author_link</tt>).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/month_link&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/month link (page does not exist)">month_link</a>&nbsp;</dt><dd> applied to the link URL for a monthly archive by the <tt>get_month_link</tt> function. Filter function arguments: URL, year, month number.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/page_link&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/page link (page does not exist)">page_link</a>&nbsp;</dt><dd> applied to the calculated page URL by the <tt>get_page_link</tt> function. Filter function arguments: URL, page ID. Note that there is also an internal filter called <tt>_get_page_link</tt> that can be used to filter the URLS of pages that are not designated as the blog's home page (same arguments).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/post_link&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/post link (page does not exist)">post_link</a>&nbsp;</dt><dd> applied to the calculated post permalink by the <tt>get_permalink</tt> function, which is also called by the <tt>the_permalink</tt>, <tt>post_permalink</tt>, <tt>previous_post_link</tt>, and <tt>next_post_link</tt> functions. Filter function arguments: permalink URL, post data list.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/post_type_link&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/post type link (page does not exist)">post_type_link</a>&nbsp;</dt><dd> applied to the calculated custom post type permalink by the <tt>get_post_permalink</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/the_permalink&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/the permalink (page does not exist)">the_permalink</a>&nbsp;</dt><dd> applied to the permalink URL for a post prior to printing by function <tt>the_permalink</tt>.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/year_link&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/year link (page does not exist)">year_link</a>&nbsp;</dt><dd> applied to the link URL for a yearly archive by the <tt>get_year_link</tt> function. Filter function arguments: URL, year.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/tag_link&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/tag link (page does not exist)">tag_link</a>&nbsp;</dt><dd> applied to the URL created for a tag by the get_tag_link function. Filter function arguments: link URL, tag ID.
+</dd></dl>
+<a name="Date_and_Time_Filters" id="Date_and_Time_Filters"></a><h2> <span class="mw-headline"> Date and Time Filters </span></h2>
+<p>See also <a href="#Link_Filters" title="">#Link Filters</a> above.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_comment_date&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get comment date (page does not exist)">get_comment_date</a>&nbsp;</dt><dd> applied to the formatted comment date generated by the <tt>get_comment_date</tt> function (which is also called by <tt>comment_date</tt>).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_comment_time&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get comment time (page does not exist)">get_comment_time</a>&nbsp;</dt><dd> applied to the formatted comment time in the <tt>get_comment_time</tt> function (which is also called by <tt>comment_time</tt>).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_the_modified_date&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get the modified date (page does not exist)">get_the_modified_date</a>&nbsp;</dt><dd> applied to the formatted post modification date generated by the <tt>get_the_modified_date</tt> function (which is also called by the <tt>the_modified_date</tt> function).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_the_modified_time&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get the modified time (page does not exist)">get_the_modified_time</a>&nbsp;</dt><dd> applied to the formatted post modification time generated by the <tt>get_the_modified_time</tt> and <tt>get_post_modified_time</tt> functions (which are also called by the <tt>the_modified_time</tt> function).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_the_time&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get the time (page does not exist)">get_the_time</a>&nbsp;</dt><dd>  applied to the formatted post time generated by the <tt>get_the_time</tt> and <tt>get_post_time</tt> functions (which are also called by the <tt>the_time</tt> function).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/the_date&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/the date (page does not exist)">the_date</a>&nbsp;</dt><dd> applied to the formatted post date generated by the <tt>the_date</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/the_modified_date&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/the modified date (page does not exist)">the_modified_date</a>&nbsp;</dt><dd> applied to the formatted post modification date generated by the <tt>the_modified_date</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/the_modified_time&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/the modified time (page does not exist)">the_modified_time</a>&nbsp;</dt><dd> applied to the formatted post modification time generated by the <tt>the_modified_time</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/the_time&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/the time (page does not exist)">the_time</a>&nbsp;</dt><dd> applied to the formatted post time generated by the <tt>the_time</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/the_weekday&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/the weekday (page does not exist)">the_weekday</a>&nbsp;</dt><dd> applied to the post date weekday name generated by the <tt>the_weekday</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/the_weekday_date&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/the weekday date (page does not exist)">the_weekday_date</a>&nbsp;</dt><dd> applied to the post date weekday name generated by the <tt>the_weekday_date</tt> function. Function arguments are the weekday name, before text, and after text (before text and after text are added to the weekday name if the current post's weekday is different from the previous post's weekday).
+</dd></dl>
+<a name="Author_and_User_Filters" id="Author_and_User_Filters"></a><h2> <span class="mw-headline"> Author and User Filters </span></h2>
+<p>See also <a href="#Link_Filters" title="">#Link Filters</a> and <a href="#Administrative_Filters" title="">#Administrative Filters</a> sections.
+</p>
+<dl><dt><a href="/Plugin_API/Filter_Reference/login_redirect" title="Plugin API/Filter Reference/login redirect">login_redirect</a>&nbsp;</dt><dd> applied to the <tt>redirect_to</tt> post/get variable during the user login process.
+</dd></dl>
+<a name="Database_Reads_4" id="Database_Reads_4"></a><h3> <span class="mw-headline"> Database Reads </span></h3>
+<p>Filters in this section are applied to information read from the database, prior to displaying on a page or editing screen.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/author_email&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/author email (page does not exist)">author_email</a>&nbsp;</dt><dd> applied to the comment author's email address retrieved from the database by the <tt>comment_author_email</tt> function. See also <tt>get_comment_author_email</tt>.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/comment_author" title="Plugin API/Filter Reference/comment author">comment_author</a>&nbsp;</dt><dd> applied to the comment author's name retrieved from the database by the <tt>comment_author</tt> function. See also <tt>get_comment_author</tt>.
+</dd><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_author_rss&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment author rss (page does not exist)">comment_author_rss</a>&nbsp;</dt><dd> applied to the comment author's name prior to including in an RSS feed.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_email&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment email (page does not exist)">comment_email</a>&nbsp;</dt><dd> applied to the comment author's email address retrieved from the database by the <tt>comment_author_email_link</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_url&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment url (page does not exist)">comment_url</a>&nbsp;</dt><dd> applied to the comment author's URL retrieved from the database by the <tt>comment_author_url</tt> function (see also <tt>get_comment_author_url</tt>).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_comment_author&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get comment author (page does not exist)">get_comment_author</a>&nbsp;</dt><dd> applied to the comment author's name retrieved from the database by <tt>get_comment_author</tt>, which is also called by <tt>comment_author</tt>. See also <tt>comment_author</tt>.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_comment_author_email&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get comment author email (page does not exist)">get_comment_author_email</a>&nbsp;</dt><dd> applied to the comment author's email address retrieved from the database by <tt>get_comment_author_email</tt>, which is also called by <tt>comment_author_email</tt>. See also <tt>author_email</tt>.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_comment_author_IP&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get comment author IP (page does not exist)">get_comment_author_IP</a>&nbsp;</dt><dd> applied to the comment author's IP address retrieved from the database by the <tt>get_comment_author_IP</tt> function, which is also called by <tt>comment_author_IP</tt>.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_comment_author_url&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get comment author url (page does not exist)">get_comment_author_url</a>&nbsp;</dt><dd> applied to the comment author's URL retrieved from the database by the <tt>get_comment_author_url</tt> function, which is also called by <tt>comment_author_url</tt>. See also <tt>comment_url</tt>.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/login_errors&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/login errors (page does not exist)">login_errors</a>&nbsp;</dt><dd> applied to the login error message printed on the login screen.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/login_headertitle&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/login headertitle (page does not exist)">login_headertitle</a>&nbsp;</dt><dd> applied to the title for the login header URL (Powered by WordPress by default) printed on the login screen.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/login_headerurl" title="Plugin API/Filter Reference/login headerurl">login_headerurl</a>&nbsp;</dt><dd> applied to the login header URL (points to wordpress.org by default) printed on the login screen.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/login_message&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/login message (page does not exist)">login_message</a>&nbsp;</dt><dd> applied to the login message printed on the login screen.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/role_has_cap&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/role has cap (page does not exist)">role_has_cap</a>&nbsp;</dt><dd> applied to a role's capabilities list in the <tt>WP_Role-&gt;has_cap</tt> function. Filter function arguments are the capabilities list to be filtered, the capability being questioned, and the role's name. 
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/sanitize_user&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/sanitize user (page does not exist)">sanitize_user</a>&nbsp;</dt><dd> applied to a user name by the <tt>sanitize_user</tt> function. Filter function arguments: user name (after some cleaning up), raw user name, strict (true or false to use strict ASCII or not).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/the_author&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/the author (page does not exist)">the_author</a>&nbsp;</dt><dd> applied to a post author's displayed name by the <tt>get_the_author</tt> function, which is also called by the <tt>the_author</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/the_author_email&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/the author email (page does not exist)">the_author_email</a>&nbsp;</dt><dd> applied to a post author's email address by the <tt>the_author_email</tt> function.
+</dd></dl>
+<a name="Database_Writes_4" id="Database_Writes_4"></a><h3> <span class="mw-headline"> Database Writes </span></h3>
+<p>Filters in this section are applied to information prior to saving to the database.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_comment_author_email&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre comment author email (page does not exist)">pre_comment_author_email</a>&nbsp;</dt><dd> applied to a comment author's email address prior to saving the comment in the database. 
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_comment_author_name&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre comment author name (page does not exist)">pre_comment_author_name</a>&nbsp;</dt><dd> applied to a comment author's user name prior to saving the comment in the database. 
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_comment_author_url&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre comment author url (page does not exist)">pre_comment_author_url</a>&nbsp;</dt><dd> applied to a comment author's URL prior to saving the comment in the database. 
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_comment_user_agent&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre comment user agent (page does not exist)">pre_comment_user_agent</a>&nbsp;</dt><dd> applied to the comment author's user agent prior to saving the comment in the database.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/pre_comment_user_ip" title="Plugin API/Filter Reference/pre comment user ip">pre_comment_user_ip</a>&nbsp;</dt><dd> applied to the comment author's IP address prior to saving the comment in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_user_id&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre user id (page does not exist)">pre_user_id</a>&nbsp;</dt><dd> applied to the comment author's user ID prior to saving the comment in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_user_description&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre user description (page does not exist)">pre_user_description</a>&nbsp;</dt><dd> applied to the user's description prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_user_display_name&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre user display name (page does not exist)">pre_user_display_name</a>&nbsp;</dt><dd> applied to the user's displayed name prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_user_email&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre user email (page does not exist)">pre_user_email</a>&nbsp;</dt><dd> applied to the user's email address prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_user_first_name&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre user first name (page does not exist)">pre_user_first_name</a>&nbsp;</dt><dd> applied to the user's first name prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_user_last_name&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre user last name (page does not exist)">pre_user_last_name</a>&nbsp;</dt><dd> applied to the user's last name prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_user_login&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre user login (page does not exist)">pre_user_login</a>&nbsp;</dt><dd> applied to the user's login name prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_user_nicename&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre user nicename (page does not exist)">pre_user_nicename</a>&nbsp;</dt><dd> applied to the user's "nice name" prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_user_nickname&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre user nickname (page does not exist)">pre_user_nickname</a>&nbsp;</dt><dd> applied to the user's nickname prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_user_url&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre user url (page does not exist)">pre_user_url</a>&nbsp;</dt><dd> applied to the user's URL prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/registration_errors" title="Plugin API/Filter Reference/registration errors">registration_errors</a>&nbsp;</dt><dd> applied to the list of registration errors generated while registering a user for a new account.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/user_registration_email&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/user registration email (page does not exist)">user_registration_email</a>&nbsp;</dt><dd> applied to the user's email address read from the registration page, prior to trying to register the person as a new user.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/validate_username&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/validate username (page does not exist)">validate_username</a>&nbsp;</dt><dd> applied to the validation result on a new user name. Filter function arguments: valid (true/false), user name being validated.
+</dd></dl>
+<a name="Blogroll_Filters" id="Blogroll_Filters"></a><h2> <span class="mw-headline"> Blogroll Filters </span></h2>
+<p>Note: This section contains filters related to blogroll links. For filters related to links to posts, pages, categories, etc., see section <a href="#Link_Filters" title="">#Link Filters</a> above.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_bookmarks&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get bookmarks (page does not exist)">get_bookmarks</a>&nbsp;</dt><dd> applied to link/blogroll database query results by the <tt>get_bookmarks</tt> function. Filter function arguments: database query results list, <tt>get_bookmarks</tt> arguments list.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/link_category&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/link category (page does not exist)">link_category</a>&nbsp;</dt><dd> applied to the link category by the <tt>get_links_list</tt> and <tt>wp_list_bookmarks</tt> functions (as of WordPress 2.2).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/link_description&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/link description (page does not exist)">link_description</a>&nbsp;</dt><dd> applied to the link description by the <tt>get_links</tt> and <tt>wp_list_bookmarks</tt> functions (as of WordPress 2.2).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/link_rating&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/link rating (page does not exist)">link_rating</a>&nbsp;</dt><dd> applied to the link rating number by the <tt>get_linkrating</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/link_title&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/link title (page does not exist)">link_title</a>&nbsp;</dt><dd> applied to the link title by the <tt>get_links</tt> and <tt>wp_list_bookmarks</tt> functions (as of WordPress 2.2)
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_link_description&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre link description (page does not exist)">pre_link_description</a>&nbsp;</dt><dd> applied to the link description prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/pre_link_image" title="Plugin API/Filter Reference/pre link image">pre_link_image</a>&nbsp;</dt><dd> applied to the link image prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_link_name&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre link name (page does not exist)">pre_link_name</a>&nbsp;</dt><dd> applied to the link name prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_link_notes&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre link notes (page does not exist)">pre_link_notes</a>&nbsp;</dt><dd> applied to the link notes prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_link_rel&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre link rel (page does not exist)">pre_link_rel</a>&nbsp;</dt><dd> applied to the link relation information prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_link_rss&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre link rss (page does not exist)">pre_link_rss</a>&nbsp;</dt><dd> applied to the link RSS URL prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_link_target&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre link target (page does not exist)">pre_link_target</a>&nbsp;</dt><dd> applied to the link target information prior to saving in the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_link_url&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre link url (page does not exist)">pre_link_url</a>&nbsp;</dt><dd> applied to the link URL prior to saving in the database.
+</dd></dl>
+<a name="Blog_Information_and_Option_Filters" id="Blog_Information_and_Option_Filters"></a><h2> <span class="mw-headline"> Blog Information and Option Filters </span></h2>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/all_options&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/all options (page does not exist)">all_options</a>&nbsp;</dt><dd> applied to the option list retrieved from the database by the <tt>get_alloptions</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/bloginfo&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/bloginfo (page does not exist)">bloginfo</a>&nbsp;</dt><dd> applied to the blog option information retrieved from the database by the <tt>bloginfo</tt> function, after first retrieving the information with the <tt>get_bloginfo</tt> function. A second argument <tt>$show</tt> gives the name of the bloginfo option that was requested. Note that <tt>bloginfo("url")</tt>, <tt>bloginfo("directory")</tt> and <tt>bloginfo("home")</tt> do <i>not</i> use this filtering function (see <tt>bloginfo_url</tt>).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/bloginfo_rss&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/bloginfo rss (page does not exist)">bloginfo_rss</a>&nbsp;</dt><dd> applied to the blog option information by function <tt>get_bloginfo_rss</tt> (which is also called from <tt>bloginfo_rss</tt>), after first retrieving the information with the <tt>get_bloginfo</tt> function, stripping out HTML tags, and converting characters appropriately. A second argument <tt>$show</tt> gives the name of the bloginfo option that was requested. 
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/bloginfo_url&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/bloginfo url (page does not exist)">bloginfo_url</a>&nbsp;</dt><dd> applied to the the output of <tt>bloginfo("url")</tt>, <tt>bloginfo("directory")</tt> and <tt>bloginfo("home")</tt> before returning the information.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/loginout&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/loginout (page does not exist)">loginout</a>&nbsp;</dt><dd> applied to the HTML link for logging in and out (generally placed in the sidebar) generated by the <tt>wp_loginout</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/option_(option_name)&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/option (option name) (page does not exist)">option_(option name)</a>&nbsp;</dt><dd> applied to the option value retrieved from the database by the <tt>get_option</tt> function, after unserializing (which decodes array-based options). To use this filter, you will need to add filters for specific options names, such as "option_foo" to filter the output of <tt>get_option("foo")</tt>. 
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/pre_option_(option_name)" title="Plugin API/Filter Reference/pre option (option name)">pre_option_(option name)</a>&nbsp;</dt><dd> applied to the option value retrieved from the database by the <tt>get_alloptions</tt> function, after unserializing (which decodes array-based options). To use this filter, you will need to add filters for specific options names, such as "pre_option_foo" to filter the option "foo".
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_update_option_(option_name)&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre update option (option name) (page does not exist)">pre_update_option_(option name)</a>&nbsp;</dt><dd> applied the option value before being saving to the database to allow overriding the value to be stored. To use this filter, you will need to add filters for specific options names, such as "pre_update_option_foo" to filter the option "foo".
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/register&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/register (page does not exist)">register</a>&nbsp;</dt><dd> applied to the sidebar link created for the user to register (if allowed) or visit the admin panels (if already logged in) by the <tt>wp_register</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/upload_dir&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/upload dir (page does not exist)">upload_dir</a>&nbsp;</dt><dd> applied to the directory to be used for uploads calculated by the <tt>wp_upload_dir</tt> function. Filter function argument is an array with components "dir" (the upload directory path), "url" (the URL of the upload directory), and "error" (which you can set to true if you want to generate an error).
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/upload_mimes" title="Plugin API/Filter Reference/upload mimes">upload_mimes</a>&nbsp;</dt><dd> allows a filter function to return a list of MIME types for uploads, if there is no MIME list input to the <tt>wp_check_filetype</tt> function. Filter function argument is an associated list of MIME types whose component names are file extensions (separated by vertical bars) and values are the corresponding MIME types.
+</dd></dl>
+<a name="General_Text_Filters" id="General_Text_Filters"></a><h2> <span class="mw-headline"> General Text Filters </span></h2>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/attribute_escape&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/attribute escape (page does not exist)">attribute_escape</a>&nbsp;</dt><dd> applied to post text and other content by the <tt>attribute_escape</tt> function, which is called in many places in WordPress to change certain characters into HTML attributes before sending to the browser.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/js_escape&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/js escape (page does not exist)">js_escape</a>&nbsp;</dt><dd> applied to JavaScript code before sending to the browser in the <tt>js_escape</tt> function.
+</dd></dl>
+<a name="Administrative_Filters" id="Administrative_Filters"></a><h2> <span class="mw-headline"> Administrative Filters </span></h2>
+<p>The filters in this section are related to the administration screens of WordPress, including content editing screens.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/admin_user_info_links&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/admin user info links (page does not exist)">admin_user_info_links</a>&nbsp;</dt><dd> applied to the user profile and info links in the WordPress admin quick menu.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/autosave_interval&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/autosave interval (page does not exist)">autosave_interval</a>&nbsp;</dt><dd> applied to the interval for auto-saving posts.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/bulk_actions" title="Plugin API/Filter Reference/bulk actions">bulk_actions</a>&nbsp;</dt><dd> applied to an array of bulk items in admin bulk action dropdowns.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/cat_rows&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/cat rows (page does not exist)">cat_rows</a>&nbsp;</dt><dd> applied to the category rows HTML generated for managing categories in the admin menus.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_edit_pre&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment edit pre (page does not exist)">comment_edit_pre</a>&nbsp;</dt><dd> applied to comment content prior to display in the editing screen.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_edit_redirect&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment edit redirect (page does not exist)">comment_edit_redirect</a>&nbsp;</dt><dd> applied to the redirect location after someone edits a comment in the admin menus. Filter function arguments: redirect location, comment ID.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_moderation_subject&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment moderation subject (page does not exist)">comment_moderation_subject</a>&nbsp;</dt><dd> applied to the mail subject before sending email notifying the administrator of the need to moderate a new comment. Filter function arguments: mail subject, comment ID.  Note that this happens inside the default <tt>wp_notify_moderator</tt> function, which is a "pluggable" function, meaning that plugins can override it; see <a href="/Plugin_API" title="Plugin API">Plugin API</a>).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_moderation_text&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment moderation text (page does not exist)">comment_moderation_text</a>&nbsp;</dt><dd> applied to the body of the mail message before sending email notifying the administrator of the need to moderate a new comment. Filter function arguments: mail body text, comment ID.  Note that this happens inside the default <tt>wp_notify_moderator</tt> function, which is a "pluggable" function, meaning that plugins can override it; see <a href="/Plugin_API" title="Plugin API">Plugin API</a>).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_notification_headers&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment notification headers (page does not exist)">comment_notification_headers</a>&nbsp;</dt><dd> applied to the mail headers before sending email notifying the post author of a new comment. Filter function arguments: mail header text, comment ID.  Note that this happens inside the default <tt>wp_notify_postauthor</tt> function, which is a "pluggable" function, meaning that plugins can override it; see <a href="/Plugin_API" title="Plugin API">Plugin API</a>).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_notification_subject&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment notification subject (page does not exist)">comment_notification_subject</a>&nbsp;</dt><dd> applied to the mail subject before sending email notifying the post author of a new comment. Filter function arguments: mail subject, comment ID.  Note that this happens inside the default <tt>wp_notify_postauthor</tt> function, which is a "pluggable" function, meaning that plugins can override it; see <a href="/Plugin_API" title="Plugin API">Plugin API</a>).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comment_notification_text&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comment notification text (page does not exist)">comment_notification_text</a>&nbsp;</dt><dd> applied to the body of the mail message before sending email notifying the post author of a new comment. Filter function arguments: mail body text, comment ID.  Note that this happens inside the default <tt>wp_notify_postauthor</tt> function, which is a "pluggable" function, meaning that plugins can override it; see <a href="/Plugin_API" title="Plugin API">Plugin API</a>).
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/cron_schedules" title="Plugin API/Filter Reference/cron schedules">cron_schedules</a>&nbsp;</dt><dd> applied to an empty array to allow a plugin to generate cron schedules in the <tt>wp_get_schedules</tt> function.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/custom_menu_order" title="Plugin API/Filter Reference/custom menu order">custom_menu_order</a>&nbsp;</dt><dd> used to activate the 'menu_order' filter. 
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/default_content&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/default content (page does not exist)">default_content</a>&nbsp;</dt><dd> applied to the default post content prior to opening the editor for a new post.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/default_excerpt&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/default excerpt (page does not exist)">default_excerpt</a>&nbsp;</dt><dd>  applied to the default post excerpt prior to opening the editor for a new post.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/default_title&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/default title (page does not exist)">default_title</a>&nbsp;</dt><dd>  applied to the default post title prior to opening the editor for a new post.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/editable_slug&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/editable slug (page does not exist)">editable_slug</a>&nbsp;</dt><dd>  applied to the post, page, tag or category slug by the <tt>get_sample_permalink</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/explain_nonce_(verb)-(noun)&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/explain nonce (verb)-(noun) (page does not exist)">explain_nonce_(verb)-(noun)</a>&nbsp;</dt><dd> allows a filter function to define text to be used to explain a nonce that is otherwise not explained by the WordPress core code. You will need to define specific verb/noun filters to use this. For instance, if your plugin defines a nonce for updating a tag, you would define a filter for "explain_nonce_update-tag". Filter function arguments: text to display (defaults to a generic "Are you sure you want to do this?" message) and extra information from the end of the action URL. In the example here, your function might simply return the string "Are you sure you want to update this tag?".
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/format_to_edit&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/format to edit (page does not exist)">format_to_edit</a>&nbsp;</dt><dd> applied to post content, excerpt, title, and password by the <tt>format_to_edit</tt> function, which is called by the admin menus to set up a post for editing. Also applied to when editing comments in the admin menus.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/format_to_post&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/format to post (page does not exist)">format_to_post</a>&nbsp;</dt><dd> applied to post content by the <tt>format_to_post</tt> function, which is not used in WordPress by default.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/manage_edit-post_type_columns" title="Plugin API/Filter Reference/manage edit-post type columns">manage_edit-${post_type}_columns</a>&nbsp;</dt><dd> applied to the list of columns to print on the manage posts screen for a custom post type. Filter function argument/return value is an associative array where the element key is the name of the column, and the value is the header text for that column. See also action <a href="/index.php?title=Plugin_API/Action_Reference/manage_post_type_posts_custom_column&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Action Reference/manage post type posts custom column (page does not exist)"><tt>manage_${post_type}_posts_custom_column</tt></a>, which puts the column information into the edit screen.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/manage_link-manager_columns&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/manage link-manager columns (page does not exist)">manage_link-manager_columns</a>&nbsp;</dt><dd> was <tt>manage_link_columns</tt> until wordpress 2.7. applied to the list of columns to print on the blogroll management screen. Filter function argument/return value is an associative list where the element key is the name of the column, and the value is the header text for that column. See also action <a href="/Plugin_API/Action_Reference/manage_posts_custom_column" title="Plugin API/Action Reference/manage posts custom column"><tt>manage_link_custom_column</tt></a>, which puts the column information into the edit screen.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/manage_posts_columns" title="Plugin API/Filter Reference/manage posts columns">manage_posts_columns</a>&nbsp;</dt><dd> applied to the list of columns to print on the manage posts screen. Filter function argument/return value is an associative array where the element key is the name of the column, and the value is the header text for that column. See also action <a href="/Plugin_API/Action_Reference/manage_posts_custom_column" title="Plugin API/Action Reference/manage posts custom column"><tt>manage_posts_custom_column</tt></a>, which puts the column information into the edit screen. (see <a href="http://scompt.com/archives/2007/10/20/adding-custom-columns-to-the-wordpress-manage-posts-screen" class="external text" title="http://scompt.com/archives/2007/10/20/adding-custom-columns-to-the-wordpress-manage-posts-screen">Scompt's tutorial</a> for examples and use.)
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/manage_pages_columns" title="Plugin API/Filter Reference/manage pages columns">manage_pages_columns</a>&nbsp;</dt><dd> applied to the list of columns to print on the manage pages screen. Filter function argument/return value is an associative array where the element key is the name of the column, and the value is the header text for that column. See also action <tt>manage_pages_custom_column</tt>, which puts the column information into the edit screen.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/menu_order" title="Plugin API/Filter Reference/menu order">menu_order</a>&nbsp;</dt><dd> applied to the array for the admin menu order. Must be activated with the 'custom_menu_order' filter before.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/postmeta_form_limit&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/postmeta form limit (page does not exist)">postmeta_form_limit</a>&nbsp;</dt><dd> applied to the number of post-meta information items shown on the post edit screen.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/pre_upload_error&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/pre upload error (page does not exist)">pre_upload_error</a>&nbsp;</dt><dd> applied to allow a plugin to create an XMLRPC error for uploading files.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/preview_page_link&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/preview page link (page does not exist)">preview_page_link</a>&nbsp;</dt><dd> applied to the link on the page editing screen that shows the page preview at the bottom of the screen.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/preview_post_link&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/preview post link (page does not exist)">preview_post_link</a>&nbsp;</dt><dd> applied to the link on the post editing screen that shows the post preview at the bottom of the screen.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/richedit_pre&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/richedit pre (page does not exist)">richedit_pre</a>&nbsp;</dt><dd> applied to post content by the <tt>wp_richedit_pre</tt> function, before displaying in the rich text editor.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/schedule_event" title="Plugin API/Filter Reference/schedule event">schedule_event</a>&nbsp;</dt><dd> applied to each recurring and single event as it is added to the cron schedule.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/show_password_fields&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/show password fields (page does not exist)">show_password_fields</a>&nbsp;</dt><dd> applied to the true/false variable that controls whether the user is presented with the opportunity to change their password on the user profile screen (true means to show password changing fields; false means don't).
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/terms_to_edit" title="Plugin API/Filter Reference/terms to edit">terms_to_edit</a>&nbsp;</dt><dd> applied to the CSV of terms (for each taxonomy) that is used to show which terms are attached to the post.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/the_editor" title="Plugin API/Filter Reference/the editor">the_editor</a>&nbsp;</dt><dd> applied to the HTML DIV created to house the rich text editor, prior to printing it on the screen. Filter function argument/return value is a string.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/user_can_richedit&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/user can richedit (page does not exist)">user_can_richedit</a>&nbsp;</dt><dd> applied to the calculation of whether the user's browser has rich editing capabilities, and whether the user wants to use the rich editor, in the <tt>user_can_richedit</tt> function. Filter function argument and return value is true/false if the current user can/cannot use the rich editor.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/user_has_cap" title="Plugin API/Filter Reference/user has cap">user_has_cap</a>&nbsp;</dt><dd> applied to a user's capabilities list in the <tt>WP_User-&gt;has_cap</tt> function (which is called by the <tt>current_user_can</tt> function). Filter function arguments are the capabilities list to be filtered, the capability being questioned, and the argument list (which has things such as the post ID if the capability is to edit posts, etc.)
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_handle_upload&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp handle upload (page does not exist)">wp_handle_upload</a>&nbsp;</dt><dd> applied to the upload information when uploading a file. Filter function argument: array with elements "file" (file name), "url", "type".
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_upload_tabs&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp upload tabs (page does not exist)">wp_upload_tabs</a>&nbsp;</dt><dd> applied to the list of custom tabs to display on the upload management admin screen. Use action <tt>upload_files_(tab)</tt> to display a page for your custom tab (see <a href="/Plugin_API/Action_Reference" title="Plugin API/Action Reference">Plugin API/Action Reference</a>).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/media_upload_tabs&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/media upload tabs (page does not exist)">media_upload_tabs</a>&nbsp;</dt><dd> applied to the list of custom tabs to display on the upload management admin screen. Use action <tt>upload_files_(tab)</tt> to display a page for your custom tab (see <a href="/Plugin_API/Action_Reference" title="Plugin API/Action Reference">Plugin API/Action Reference</a>).
+</dd></dl>
+<a name="Rich_Text_Editor_Filters" id="Rich_Text_Editor_Filters"></a><h2> <span class="mw-headline"> Rich Text Editor Filters </span></h2>
+<p>These filters modify the configuration of the rich text editor.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/mce_spellchecker_languages&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/mce spellchecker languages (page does not exist)">mce_spellchecker_languages</a>&nbsp;</dt><dd> applied to the language selection available in the spell checker.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/mce_buttons,_mce_buttons_2,_mce_buttons_3,_mce_buttons_4&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/mce buttons, mce buttons 2, mce buttons 3, mce buttons 4 (page does not exist)">mce_buttons, mce_buttons_2, mce_buttons_3, mce_buttons_4</a>&nbsp;</dt><dd> applied to the rows of buttons for the rich editor toolbar (each is an array of button names). 
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/mce_css" title="Plugin API/Filter Reference/mce css">mce_css</a>&nbsp;</dt><dd> applied to the CSS file URL for the rich text editor. 
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/mce_external_plugins&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/mce external plugins (page does not exist)">mce_external_plugins</a>&nbsp;</dt><dd> applied to the array of external plugins to be loaded by the rich text editor. 
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/mce_external_languages&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/mce external languages (page does not exist)">mce_external_languages</a>&nbsp;</dt><dd> applied to the array of language files loaded by external plugins, allowing them to use the standard translation method (see tinymce/langs/wp-langs.php for reference).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/tiny_mce_before_init&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/tiny mce before init (page does not exist)">tiny_mce_before_init</a>&nbsp;</dt><dd> applied to the whole init array for the editor.
+</dd></dl>
+<a name="Template_Filters" id="Template_Filters"></a><h2> <span class="mw-headline"> Template Filters </span></h2>
+<p>This section contains links related to themes, templates, and style files.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/locale_stylesheet_uri&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/locale stylesheet uri (page does not exist)">locale_stylesheet_uri</a>&nbsp;</dt><dd> applied to the locale-specific stylesheet URI returned by the <tt>get_locale_stylesheet_uri</tt> function. Filter function arguments: URI, stylesheet directory URI.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/stylesheet&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/stylesheet (page does not exist)">stylesheet</a>&nbsp;</dt><dd> applied to the stylesheet returned by the <tt>get_stylesheet</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/stylesheet_directory&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/stylesheet directory (page does not exist)">stylesheet_directory</a>&nbsp;</dt><dd> applied to the stylesheet directory returned by the <tt>get_stylesheet_directory</tt> function. Filter function arguments: stylesheet directory, stylesheet.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/stylesheet_directory_uri&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/stylesheet directory uri (page does not exist)">stylesheet_directory_uri</a>&nbsp;</dt><dd> applied to the stylesheet directory URI returned by the <tt>get_stylesheet_directory_uri</tt> function. Filter function arguments: stylesheet directory URI, stylesheet.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/stylesheet_uri&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/stylesheet uri (page does not exist)">stylesheet_uri</a>&nbsp;</dt><dd> applied to the stylesheet URI returned by the <tt>get_stylesheet_uri</tt> function. Filter function arguments: stylesheet URI, stylesheet.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/template&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/template (page does not exist)">template</a>&nbsp;</dt><dd> applied to the template returned by the <tt>get_template</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/template_directory&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/template directory (page does not exist)">template_directory</a>&nbsp;</dt><dd> applied to the template directory returned by the <tt>get_template_directory</tt> function. Filter function arguments: template directory, template.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/template_directory_uri&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/template directory uri (page does not exist)">template_directory_uri</a>&nbsp;</dt><dd> applied to the template directory URI returned by the <tt>get_template_directory_uri</tt> function. Filter function arguments: template directory URI, template.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/theme_root&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/theme root (page does not exist)">theme_root</a>&nbsp;</dt><dd> applied to the theme root directory (normally wp-content/themes) returned by the <tt>get_theme_root</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/theme_root_uri&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/theme root uri (page does not exist)">theme_root_uri</a>&nbsp;</dt><dd> applied to the theme root directory URI returned by the <tt>get_theme_root_uri</tt> function. Filter function arguments: URI, site URL.
+</dd></dl>
+<p>You can also replace individual template files from your theme, by using the following filter hooks.  See also the <tt>template_redirect</tt> action hook. Each of these filters takes as input the path to the corresponding template file in the current theme. A plugin can modify the file to be used by returning a new path to a template file.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/404_template&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/404 template (page does not exist)"> 404_template</a>&nbsp;</dt><dd>
+</dd><dt><a href="/Plugin_API/Filter_Reference/archive_template" title="Plugin API/Filter Reference/archive template"> archive_template</a>&nbsp;</dt><dd> You can use this for example to enforce a specific template for a custom post type archive. This way you can keep all the code in a plugin.
+</dd><dt><a href="/index.php?title=Plugin_API/Filter_Reference/attachment_template&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/attachment template (page does not exist)"> attachment_template</a>&nbsp;</dt><dd>
+</dd><dt><a href="/index.php?title=Plugin_API/Filter_Reference/author_template&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/author template (page does not exist)"> author_template</a>&nbsp;</dt><dd>
+</dd><dt><a href="/index.php?title=Plugin_API/Filter_Reference/category_template&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/category template (page does not exist)"> category_template</a>&nbsp;</dt><dd>
+</dd><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comments_popup_template&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comments popup template (page does not exist)"> comments_popup_template</a>&nbsp;</dt><dd>
+</dd><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comments_template&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comments template (page does not exist)"> comments_template</a>&nbsp;</dt><dd>
+</dd><dt><a href="/index.php?title=Plugin_API/Filter_Reference/date_template&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/date template (page does not exist)"> date_template</a>&nbsp;</dt><dd>
+</dd><dt><a href="/index.php?title=Plugin_API/Filter_Reference/home_template&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/home template (page does not exist)"> home_template</a>&nbsp;</dt><dd>
+</dd><dt><a href="/index.php?title=Plugin_API/Filter_Reference/page_template&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/page template (page does not exist)"> page_template</a>&nbsp;</dt><dd>
+</dd><dt><a href="/index.php?title=Plugin_API/Filter_Reference/paged_template&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/paged template (page does not exist)"> paged_template</a>&nbsp;</dt><dd>
+</dd><dt><a href="/index.php?title=Plugin_API/Filter_Reference/search_template&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/search template (page does not exist)"> search_template</a>&nbsp;</dt><dd>
+</dd><dt><a href="/Plugin_API/Filter_Reference/single_template" title="Plugin API/Filter Reference/single template"> single_template</a>&nbsp;</dt><dd> You can use this for example to enforce a specific template for a custom post type. This way you can keep all the code in a plugin.
+</dd><dt><a href="/index.php?title=Plugin_API/Filter_Reference/template_include&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/template include (page does not exist)"> template_include</a>&nbsp;</dt><dd>
+</dd></dl>
+<a name="Kubrick_Filters" id="Kubrick_Filters"></a><h3> <span class="mw-headline"> Kubrick Filters </span></h3>
+<p>These filters were present in the pre-3.0 default theme kubrick.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/kubrick_header_color&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/kubrick header color (page does not exist)">kubrick_header_color</a>&nbsp;</dt><dd> applied to the color for the header of the kubrick theme.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/kubrick_header_display&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/kubrick header display (page does not exist)">kubrick_header_display</a>&nbsp;</dt><dd> applied to the display option for the header of the kubrick theme.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/kubrick_header_image&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/kubrick header image (page does not exist)">kubrick_header_image</a>&nbsp;</dt><dd> applied to the header image file for the kubrick theme.
+</dd></dl>
+<a name="Advanced_WordPress_Filters" id="Advanced_WordPress_Filters"></a><h2> <span class="mw-headline"> Advanced WordPress Filters </span></h2>
+<p>This section contains advanced filters related to the WordPress queries, rewrite rules, internationalization, and other fundamental WordPress functions.
+</p>
+<dl><dt><a href="/Plugin_API/Filter_Reference/allowed_redirect_hosts" title="Plugin API/Filter Reference/allowed redirect hosts">allowed_redirect_hosts</a>&nbsp;</dt><dd> applied to the list of host names deemed safe for redirection.  wp-login.php uses this to defend against a dangerous 'redirect_to' request parameter
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/author_rewrite_rules&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/author rewrite rules (page does not exist)">author_rewrite_rules</a>&nbsp;</dt><dd> applied to the author-related rewrite rules after they are generated.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/category_rewrite_rules&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/category rewrite rules (page does not exist)">category_rewrite_rules</a>&nbsp;</dt><dd> applied to the category-related rewrite rules after they are generated.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/comments_rewrite_rules&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/comments rewrite rules (page does not exist)">comments_rewrite_rules</a>&nbsp;</dt><dd> applied to the comment-related rewrite rules after they are generated.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/create_user_query&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/create user query (page does not exist)">create_user_query</a>&nbsp;</dt><dd> applied to the query used to save a new user's information to the database, just prior to running the query.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/date_rewrite_rules&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/date rewrite rules (page does not exist)">date_rewrite_rules</a>&nbsp;</dt><dd> applied to the date-related rewrite rules after they are generated.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/found_posts&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/found posts (page does not exist)">found_posts</a>&nbsp;</dt><dd> applied to the list of posts, just after querying from the database.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/found_posts_query&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/found posts query (page does not exist)">found_posts_query</a>&nbsp;</dt><dd> after the list of posts to display is queried from the database, WordPress selects rows in the query results. This filter allows you to do something other than <tt>SELECT FOUND_ROWS()</tt> at that step.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_editable_authors&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get editable authors (page does not exist)">get_editable_authors</a>&nbsp;</dt><dd> applied to the list of post authors that the current user is authorized to edit in the <tt>get_editable_authors</tt> function.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/gettext" title="Plugin API/Filter Reference/gettext">gettext</a>&nbsp;</dt><dd> applied to the translated text by the <a href="/index.php?title=Function_Reference/translation&amp;action=edit&amp;redlink=1" class="new" title="Function Reference/translation (page does not exist)"><tt>translation()</tt></a> function (which is called by functions like the <a href="/Function_Reference/_2" title="Function Reference/ 2"><tt>__()</tt></a> and <a href="/Function_Reference/_e" title="Function Reference/ e"><tt>_e()</tt></a> internationalization functions ). Filter function arguments: translated text, untranslated text and the text domain. Gets applied even if internationalization is not in effect or if the text domain has not been loaded.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/override_load_textdomain&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/override load textdomain (page does not exist)">override_load_textdomain</a>
+</dt></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_meta_sql&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get meta sql (page does not exist)">get_meta_sql</a>&nbsp;</dt><dd> in function <tt>WP_Meta_Query::get_sql</tt> (which generates SQL clauses to be appended to a main query for advanced meta queries.), applied to the SQL JOIN and WHERE clause generated by the advanced meta query. Filter function arguments: array( compact( 'join', 'where' ), $this-&gt;queries, $type, $primary_table, $primary_id_column, $context )
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_next_post_join&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get next post join (page does not exist)">get_next_post_join</a>&nbsp;</dt><dd> in function <tt>get_next_post</tt> (which finds the post after the currently-displayed post), applied to the SQL JOIN clause (which normally joins to the category table if user is viewing a category archive). Filter function arguments: JOIN clause, stay in same category (true/false), list of excluded categories.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_next_post_sort&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get next post sort (page does not exist)">get_next_post_sort</a>&nbsp;</dt><dd> in function <tt>get_next_post</tt> (which finds the post after the currently-displayed post), applied to the SQL ORDER BY clause (which normally orders by post date in ascending order with a limit of 1 post). Filter function arguments: ORDER BY clause.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_next_post_where&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get next post where (page does not exist)">get_next_post_where</a>&nbsp;</dt><dd> in function <tt>get_next_post</tt> (which finds the post after the currently-displayed post), applied to the SQL WHERE clause (which normally looks for the next dated published post). Filter function arguments: WHERE clause, stay in same category (true/false), list of excluded categories.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_others_drafts&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get others drafts (page does not exist)">get_others_drafts</a>&nbsp;</dt><dd> applied to the query that selects the other users' drafts for display in the admin menus.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_previous_post_join&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get previous post join (page does not exist)">get_previous_post_join</a>&nbsp;</dt><dd> in function <tt>get_previous_post</tt> (which finds the post before the currently-displayed post), applied to the SQL JOIN clause (which normally joins to the category table if user is viewing a category archive). Filter function arguments: join clause, stay in same category (true/false), list of excluded categories.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_previous_post_sort&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get previous post sort (page does not exist)">get_previous_post_sort</a>&nbsp;</dt><dd> in function <tt>get_previous_post</tt> (which finds the post before the currently-displayed post), applied to the SQL ORDER BY clause (which normally orders by post date in descending order with a limit of 1 post). Filter function arguments: ORDER BY clause.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_previous_post_where&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get previous post where (page does not exist)">get_previous_post_where</a>&nbsp;</dt><dd> in function <tt>get_previous_post</tt> (which finds the post before the currently-displayed post), applied to the SQL WHERE clause (which normally looks for the previous dated published post). Filter function arguments: WHERE clause, stay in same category (true/false), list of excluded categories.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/get_users_drafts&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/get users drafts (page does not exist)">get_users_drafts</a>&nbsp;</dt><dd> applied to the query that selects the users' drafts for display in the admin menus.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/locale" title="Plugin API/Filter Reference/locale">locale</a>&nbsp;</dt><dd> applied to the locale by the <tt>get_locale</tt> function.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/mod_rewrite_rules&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/mod rewrite rules (page does not exist)">mod_rewrite_rules</a>&nbsp;</dt><dd> applied to the list of rewrite rules given to the user to put into their .htaccess file when they change their permalink structure. (Note: replaces deprecated filter <tt>rewrite_rules</tt>.)
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/post_limits" title="Plugin API/Filter Reference/post limits">post_limits</a>&nbsp;</dt><dd> applied to the <tt>LIMIT</tt> clause of the query that returns the post array.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/posts_distinct" title="Plugin API/Filter Reference/posts distinct">posts_distinct</a>&nbsp;</dt><dd> allows a plugin to add a <tt>DISTINCTROW</tt> clause to the query that returns the post array. 
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/posts_fields&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/posts fields (page does not exist)">posts_fields</a>&nbsp;</dt><dd> applied to the field list for the query that returns the post array.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/posts_groupby&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/posts groupby (page does not exist)">posts_groupby</a>&nbsp;</dt><dd> applied to the <tt>GROUP BY</tt> clause of the query that returns the post array (normally empty).
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/posts_join_paged" title="Plugin API/Filter Reference/posts join paged">posts_join_paged</a>&nbsp;</dt><dd> applied to the <tt>JOIN</tt> clause of the query that returns the post array, after the paging is calculated (though paging does not affect the JOIN, so this is actually equivalent to <tt>posts_join</tt>).
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/posts_orderby" title="Plugin API/Filter Reference/posts orderby">posts_orderby</a>&nbsp;</dt><dd> applied to the <tt>ORDER BY</tt> clause of the query that returns the post array.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/posts_request" title="Plugin API/Filter Reference/posts request">posts_request</a>&nbsp;</dt><dd> applied to the entire SQL query that returns the post array, just prior to running the query.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/post_rewrite_rules&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/post rewrite rules (page does not exist)">post_rewrite_rules</a>&nbsp;</dt><dd> applied to the post-related rewrite rules after they are generated.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/root_rewrite_rules&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/root rewrite rules (page does not exist)">root_rewrite_rules</a>&nbsp;</dt><dd> applied to the root-level rewrite rules after they are generated.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/page_rewrite_rules&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/page rewrite rules (page does not exist)">page_rewrite_rules</a>&nbsp;</dt><dd> applied to the page-related rewrite rules after they are generated.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/posts_where_paged&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/posts where paged (page does not exist)">posts_where_paged</a>&nbsp;</dt><dd> applied to the <tt>WHERE</tt> clause of the query that returns the post array, after the paging is calculated (though paging does not affect the WHERE, so this is actually equivalent to <tt>posts_where</tt>).
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/posts_join" title="Plugin API/Filter Reference/posts join">posts_join</a>&nbsp;</dt><dd> applied to the <tt>JOIN</tt> clause of the query that returns the post array. This is typically used to add a table to the  <tt>JOIN</tt>, in combination with the <tt>posts_where</tt> filter.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/posts_where" title="Plugin API/Filter Reference/posts where">posts_where</a>&nbsp;</dt><dd> applied to the <tt>WHERE</tt> clause of the query that returns the post array.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/query&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/query (page does not exist)">query</a>&nbsp;</dt><dd> applied to all queries (at least all queries run after plugins are loaded).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/query_string&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/query string (page does not exist)">query_string</a>&nbsp;</dt><dd> deprecated - use <tt>query_vars</tt> or <tt>request</tt> instead.
+</dd><dt><a href="/index.php?title=Plugin_API/Filter_Reference/query_vars&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/query vars (page does not exist)">query_vars</a>&nbsp;</dt><dd> applied to the list of public WordPress query variables before the SQL query is formed. Useful for removing extra permalink information the plugin has dealt with in some other manner.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/request" title="Plugin API/Filter Reference/request">request</a>&nbsp;</dt><dd> like <tt>query_vars</tt>, but applied after "extra" and private query variables have been added.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/rewrite_rules_array&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/rewrite rules array (page does not exist)">rewrite_rules_array</a>&nbsp;</dt><dd> applied to the entire rewrite rules array after it is generated.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/search_rewrite_rules&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/search rewrite rules (page does not exist)">search_rewrite_rules</a>&nbsp;</dt><dd> applied to the search-related rewrite rules after they are generated.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/the_posts&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/the posts (page does not exist)">the_posts</a>&nbsp;</dt><dd> applied to the list of posts queried from the database after minimal processing for permissions and draft status on single-post pages.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/excerpt_length" title="Plugin API/Filter Reference/excerpt length">excerpt_length</a>&nbsp;</dt><dd> Defines the length of a single-post excerpt.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/excerpt_more" title="Plugin API/Filter Reference/excerpt more">excerpt_more</a>&nbsp;</dt><dd> Defines the more string at the end of the excerpt.
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/post_edit_form_tag" title="Plugin API/Filter Reference/post edit form tag">post_edit_form_tag</a>&nbsp;</dt><dd> Allows you to append code to the form tag in the default post/page editor.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/update_user_query&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/update user query (page does not exist)">update_user_query</a>&nbsp;</dt><dd> applied to the update query used to update user information, prior to running the query.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/uploading_iframe_src&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/uploading iframe src (page does not exist)">uploading_iframe_src</a> (removed since WP 2.5)</dt><dd> applied to the HTML src tag for the uploading iframe on the post and page editing screens.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_redirect&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp redirect (page does not exist)">wp_redirect</a>&nbsp;</dt><dd> applied to a redirect URL by the default <tt>wp_redirect</tt> function. Filter function arguments: URL, HTTP status code. Note that <tt>wp_redirect</tt> is also a "pluggable" function, meaning that plugins can override it; see <a href="/Plugin_API" title="Plugin API">Plugin API</a>).
+</dd></dl>
+<dl><dt><a href="/Plugin_API/Filter_Reference/wp_redirect_status" title="Plugin API/Filter Reference/wp redirect status">wp_redirect_status</a>&nbsp;</dt><dd> applied to the HTTP status code when redirecting by the default <tt>wp_redirect</tt> function. Filter function arguments: HTTP status code, URL. Note that <tt>wp_redirect</tt> is also a "pluggable" function, meaning that plugins can override it; see <a href="/Plugin_API" title="Plugin API">Plugin API</a>).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/redirect_canonical&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/redirect canonical (page does not exist)">redirect_canonical</a>&nbsp;</dt><dd> Can be used to cancel a "canonical" URL redirect. Accepts 2 parameters: <tt>$redirect_url</tt>, <tt>$requested_url</tt>. To cancel the redirect return <tt><b>FALSE</b></tt>, to allow the redirect return <tt>$redirect_url</tt>
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/xmlrpc_methods&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/xmlrpc methods (page does not exist)">xmlrpc_methods</a>&nbsp;</dt><dd> applied to list of defined XMLRPC methods for the XMLRPC server.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_mail_from&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp mail from (page does not exist)">wp_mail_from</a>&nbsp;</dt><dd> applied before any mail is sent by the wp_mail function. Supplied value is the calculated from address which is wordpress at the current hostname (set by $_SERVER['SERVER_NAME']). The filter should return an email address or name/email combo in the form "user@example.com" or "Name &lt;user@example.com&gt;" (without the quotes!).
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_mail_from_name&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp mail from name (page does not exist)">wp_mail_from_name</a>&nbsp;</dt><dd> applied before any mail is sent by the wp_mail function. The filter should return a name string to be used as the email from name.
+</dd></dl>
+<a name="Widgets" id="Widgets"></a><h2> <span class="mw-headline"> Widgets </span></h2>
+<p>This section contains filters added by the WordPress Widgets.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/widget_archives_dropdown_args&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/widget archives dropdown args (page does not exist)">widget_archives_dropdown_args</a>&nbsp;</dt><dd> applied to the arguments passed to the <a href="/Function_Reference/wp_get_archives" title="Function Reference/wp get archives"><tt>wp_get_archives()</tt></a> function in the WordPress Archives widget.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/widget_links_args&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/widget links args (page does not exist)">widget_links_args</a>&nbsp;</dt><dd> applied to the arguments passed to the <a href="/Function_Reference/wp_list_bookmarks" title="Function Reference/wp list bookmarks"><tt>wp_list_bookmarks()</tt></a> function in the WordPress Links widget.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/widget_pages_args&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/widget pages args (page does not exist)">widget_pages_args</a>&nbsp;</dt><dd> applied to the arguments passed to the <a href="/Function_Reference/wp_list_pages" title="Function Reference/wp list pages"><tt>wp_list_pages()</tt></a> function in the WordPress Pages widget.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/widget_tag_cloud_args&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/widget tag cloud args (page does not exist)">widget_tag_cloud_args</a>&nbsp;</dt><dd> applied to the arguments passed to the <a href="/Function_Reference/wp_tag_cloud" title="Function Reference/wp tag cloud"><tt>wp_tag_cloud()</tt></a> function in the WordPress Pages widget.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/widget_text&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/widget text (page does not exist)">widget_text</a>&nbsp;</dt><dd> applied to the widget text of the WordPress Text widget. May also apply to some third party widgets as well.
+</dd></dl>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/widget_title&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/widget title (page does not exist)">widget_title</a>&nbsp;</dt><dd> applied to the widget title of any user editable WordPress Widget. May also apply to some third party widgets as well.
+</dd></dl>
+<p><br />
+</p>
+<a name="Admin_Bar" id="Admin_Bar"></a><h2> <span class="mw-headline"> Admin Bar </span></h2>
+<p>This section contains filters added by the Admin Bar added in WordPress 3.1.0.
+</p>
+<dl><dt><a href="/index.php?title=Plugin_API/Filter_Reference/wp_admin_bar_class&amp;action=edit&amp;redlink=1" class="new" title="Plugin API/Filter Reference/wp admin bar class (page does not exist)">wp_admin_bar_class</a>&nbsp;</dt><dd> allows changing the default 'WP_Admin_Bar' class in the <a href="/index.php?title=Function_Reference/_wp_admin_bar_init&amp;action=edit&amp;redlink=1" class="new" title="Function Reference/ wp admin bar init (page does not exist)"><tt>_wp_admin_bar_init()</tt></a> function in <code><a href="http://core.trac.wordpress.org/browser/tags/3.3.1/wp-includes/admin-bar.php" class="external text" title="http://core.trac.wordpress.org/browser/tags/3.3.1/wp-includes/admin-bar.php">wp-includes/admin-bar.php</a></code>.
+</dd></dl>
+<a name="Further_Reading" id="Further_Reading"></a><h2> <span class="mw-headline"> Further Reading </span></h2>
+<ul><li> <a href="/Writing_a_Plugin" title="Writing a Plugin">Writing a Plugin</a> - description of how to write a plugin
+</li><li> <a href="/Plugin_API" title="Plugin API">Plugin API</a> - article on how to use filters and actions
+</li><li> <a href="/Plugin_API/Action_Reference" title="Plugin API/Action Reference">Plugin API/Action Reference</a> - reference list for Action hooks
+</li><li> <a href="/Plugin_Resources" title="Plugin Resources">Plugin Resources</a> - comprehensive list of plugin-related resources
+</li><li> <a href="http://wphooks.flatearth.org" class="external text" title="http://wphooks.flatearth.org">WordPress Hooks</a>, a work in progress directory of all of WordPress’ hooks.
+</li><li> <a href="http://adambrown.info/p/wp_hooks" class="external text" title="http://adambrown.info/p/wp_hooks">WordPress Hooks Database</a>, a database of all WordPress' hooks, showing which version they come from, and linking to the source code spots that use them
+</li><li> <a href="http://blog.taragana.com/index.php/archive/wordpress-2x-hooks-for-action-comprehensive-list-for-plugin-and-theme-developers/" class="external text" title="http://blog.taragana.com/index.php/archive/wordpress-2x-hooks-for-action-comprehensive-list-for-plugin-and-theme-developers/">Angsuman's list</a>, a comprehensive listing of WordPress action hooks with documentation and source code location information. It contains all documented and undocumented action hooks in WordPress 2.0.
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 53/1000000
+Post-expand include size: 1025/2097152 bytes
+Template argument size: 360/2097152 bytes
+Expensive parser function count: 0/100
+-->
+<div class="printfooter">
+Retrieved from "<a href="http://codex.wordpress.org/Plugin_API/Filter_Reference">http://codex.wordpress.org/Plugin_API/Filter_Reference</a>"</div>
+				<div id="catlinks"><div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="/Special:Categories" title="Special:Categories">Categories</a>:&#32;<span dir='ltr'><a href="/Category:Filters" title="Category:Filters">Filters</a></span> | <span dir='ltr'><a href="/Category:Plugins" title="Category:Plugins">Plugins</a></span></div></div></div>			<!-- end content -->
+		</div>
+		<div class="col-2">
+			
+						
+			<ul class="submenu">
+				<li id="n-mainpage"><a href="/Main_Page">Home Page</a></li>	
+				<li><a href="/WordPress_Lessons">WordPress Lessons</a></li>
+				<li><a href="/Getting_Started_with_WordPress">Getting Started</a></li>
+				<li><a href="/Working_with_WordPress">Working with WordPress</a></li>
+				<li><a href="/Blog_Design_and_Layout">Design and Layout</a></li>
+				<li><a href="/Advanced_Topics">Advanced Topics</a></li>
+				<li><a href="/Troubleshooting">Troubleshooting</a></li>
+				<li><a href="/Developer_Documentation">Developer Docs</a></li>
+				<li><a href="/About_WordPress">About WordPress</a></li>
+			</ul>
+
+			<h3>Codex Resources</h3>
+			<ul class="submenu">
+				<li id="n-portal"><a href="/Codex:Community_Portal">Community portal</a></li>	      
+				<li id="n-currentevents"><a href="/Current_events">Current events</a></li>	      
+				<li id="n-recentchanges"><a href="/Special:RecentChanges">Recent changes</a></li>	      
+				<li id="n-randompage"><a href="/Special:Random">Random page</a></li>	      
+				<li id="n-help"><a href="/Help:Contents">Help</a></li>	
+			</ul>
+			
+		</div>
+	</div>
+</div>
+
+
+<div id="footer">
+	<div class="wrapper">
+		<p> 
+			<a href="http://wordpress.org/about/privacy/">Privacy</a> | 
+			<a href="http://wordpress.org/about/license/">License / GPLv2</a>
+            &nbsp; &nbsp; See also: 
+            <a href="http://wordpress.com/?ref=wporg-footer" title="Hassle-free WP hosting">WordPress.com</a> |
+			<a href="http://wordpress.tv/" title="Videos, tutorials, WordCamps">WordPress.TV</a> |
+			<a href="http://central.wordcamp.org/" title="Find a WordPress event near your home">WordCamp</a> |
+			<a href="http://jobs.wordpress.net/" title="Find or post WordPress jobs">WP Jobs</a> | 
+            <a href="http://ma.tt/" title="Co-founder of WordPress, an example of what WordPress can do">Matt</a> |
+			<a href="http://wordpress.org/news/feed/" class="rsslink">Blog RSS</a>
+		</p>
+<br />
+<iframe src="http://www.facebook.com/plugins/like.php?app_id=121415197926116&amp;href=http%3A%2F%2Fwww.facebook.com%2Fwordpress&amp;send=false&amp;layout=button_count&amp;width=150&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>
+<div class="g-plusone" data-size="medium" data-href="https://plus.google.com/107188080561309681193"></div>
+<iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/follow_button.html?screen_name=WordPress&show_count=false" style="width:150px; height:20px;"></iframe>
+
+		<h6>Code is Poetry</h6>
+	</div>
+</div>
+
+
+<script type="text/javascript">_qoptions={qacct:"p-18-mFEk4J448M"};</script>
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<noscript><img src="http://pixel.quantserve.com/pixel/p-18-mFEk4J448M.gif" style="display: none;" border="0" height="1" width="1" alt=""/></noscript>
+<!--  -->
+<script type="text/javascript" src="http://s.gravatar.com/js/gprofiles.js"></script>
+<!--
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+<script type="text/javascript">
+(function($){
+$(document).ready(function() {
+	$('#footer a').click(function() {
+		if (this.href.indexOf('wordpress.org') == -1 && this.href.indexOf('http') == 0) {
+			recordOutboundLink(this, 'Outbound Links', this.href);
+			return false;
+		}
+	});
+});
+})(jQuery);
+</script>
+-->
+</body>
+<!-- Cached 20120224105007 -->
+</html>
+
+</body>
+<!-- Cached 20120224105007 -->
+</html>
+

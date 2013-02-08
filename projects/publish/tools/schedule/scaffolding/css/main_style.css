@@ -1,0 +1,58 @@
+.menuItems {
+	font-size: 22px;
+	margin-right: 30px;
+	color: #000;
+}
+
+.newEntry {
+	margin-top: 200px;
+}
+
+.listTable {
+	margin-top: 35px;
+	margin-bottom: 40px;
+	width: 75%;
+}
+
+.row0 {
+	background-color: #eeeeee;
+}
+
+th {
+	text-align: left;
+	padding-left: 10px;
+}
+
+td {
+	padding-left: 10px;
+	padding: 10px;
+}
+
+a {
+	color: #000;
+}
+
+a:active {
+	color: #fff;
+	background-color: #000000;
+}
+
+.formNew {
+	margin-top: 55px;
+}
+
+label {
+	display: block;
+	width: 100px;
+	float: left;
+}
+
+.success {
+  background-color: #c0ffc0;
+  border: 1px solid #00df00;
+}
+
+.failure {
+  background-color: #ff9d9d;
+  border: 1px solid #e40000;
+} 

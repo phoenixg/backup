@@ -1,0 +1,136 @@
+<html>
+<head>
+	<title>Good CSS collection</title>
+	<link rel="stylesheet" href="./style.css" type="text/css" media="screen"/>	
+	
+	<!-- syntaxhighlighter -->
+	<script type="text/javascript" src="./syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+	<script type="text/javascript" src="./syntaxhighlighter_3.0.83/scripts/shAutoloader.js"></script>
+	<script type="text/javascript" src="./syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>
+	<script type="text/javascript" src="./syntaxhighlighter_3.0.83/scripts/shBrushBash.js"></script>
+	<script type="text/javascript" src="./syntaxhighlighter_3.0.83/scripts/shBrushCss.js"></script>
+	<script type="text/javascript" src="./syntaxhighlighter_3.0.83/scripts/shBrushPhp.js"></script>
+	<script type="text/javascript" src="./syntaxhighlighter_3.0.83/scripts/shBrushPlain.js"></script>
+	<script type="text/javascript" src="./syntaxhighlighter_3.0.83/scripts/shBrushPowerShell.js"></script>
+	<script type="text/javascript" src="./syntaxhighlighter_3.0.83/scripts/shBrushSql.js"></script>
+	<script type="text/javascript" src="./syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>
+
+	<!--<link type="text/css" rel="stylesheet" href="./syntaxhighlighter_3.0.83/styles/shCore.css"/>-->
+	<link type="text/css" rel="stylesheet" href="./syntaxhighlighter_3.0.83/styles/shCoreDefault.css"/>
+	<link type="text/css" rel="stylesheet" href="./syntaxhighlighter_3.0.83/styles/shThemeDefault.css"/>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+</head>
+
+<body>
+<a href="./images/3d-box-model.png">盒状模型图</a>
+
+
+<div id="A20120307_2">
+	<ul>
+		<li>
+			去除元素选中时的虚线框（尤其是IE下）
+			<ul>
+				<li>给元素添加hidefocus="true"属性和值</li>
+				<li>给元素定义样式outline:none;</li>	
+			</ul>	
+		</li>
+		<li>除了0之外，其他值都需要设置单位，如px</li>
+		<li>优先级：内联style > head里面的style > 外部引用的css</li>
+		<li>背景图不要加上引号，比如应为background:url(test.gif)，其路径是相对于css文件的路径</li>
+		<li>链接样式的顺序要按照：:link, :visited, :hover, :active (LoVe HAte)</li>
+		<li>禁止换行：white-space:nowrap 强制换行：word-wrap:break-word; word-break:normal;</li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+
+<div id="A20120308_2">
+	
+	<table>
+	<thead>浏览器CSS Hack</thead>
+	<tr><th>浏览器</th><th>*支持</th><th>_支持</th><th>!important支持</th><th>*html</th><th>*+html</th></tr>
+	<tr><td>IE6</td><td>√</td><td>√</td><td>×</td><td>√</td><td>×</td></tr>
+	<tr><td>IE7</td><td>√</td><td>×</td><td>√</td><td>√</td><td>√</td></tr>
+	<tr><td>FF</td><td>×</td><td>×</td><td>√</td><td>×</td><td>×</td></tr>
+	</table>
+
+	<pre class="brush:css">
+		/*!important*/
+		/*如果要仅针对IE6应用不同的样式，可以：*/
+		element {
+			width:100px!important; /*IE7 FF*/
+			width:90px; /*IE6*/
+		}
+	</pre>
+</div><!-- /A20120308_2 -->
+
+
+<div id="A20120307_1">
+	<pre class="brush:html">
+		<!-- 一个元素可以有多个class,eg.-->
+		<p class="test1 test2"></p>
+	</pre>
+</div><!-- /A20120307_1 -->
+
+
+<div id="A20120222_1">
+	<pre><code>test</code></pre>
+</div><!-- /A20120222_1 -->
+
+<div id="A20120224_1">
+<table>
+	<caption>here is the caption</caption>
+	<thead>
+		<tr class="odd">
+			<td class="column1">&nbsp;</td>
+			<th scope="col">col title 1</th>
+			<th scope="col">col title 2</th>
+		</tr>	
+	</thead>
+	<tbody>
+		<tr>
+			<th class="column1" scope="row">row title 1</th>
+			<td>content 1</td>
+			<td>content 2</td>
+		</tr>	
+		<tr class="odd">
+			<th class="column1" scope="row">row title 2</th>
+			<td>content 3</td>
+			<td>content 4</td>
+		</tr>	
+		<tr>
+			<th class="column1" scope="row">row title 3</th>	
+			<td>content 5</td>
+			<td>content 6</td>
+		</tr>	
+		<tr class="odd">
+			<th class="column1" scope="row">row title 4</th>
+			<td>content 7</td>
+			<td>content 8</td>
+		</tr>		
+	</tbody>
+	<tfoot>	
+		<tr class="odd">
+			<td class="column1">&nbsp;</td>
+			<th scope="col">col foot 1</th>
+			<th scope="col">col foot 2</th>
+		</tr>	
+	</tfoot>
+</table>
+</div><!-- /A20120224_1 -->
+
+<div id="A20120224_2">
+	<p class="important">testtesttesttesttest</p>
+</div><!-- /A20120224_2 -->
+
+<div id="A20120308_1">
+	<a class="premium-button" href="#">Test Test</a>
+</div><!-- /A20120308_1 -->
+
+
+
+</body>
+</html>
