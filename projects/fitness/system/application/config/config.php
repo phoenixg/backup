@@ -12,7 +12,7 @@
 |
 */
 $config['base_url']	= "http://173.230.150.168/phpmytest/fitness/";
-
+$config['base_url']	= "http://localhost/fitness/";
 /*
 |--------------------------------------------------------------------------
 | Index File
