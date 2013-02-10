@@ -1,0 +1,121 @@
+/*覆盖全局样式
+-----------------------------*/
+.content{
+	padding: 10px 0 10px 0px;
+}
+
+.side {
+	background-color:#eee;
+	font-size:14px;
+}
+
+h2 {
+	margin-top: 0px;
+}
+
+h1 a {
+	text-decoration:none;
+}
+
+/* 管理平台样式 */
+
+form {  /* set width in form, not fieldset (still takes up more room w/ fieldset width */
+  font:100% verdana,arial,sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%; 
+}
+
+form p {
+	background-color:#eee;
+}
+
+form label,form span.tinyEditor { 
+	display: block;  /* block float the labels to left column, set a width */
+	float: left; 
+	padding: 0; 
+	margin: 5px 0 0; /* set top margin same as form input - textarea etc. elements */
+	width: 20%; 
+	text-align: right;
+}
+
+	 
+form input, form select, form textarea {
+	/* display: inline; inline display must not be set or will hide submit buttons in IE 5x mac */
+	width:auto;      /* set width of form elements to auto-size, otherwise watch for wrap on resize */
+	margin:5px 0 0 0px; /* set margin on left of form elements rather than right of
+                              label aligns textarea better in IE */
+}
+
+
+form input {
+	width:15em;
+}
+
+form input#testimony_title{
+	width:450px;
+}
+
+form input#year{
+	width:4em;
+}
+
+form input#month, form input#day{
+	width:2em;
+}
+
+
+textarea { overflow: auto; }
+
+form small {
+	display: block;
+	margin: 0 0 5px 120px; /* instructions/comments left margin set to align w/ right column inputs */
+	padding: 1px 3px;
+	font-size: 88%;
+}
+
+form br {
+	clear:left; /* setting clear on inputs didn't work consistently, so brs added for degrade */
+}
+
+.editlist {
+	margin:1px 1px;
+	font-size:13px;
+}
+
+.editlist span,.editlist span a {
+	margin:0 1px 0 0;
+	padding:0 5px 0 5px;
+	background-color:#eee;
+}
+
+.editlist span a {
+	margin:0;
+	text-decoration:none;
+}
+
+span.edit:hover,span.edit a:hover,span.delete:hover,span.delete a:hover{
+	background-color:red;
+	color:#eee;
+}
+
+.pageNums {
+	margin:10px 0px;
+}
+
+.current a{
+	color:#eee;
+	text-decoration:none;
+	margin:0;
+	padding:1px 3px;
+	background-color:#555;
+}
+
+.noncurrent a{
+	color:#555;
+	text-decoration:none;
+	margin:0;	
+	padding:1px 3px;
+	background-color:#eee;
+}
+

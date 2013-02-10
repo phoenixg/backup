@@ -1,0 +1,174 @@
+body {
+	background-color: #FFFFFF;
+	font-family: Verdana, Arial, helvetica, sans-serif;
+	font-size: 12px;
+	margin: 20px;
+	width: 800px;
+}
+
+h1{
+	font-size: 18px;
+	font-weight: bold;
+	padding: 0;
+	margin: 4px;
+}
+
+h2 {
+	font-size: 14px;
+	font-weight: bold;
+	padding: 0;
+	margin: 0;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+h3 {
+	font-size: 11px;
+	font-weight: bold;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 3px;
+}
+
+h4, h5, h6{
+	margin: 0;
+	padding: 0;
+}
+
+pre, code{
+	margin: 0;
+	padding: 0 5px;
+	background-color: #E6EBF1;
+}
+
+li a {
+        text-decoration:none;
+}
+
+li {
+        border:1px dotted #CCC;
+        padding:0;
+        margin:0;
+}
+
+
+li a:hover{
+        background-color:#EEE;
+	color: #333;
+	text-decoration: underline;
+        font-weight:bold;
+}
+
+a{
+	color: #666666;
+	text-decoration: underline;
+}
+
+ul, ol{
+	padding: 0px;
+	margin: 3px 0 3px 10px;
+}
+
+li{
+	padding: 0;
+	margin: 3px 0 3px 10px;
+}
+
+li li{
+	padding: 0;
+	margin-left: 30px;
+}
+
+table{
+	border-collapse: collapse;	
+}
+
+td, th{
+	padding: 4px;
+	border: 2px groove #000000;
+}
+
+thead {
+	background-color: #E6EBF1;	
+}
+
+textarea {
+	width:100%;
+	height:300px;
+	margin:0;
+	padding:0;
+}
+
+.header{
+	border: #E0E0E0 solid 1px;
+}
+
+.footer{
+    margin: 20px 0 20px 0;
+	border: #E0E0E0 solid 1px;	
+	padding: 4px 6px 4px 6px;
+	height: 23px;
+	float:left;
+	width: 100%;
+}
+
+.content{
+	padding: 10px 0 10px 10px;
+}
+
+.side { float: left; width: 150px; }
+
+.main { float: left; padding: 4px 10px; width: 620px; }
+
+.indexlink{
+	float: right;
+}
+
+.volunteers {
+	margin:0 0 10px 0;
+	color:#555;
+}
+
+.successinfo {
+	padding:0;
+	margin:0;
+	font-weight:bold;
+	background-color:#3Cb371;/*r*/
+	color:#fff;
+}
+
+.failureinfo {
+	padding:0;
+	margin:0;
+	font-weight:bold;
+	background-color:#DC143C;/*r*/
+	color:#fff;
+}
+
+.audio-player {
+	margin:0px;
+	padding:5px 0px 5px 0px;
+	
+}
+
+
+/* hU	7 */
+.button {
+    /* Disables default styling */
+    border: none;
+    background: #999;
+    color: #fff;
+
+    /* You need to set font, font size and cursor for buttons */
+    font-size: 14px;
+    font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    cursor: pointer;
+
+    padding: 7px 11px;
+    font-weight: bold;
+}
+
+.button:active {
+	background-color:#555;
+}
+
