@@ -3,6 +3,7 @@
 ## 系统工具 ##
 - fastcopy
 - everything（文件搜索工具）
+- Beyond Compare
 - CheckRun（启动项目查看工具）
 - InfoTool（光驱检测工具）
 - launchy
@@ -43,6 +44,7 @@
 - Overture(midi五线谱编辑器)
 - Camtasia Studio（屏幕录制软件）
 - K-Lite Codec（编解码集成套件） + Mediainfo_lite
+- ffdshow
 - PopSub（字幕制作软件）
 - Time Machine（字幕制作软件）
 - FlvTool2
