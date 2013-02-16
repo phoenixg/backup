@@ -11,11 +11,13 @@
 - winmount（镜像加载、虚拟光驱）
 
 ## 编辑工具 ##
+- open office / libre office
 - Brackets
 - MarkdownPad
 - Sublime Text
 - Eclipse
 - Editplus
+- blue fish
 - vi/vim
 - Evernote
 - OmegaT
@@ -25,7 +27,7 @@
 - Format Factory
 - handbrake
 - ImToo
-- TMEG
+- TMPGEnc
 - VirtualDub
 - VirtualDubMod
 - FFmpeg
@@ -60,11 +62,13 @@
 - 火车头采集器
 - wireshark
 - filezilla
+- advanced IP scanner
 
 ## LAMP/WAMP工具 ##
 - xampp 或 appserv
 - SQLyog
 - mysql workbench
+- sql developer(oracle)
 
 ## 安全工具 ##
 - Havij (sql注入风险扫描)
@@ -93,4 +97,5 @@ puff
 - Psi（IM软件）
 - winboard（国际象棋）
 - w3g master（魔兽争霸录像文件查看器）
+- nitro pdf编辑器
 
