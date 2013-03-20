@@ -82,7 +82,8 @@
 - git extenstions
 
 ## 翻墙工具 ##
-puff
+- puff
+- tor + privoxy
 
 ## 虚拟机 ##
 - vmware
