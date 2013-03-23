@@ -1,0 +1,51 @@
+table {
+	border: 0px solid black;
+	border-collapse: collapse;
+	width:100%;
+}
+
+table td {
+	border: 1px solid black;
+}
+
+div.tbvideomanage {
+	background-color: #EEEEEE;
+}
+
+div.result {
+	background-color:#FFDDDD;
+}
+
+.button {
+	border:2px dotted #AAAAAA;
+	background-color: #CCFFCC;
+	color: #555555;
+	margin:1px;
+
+}
+
+.button:active {
+	background-color: #99FF99;
+	color: #000000;
+}
+
+.button:focus {
+	background-color: #99FF99;
+	color: #000000;
+}
+
+.searchbox {
+	background-color: #FFFFDD;
+}
+
+input.searchbox:focus {
+	background-color: #FFFF22;
+}
+
+tr:hover {
+	background-color: #FFFFDD;
+}
+
+td:hover {
+	background-color: #FFFF11;
+}
