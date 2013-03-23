@@ -1,0 +1,43 @@
+table {
+	border: 0px solid black;
+	border-collapse: collapse;
+	width:90%;
+}
+
+table td {
+	border: 1px solid black;
+}
+
+table caption {
+	border-top:2px solid black;
+	border-bottom:2px solid black;
+	border-left:0px;
+	border-right:0px;
+	background-color:#DDDDDD;
+}
+
+table tr th {
+	background-color:#EEEEEE;
+}
+
+tr:hover {
+	background-color: #DDFFDD;
+}
+
+td:hover {
+	background-color: #99FF99;
+}
+
+form  label {
+	font-weight:bold;
+}
+
+form input:focus,form textarea:focus {
+	background-color:#DDDDDD;
+}
+
+/*
+.edit_gc {
+	border-left:10px solid black;
+}
+*/

@@ -1,0 +1,17 @@
+table {
+	border: 0px solid black;
+	border-collapse: collapse;
+	width:50%;
+}
+
+table td {
+	border: 1px solid black;
+}
+
+tr:hover {
+	background-color: #FFFF99;
+}
+
+td:hover {
+	background-color: #FFFF11;
+}
