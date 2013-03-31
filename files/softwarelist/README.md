@@ -87,6 +87,7 @@
 
 ## 虚拟机 ##
 - vmware
+- VMware Player (如.bundle文件）
 - VirtualBox(开源的)
 
 ## 其他工具 ##
