@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="website">
+<head>
+    <title>AngularJS test</title>
+    <script src="./js/angular.min.js"></script>
+    <script src="./js/website.js"></script>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/website.css">
+</head>
+<body ng-controller="MainCtrl">
+<!-- top -->
+<header id="header">
+    <h1 id="logo"><a ng-click="setRoute('home')">Logo</a></h1>
+    <div id="menu">
+        <a ng-click="setRoute('home')" class="btn">Home</a>
+        <a ng-click="setRoute('about')" class="btn">About</a>
+        <a ng-click="setRoute('experiments')" class="btn">Experiments</a>
+    </div>
+
+    <div class="color"></div>
+    <div class="clear"></div>
+</header>
+<!-- // top -->
+<div class="shadow"></div>
+
+<div id="container">
+    <div ng-view></div>
+</div>
+
+</body>
+</html>
