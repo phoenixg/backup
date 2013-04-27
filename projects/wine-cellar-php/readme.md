@@ -14,6 +14,17 @@
 
 运行成功！
 
+
+#### API 设计
+
+    方法     URL                             行为
+    GET     /api/wines                      返回全部的wines
+    GET     /api/wines/search/Chateau       返回名称为 ‘Chateau’ 的wine
+    GET     /api/wines/10                   返回id为10的wine
+    POST    /api/wines                      添加一个新wine
+    PUT     /api/wines/10                   更新id为10的wine
+    DELETE  /api/wines/10                   删除id为10的wine
+
 #### 利用curl测试
 
     # 测试GET全部wines
