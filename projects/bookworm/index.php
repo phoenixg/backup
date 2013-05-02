@@ -76,6 +76,13 @@ for($i=1;$i<=24;$i++){
   array_push($data, array('w' => strtoupper(trim($_POST['w'.$i])), 'v' => trim($_POST['v'.$i])));
 }
 
+// 去重以便计算求和的分数
+$data_unduplicated = array();
+foreach($data as $key => $value){
+  $data_unduplicated[] = implode(',', $value);
+}
+$data_unduplicated = array_unique($data_unduplicated);
+
 // 求每个字符的出现频次
 $data_frequency = array();
 foreach ($data as $arr) {
@@ -111,9 +118,11 @@ foreach ($words as $k => $word) {
       if($pass) {
         $word_value = 0;
         foreach ($word_arr as $wkey => $wchar) {
-          foreach($data as $data_item) {
-            if($wchar != $data_item['w']) continue;
-            $word_value += $data_item['v'];
+          foreach($data_unduplicated as $data_item) {
+            $data_item = explode(',', $data_item);
+            // var_dump($data_item);  array 0 => string 'A' (length=1) 1 => string '3' (length=1)
+            if($wchar != $data_item[0]) continue;
+            $word_value += $data_item[1];
           }
         }
         $result[] = array('w' => $word, 'v' => $word_value);
