@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AngularJS Tutotials</title>
+    <link rel="stylesheet" href="vendor/foundation/css/foundation.min.css">
+<script type="text/javascript" src="vendor/angular.min.js"></script>
+<script type="text/javascript">
+var myApp = angular.module('myApp', []);
+
+myApp.factory('Avengers', function(){
+    var Avengers = {};
+    Avengers.cast = // JSON 格式
+    [
+        {
+            name: "Harry Potter",
+            character: "Hollow Packer"
+        },
+        {
+            name:"Tom Riddle",
+            character:"Voldemort"
+        },
+        {
+            name:"Albert Eistan",
+            character:"Sheldon Cooper"
+        },
+        {
+            name:"Obern Heimer",
+            character:"J K Rowling"
+        },
+        {
+            name:"Bilbo Bakins",
+            character:"Frodo Bill"
+        }
+    ];
+
+    return Avengers;
+})
+
+function AvengersCtrl($scope, Avengers){
+    $scope.avengers = Avengers;
+}
+
+</script>
+</head>
+<body>
+
+<div ng-app="myApp">
+    <div ng-controller="AvengersCtrl">
+        <input type="text" ng-model="search.$">
+        <table>
+            <tr ng-repeat="actor in avengers.cast | orderBy:'name' | limitTo:3 | filter: search">
+                <td>{{actor.name | lowercase}}</td>
+                <td>{{actor.character | uppercase}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+</body>
+</html>

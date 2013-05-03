@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AngularJS Tutotials</title>
+    <link rel="stylesheet" href="vendor/foundation/css/foundation.min.css">
+
+<script type="text/javascript">
+function FirstCtrl($scope){
+
+}
+
+function SecondCtrl($scope){
+
+}
+</script>
+</head>
+<body>
+<!-- data.message将绑定全部，而去掉data.，即仅仅message则会按次序只绑定一个 -->
+<div ng-app="">
+    <input type="text" ng-model="data.message">
+    <h1>{{data.message}}</h1>
+
+    <div ng-controller="FirstCtrl">
+        <input type="text" ng-model="data.message">
+        <h1>{{data.message}}</h1>
+    </div>
+
+    <div ng-controller="SecondCtrl">
+        <input type="text" ng-model="data.message">
+        <h1>{{data.message}}</h1>
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="vendor/angular.min.js"></script>
+</body>
+</html>

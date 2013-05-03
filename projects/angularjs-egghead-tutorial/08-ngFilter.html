@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AngularJS Tutotials</title>
+    <link rel="stylesheet" href="vendor/foundation/css/foundation.min.css">
+<script type="text/javascript" src="vendor/angular.min.js"></script>
+<script type="text/javascript">
+var myApp = angular.module('myApp', []);
+
+myApp.factory('Avengers', function(){
+    var Avengers = {};
+    Avengers.cast = // JSON 格式
+    [
+        {
+            name: "Harry Potter",
+            character: "Hollow Packer"
+        },
+        {
+            name:"Tom Riddle",
+            character:"Voldemort"
+        },
+        {
+            name:"Albert Eistan",
+            character:"Sheldon Cooper"
+        },
+        {
+            name:"Obern Heimer",
+            character:"J K Rowling"
+        },
+        {
+            name:"Bilbo Bakins",
+            character:"Frodo Bill"
+        }
+    ];
+
+    return Avengers;
+})
+
+function AvengersCtrl($scope, Avengers){
+    $scope.avengers = Avengers;
+}
+
+</script>
+</head>
+<body>
+
+<div ng-app="myApp">
+    <div ng-controller="AvengersCtrl">
+        <input type="text" ng-model="search.name"><!-- 只对name项目搜索，也可以只搜索character或两个都搜索（写成search.$) -->
+        <table>
+            <tr ng-repeat="actor in avengers.cast | filter:search">
+                <td>{{actor.name}}</td>
+                <td>{{actor.character}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+</body>
+</html>

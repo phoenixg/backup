@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AngularJS Tutotials</title>
+    <link rel="stylesheet" href="vendor/foundation/css/foundation.min.css">
+<script type="text/javascript" src="vendor/angular.min.js"></script>
+<script type="text/javascript">
+var myApp = angular.module('myApp', []);
+myApp.factory('Data', function(){
+    return {message:"I'm data from a service"}
+})
+
+myApp.filter('reverse', function(){
+    return function(text){
+        return text.split("").reverse().join("");
+    }
+})
+
+function FirstCtrl($scope, Data){
+    $scope.data = Data;
+}
+
+function SecondCtrl($scope, Data){
+    $scope.data = Data;
+
+    $scope.reversedMessage = function(message){
+        return message.split("").reverse().join("");
+    }
+}
+
+// 下面的代码似乎应该写在 test/unit/ 里面才对
+/*
+describe('filter', function(){
+    beforeEach(module('myApp'));
+
+    describe('reverse', function(){
+        it('should reverse a string', inject(function (reverseFilter){
+            expect(reverseFilter('ABCD')).toEqual('DCBA');
+            expect(reverseFilter('John')).toEqual('nhoJ');
+        }))
+    })
+})
+*/
+</script>
+</head>
+<body>
+
+<h1></h1>
+
+
+
+</body>
+</html>

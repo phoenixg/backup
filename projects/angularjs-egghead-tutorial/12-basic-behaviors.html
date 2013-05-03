@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AngularJS Tutotials</title>
+    <link rel="stylesheet" href="vendor/foundation/css/foundation.min.css">
+<script type="text/javascript" src="vendor/angular.min.js"></script>
+<script type="text/javascript">
+var app = angular.module('behaviorApp', []);
+
+app.directive("enter", function() {
+    return function (scope, element) {
+        element.bind("mouseenter", function(){
+            console.log("I'm inside of you");
+        })
+    }
+})
+
+app.directive("leave", function() {
+    return function (scope, element) {
+        element.bind("mouseleave", function(){
+            console.log("I'm leaving out of you");
+        })
+    }
+})
+</script>
+</head>
+<body>
+
+<div ng-app="behaviorApp">
+    <div enter leave>I'm content!</div>
+</div>
+</body>
+</html>
