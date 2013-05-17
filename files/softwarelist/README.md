@@ -38,6 +38,7 @@
 ## 图片工具 ##
 - jpeg resizer
 - snagit
+- GifCam GIF录制工具 http://blog.bahraniapps.com/?page_id=21
 
 ## 影音工具 ##
 - VLC player
