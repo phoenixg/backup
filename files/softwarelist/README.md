@@ -21,6 +21,7 @@
 - vi/vim
 - Evernote
 - OmegaT
+- PHPStorm 以及该公司出的所有IDE
 
 ## 转码工具 ##
 - Mediacoder
@@ -59,6 +60,7 @@
 - vncviewer
 - myentunnel / plink
 - PuTTY
+- Xshell
 - winSCP
 - 火车头采集器
 - wireshark
