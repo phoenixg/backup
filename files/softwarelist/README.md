@@ -87,6 +87,7 @@
 ## 翻墙工具 ##
 - puff
 - tor + privoxy
+- ZenMate chrome add-on
 
 ## 虚拟机 ##
 - vmware
@@ -102,5 +103,7 @@
 - Psi（IM软件）
 - winboard（国际象棋）
 - w3g master（魔兽争霸录像文件查看器）
+- steam 游戏平台
+- airmech steam上的一款即时战略游戏
 - nitro pdf编辑器
 
